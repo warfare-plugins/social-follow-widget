@@ -178,9 +178,29 @@ class SWFW_Follow_Network {
 	function render_html($options) {
 		$this->set_active_state($options);
 
-		if ( $this->is_active() ) {
-			$html = "<div><a href=" . $this->generate_url() . "></div>";
+		if ( !$this->is_active() ) {
+			return '';
 		}
+
+		$style = 'square '; // or 'rect-small' or 'rect-large';
+		$network = 'facebook';
+		$icon = '<i class="swp-facebook"></i>';
+		$count = 300;
+		$cta = "Follow";
+
+		$button = <<<EOT
+		<div class="swfm-follow-button $style $network" data-newtork="$network">
+		  <div class="swfm-network-icon">$icon</div>
+
+		  <div class="swfm-content">
+		    <div class="swfm-count">$count</div>
+		    <div class="swfm-cta">$cta</div>
+		  </div>
+		</div>
+EOT;
+//* EOT must be on its own line with no leading or trailing whitespace.
+
+		echo $button;
 	}
 
 	function is_active() {
