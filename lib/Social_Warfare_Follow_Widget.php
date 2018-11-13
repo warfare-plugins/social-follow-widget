@@ -1,11 +1,13 @@
 <?php
 if ( !class_exists( 'Social_Warfare_Addon' ) ) {
+	echo "finderr NO ADDON CLASS FOUND.";
 	return;
 }
 
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
     public function __construct() {
+		echo "Constructing " . __CLASS__;
 		$this->load_files( '/lib/', array( 'Follow_Network' ) );
 
 		$this->init_networks();
@@ -39,7 +41,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 			)
 		);
 
-		array_map( $networks, 'SWFW_Follow_Network');
+		array_map( $networks, 'SWFW_Follow_Network' );
 	}
 
 	/**
