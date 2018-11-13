@@ -109,37 +109,8 @@ class SWFW_Follow_Network {
     public $show_shares = false;
 
 	public function __construct( $args ) {
-		/**
-		*
-		* I am a big fan of the JSON updates technique.
-
-		* Since we are thinking about basically creating each network
-		* as an $args array, we could do that on the server.
-
-		* Then requrest all of our Follow_networks from the server,
-		* And cache them for a day or week or whatever.
-
-		* Every week we check for new newtorks or changes to the existing networks,
-		* without plugin update.
-		* What is stored in the WP database would be a (serialized) array of arrays, like
-		*
-		* array(
-		*   array('key' => 'youtube', 'name' => 'YouTube' ),
-		*   array('key' => 'vimeo', 'name' => 'Vimeo']),
-		*   array('key' => 'instagram', 'name' => 'Instagram'),
-		* )
-		*
-
-		* And in follow_updates.php, thats where we can define all of our networks.
-		*
-		* $youtube = array( . . . );
-		* $vimeo = array( . . . );
-		* $instagram = array( );
-		*
-		* echo json_encode( array( $youtube, $vimeo, $instagram ) ) ;
-		*/
-
 		global $swfw_networks;
+		
 
 		if ( !$swfw_networks ) {
 			$swfw_networks = array();
@@ -150,19 +121,22 @@ class SWFW_Follow_Network {
 
 		foreach( $args as $key => $value ) {
 			//* Show that we have met the requirement for this $key.
-			if( in_array( $key, $required ) ) {
-				unset($required[$key]);
+			$index = array_search( $key, $required);
+
+			if ( is_numeric( $index ) ) {
+				unset($required[$index]);
 			}
 
-			$this[$key] = $value;
+			$this->$key = $value;
 		}
 
 		// If all the required fields were not provided, we'll send a message and bail.
 		if ( count( $required ) > 0 ) {
+			die( "too many required");
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
 
 			foreach ( $required as $required_key ) {
-				error_( $required_key );
+				error_log( $required_key );
 			}
 
 			return;
@@ -170,7 +144,7 @@ class SWFW_Follow_Network {
 
 		$swfw_networks[] = $this;
 
-		add_filter('the_content', array( $this, 'render_html') );
+		// add_filter('the_content', array( $this, 'render_html') );
 	}
 
 	function generate_url() {
@@ -362,8 +336,6 @@ class SWFW_Follow_Network {
 		  </div>
 		</div>
 BUTTON;
-
-		echo $button;
 
 	}
 
