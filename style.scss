@@ -1,0 +1,81 @@
+.swfm-follow-button {
+  .swfm-count {
+    font-weight: normal;
+  }
+	.swfm-cta {
+		font-weight: bold;
+	}
+}
+
+
+/* Square buttons. */
+.swfm-follow-button.square {
+	width: 55px;
+	height: 58px;
+	position: relative;
+
+	.swfm-cta,
+	.swfm-count {
+		position: absolute;
+	}
+
+	.swfm-cta {
+	  opacity: 0;
+		transition: opacity: 300ms 300ms;
+	}
+
+	.swfm-cta {
+	  opacity: 1;
+	  transition: opacity: 300ms 0;
+	}
+}
+
+.swfm-follow-button.rect-small {
+	width: auto;
+	height: 32px;
+
+	.swfm-cta {
+	  display: none;
+	}
+
+	.swfm-cta {
+	  opacity: 1;
+	  transition: opacity: 300ms 0;
+	}
+
+	.swfm-cta {
+	  opacity: 0;
+	  transition: opacity: 300ms 300ms;
+	}
+}
+
+/* Small rectangular buttons. */
+.swfm-follow-button.rect-small:hover {
+	width: 100%;
+
+	.swfm-cta {
+	  display: block;
+	}
+}
+
+
+/* Small rectangular buttons. */
+.swfm-follow-button.rect-large {
+
+
+  /* Make the CTA look like a button. */
+  .swfm-cta {
+    padding: 20px 10px;
+    border-radius: 3px;
+    background: #fff;
+  }
+}
+
+.swfm-follow-button.rect-large:hover {
+	.swfm-cta {
+    padding: 20px 10px;
+    border-radius: 3px;
+    background: #0003;
+    color: #fff;
+  }
+}
