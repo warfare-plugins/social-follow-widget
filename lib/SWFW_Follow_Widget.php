@@ -3,9 +3,13 @@ if ( class_exists( 'SWFW_Follow_Widget' ) ) {
 	exit;
 }
 
-class SWFW_Follow_Widget {
+if ( !class_exists ( 'Social_Warfare_Addon' ) ) {
+	throw new Exception( "Please install the latest version of Social Warfare before activating Follow Widget.");
+}
 
+class SWFW_Follow_Widget extends Social_Warfare_Addon {
     public function __construct() {
+		die("laoding");
 		$this->load_files( '/lib/', array( 'SWFW_Follow_Network' ) );
 
 		$this->init_networks();
