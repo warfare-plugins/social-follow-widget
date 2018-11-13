@@ -34,8 +34,7 @@ add_action('plugins_loaded', 'swfw_initiate_plugin', 100);
 function swfw_initiate_plugin() {
 	if ( file_exists( SWFW_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php' ) ) {
 		require_once SWFW_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
-		$w = new Social_Warfare_Follow_Widget();
-		die(var_dump( $w) ) ;
+		new Social_Warfare_Follow_Widget();
 	}
 
 	else {
