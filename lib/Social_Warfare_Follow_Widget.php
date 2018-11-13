@@ -13,7 +13,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	}
 
 	function load_assets() {
-		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_DIR . '/style.css' );
+		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/style.css' );
 	}
 
 	function init_networks() {
