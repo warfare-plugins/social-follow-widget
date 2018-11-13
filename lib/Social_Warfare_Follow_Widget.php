@@ -1,12 +1,12 @@
 <?php
-if ( class_exists( 'SWFW_Follow_Widget' ) ) {
-	exit;
+if ( !class_exists( 'Social_Warfare_Addon' ) ) {
+	return;
 }
 
-class SWFW_Follow_Widget {
+class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
     public function __construct() {
-		$this->load_files( '/lib/', array( 'SWFW_Follow_Network' ) );
+		$this->load_files( '/lib/', array( 'Follow_Network' ) );
 
 		$this->init_networks();
 	}
@@ -53,7 +53,7 @@ class SWFW_Follow_Widget {
 	private function load_files( $path, $files ) {
 		foreach( $files as $file ) {
 			//* Add the vendor prefix to the file name.
-			$file = "SWFM_" . $file;
+			$file = "SWFW_" . $file;
 			require_once SWFW_PLUGIN_DIR . $path . $file . '.php';
 		}
 	}
