@@ -327,12 +327,12 @@ class SWFW_Follow_Network {
 
 		$button = <<<BUTTON
 		<h1>Follow Button for $this->key</h1>
-		<div class="swfm-follow-button $style $this->key" data-newtork="$this->key">
-		  <div class="swfm-network-icon">$icon</div>
+		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
+		  <div class="swfw-network-icon">$icon</div>
 
-		  <div class="swfm-content">
-			<div class="swfm-count">$count</div>
-			<div class="swfm-cta">$cta</div>
+		  <div class="swfw-content">
+			<div class="swfw-count">$count</div>
+			<div class="swfw-cta">$cta</div>
 		  </div>
 		</div>
 BUTTON;

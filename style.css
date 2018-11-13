@@ -1,68 +1,68 @@
-.swfm-follow-button {
+.swfw-follow-button {
 	background: cyan;
 }
 
-.swfm-follow-button .swfm-count {
+.swfw-follow-button .swfw-count {
   font-weight: normal;
 }
-.swfm-follow-button .swfm-cta {
+.swfw-follow-button .swfw-cta {
   font-weight: bold;
 }
 
 /* Square buttons. */
-.swfm-follow-button.square {
+.swfw-follow-button.square {
   width: 55px;
   height: 58px;
   position: relative;
 }
-.swfm-follow-button.square .swfm-cta,
-.swfm-follow-button.square .swfm-count {
+.swfw-follow-button.square .swfw-cta,
+.swfw-follow-button.square .swfw-count {
   position: absolute;
 }
-.swfm-follow-button.square .swfm-cta {
+.swfw-follow-button.square .swfw-cta {
   opacity: 0;
   transition: opacity 300ms 300ms;
 }
-.swfm-follow-button.square .swfm-cta {
+.swfw-follow-button.square .swfw-cta {
   opacity: 1;
   transition: opacity 300ms 0;
 }
 
-.swfm-follow-button.rect-small {
+.swfw-follow-button.rect-small {
   width: auto;
   height: 32px;
 }
-.swfm-follow-button.rect-small .swfm-cta {
+.swfw-follow-button.rect-small .swfw-cta {
   display: none;
 }
-.swfm-follow-button.rect-small .swfm-cta {
+.swfw-follow-button.rect-small .swfw-cta {
   opacity: 1;
   transition: opacity 300ms 0;
 }
-.swfm-follow-button.rect-small .swfm-cta {
+.swfw-follow-button.rect-small .swfw-cta {
   opacity: 0;
   transition: opacity 300ms 300ms;
 }
 
 /* Small rectangular buttons. */
-.swfm-follow-button.rect-small:hover {
+.swfw-follow-button.rect-small:hover {
   width: 100%;
 }
-.swfm-follow-button.rect-small:hover .swfm-cta {
+.swfw-follow-button.rect-small:hover .swfw-cta {
   display: block;
 }
 
 /* Small rectangular buttons. */
-.swfm-follow-button.rect-large {
+.swfw-follow-button.rect-large {
   /* Make the CTA look like a button. */
 }
-.swfm-follow-button.rect-large .swfm-cta {
+.swfw-follow-button.rect-large .swfw-cta {
   padding: 20px 10px;
   border-radius: 3px;
   background: #fff;
 }
 
-.swfm-follow-button.rect-large:hover .swfm-cta {
+.swfw-follow-button.rect-large:hover .swfw-cta {
   padding: 20px 10px;
   border-radius: 3px;
   background: black;

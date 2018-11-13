@@ -7,12 +7,12 @@ $count = 300;
 $cta = "Follow";
 
 $button = <<<EOT
-<div class="swfm-follow-button $style $network" data-newtork="$network">
-  <div class="swfm-network-icon">$icon</div>
+<div class="swfw-follow-button $style $network" data-newtork="$network">
+  <div class="swfw-network-icon">$icon</div>
 
-  <div class="swfm-content">
-    <div class="swfm-count">$count</div>
-    <div class="swfm-cta">$cta</div>
+  <div class="swfw-content">
+    <div class="swfw-count">$count</div>
+    <div class="swfw-cta">$cta</div>
   </div>
 </div>
 EOT;
