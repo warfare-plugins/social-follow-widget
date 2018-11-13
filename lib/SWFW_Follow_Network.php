@@ -110,7 +110,7 @@ class SWFW_Follow_Network {
 
 	public function __construct( $args ) {
 		global $swfw_networks;
-		
+
 
 		if ( !$swfw_networks ) {
 			$swfw_networks = array();
@@ -144,7 +144,7 @@ class SWFW_Follow_Network {
 
 		$swfw_networks[] = $this;
 
-		// add_filter('the_content', array( $this, 'render_html') );
+		add_filter('the_content', array( $this, 'render_html') );
 	}
 
 	function generate_url() {
@@ -312,7 +312,7 @@ class SWFW_Follow_Network {
 	 * @todo   Eliminate the array
 	 *
 	 */
-	public function render_HTML() {
+	public function render_HTML( $content ) {
 		// $this->set_active_state($options);
 
 		if ( !$this->is_active() ) {
@@ -336,6 +336,9 @@ class SWFW_Follow_Network {
 		  </div>
 		</div>
 BUTTON;
+
+		$content .= $button;
+		return $content;
 
 	}
 
