@@ -24,10 +24,16 @@ define( 'SWFM_STORE_URL', 'https://warfareplugins.com' );
 
 
 // Load the main Social_Warfare class and fire up the plugin.
-if ( file_exists( SWFM_PLUGIN_DIR . '/lib/SWFW_Follow_Widget.php' ) ) {
-	require_once SWFM_PLUGIN_DIR . '/lib/SWFW_Follow_Widget.php';
+if ( file_exists( SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php' ) ) {
+	require_once SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
+	new Social_Warfare_Follow_Widget();
 }
 else {
-	die("File does not exist.");
+	if ( !function_exists( 'swp_needs_core' ) ) :
+	    function swp_needs_core() {
+	        echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
+	    }
+	endif;
+
+	add_action( 'admin_notices', 'swp_needs_core' );
 }
-// new SWFW_Follow_Widget();
