@@ -22,13 +22,12 @@ define( 'SWFM_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'SWFM_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'SWFM_STORE_URL', 'https://warfareplugins.com' );
 
-if ( file_exists( SWP_PLUGIN_DIR . '/lib/legacy/update-checker.php') ) {
-    require_once SWFM_PLUGIN_DIR . '/lib/legacy/update-checker.php';
-}
-else {
-
-}
 
 // Load the main Social_Warfare class and fire up the plugin.
-require_once SWFM_PLUGIN_DIR . '/lib/Follow_Me.php';
-new Follow_Me();
+if ( file_exists( SWFM_PLUGIN_DIR . '/lib/SWFW_Follow_Widget.php' ) ) {
+	require_once SWFM_PLUGIN_DIR . '/lib/SWFW_Follow_Widget.php';
+}
+else {
+	die("File does not exist.");
+}
+// new SWFW_Follow_Widget();
