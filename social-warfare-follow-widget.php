@@ -16,24 +16,37 @@ defined( 'WPINC' ) || die;
  * Define plugin constants for use throughout the plugin (Version and Directories)
  *
  */
-define( 'SWFM_VERSION' , '3.3.92' );
-define( 'SWFM_PLUGIN_FILE', __FILE__ );
-define( 'SWFM_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
-define( 'SWFM_PLUGIN_DIR', dirname( __FILE__ ) );
-define( 'SWFM_STORE_URL', 'https://warfareplugins.com' );
+define( 'SWFW_VERSION' , '3.3.92' );
+define( 'SWFW_PLUGIN_FILE', __FILE__ );
+define( 'SWFW_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'SWFW_PLUGIN_DIR', dirname( __FILE__ ) );
+define( 'SWFW_STORE_URL', 'https://warfareplugins.com' );
 
+/**
+ * We defer the loading of this addon to ensure the Social Warfare (core) has
+ * been fully loaded prior to instantiatin this plugin. As such, we now have
+ * access to the registration functions, the update checker, and the
+ * Social_Warfare_Addon class.
+ *
+ */
+add_action('plugins_loaded', 'swfw_initiate_plugin', 100);
 
-// Load the main Social_Warfare class and fire up the plugin.
-if ( file_exists( SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php' ) ) {
-	require_once SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
-	new Social_Warfare_Follow_Widget();
-}
-else {
-	if ( !function_exists( 'swp_needs_core' ) ) :
-	    function swp_needs_core() {
-	        echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
-	    }
-	endif;
+function swfw_initiate_plugin() {
+	if ( file_exists( SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php' ) ) {
+		require_once SWFM_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
+		$w = new Social_Warfare_Follow_Widget();
+		die(var_dump( $w) ) ;
+	}
 
-	add_action( 'admin_notices', 'swp_needs_core' );
+	else {
+		// die("by");
+		if ( !function_exists( 'swp_needs_core' ) ) :
+		    function swp_needs_core() {
+		        echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
+		    }
+		endif;
+
+		add_action( 'admin_notices', 'swp_needs_core' );
+		echo "finderr DID NOT LOAD SWFW FILES.";
+	}
 }
