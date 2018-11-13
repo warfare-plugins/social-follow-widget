@@ -337,7 +337,7 @@ class SWFW_Follow_Network {
 		</div>
 BUTTON;
 
-		$content .= $button;
+		$content = $button . $content;
 		return $content;
 
 	}
