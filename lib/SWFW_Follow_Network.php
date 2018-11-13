@@ -109,8 +109,6 @@ class SWFW_Follow_Network {
     public $show_shares = false;
 
 	public function __construct( $args ) {
-		global $swfw_networks;
-
 		/**
 		*
 		* I am a big fan of the JSON updates technique.
@@ -141,12 +139,14 @@ class SWFW_Follow_Network {
 		* echo json_encode( array( $youtube, $vimeo, $instagram ) ) ;
 		*/
 
+		global $swfw_networks;
+
 		if ( !$swfw_networks ) {
 			$swfw_networks = array();
 		}
 
 		//* $args must have keys and values for each of these.
-		$required = array( 'key', 'name', 'cta', 'icon', 'url' );
+		$required = array( 'key', 'name', 'cta', 'url' );
 
 		foreach( $args as $key => $value ) {
 			//* Show that we have met the requirement for this $key.
@@ -169,39 +169,14 @@ class SWFW_Follow_Network {
 		}
 
 		$swfw_networks[] = $this;
+
+		add_filter('the_content', array( $this, 'render_html') );
 	}
 
 	function generate_url() {
 		return str_replace( 'swfw_username', $this->username, $this->url);
 	}
 
-	function render_html($options) {
-		$this->set_active_state($options);
-
-		if ( !$this->is_active() ) {
-			return '';
-		}
-
-		$style = 'square '; // or 'rect-small' or 'rect-large';
-		$network = 'facebook';
-		$icon = '<i class="swp-facebook"></i>';
-		$count = 300;
-		$cta = "Follow";
-
-		$button = <<<EOT
-		<div class="swfm-follow-button $style $network" data-newtork="$network">
-		  <div class="swfm-network-icon">$icon</div>
-
-		  <div class="swfm-content">
-		    <div class="swfm-count">$count</div>
-		    <div class="swfm-cta">$cta</div>
-		  </div>
-		</div>
-EOT;
-//* EOT must be on its own line with no leading or trailing whitespace.
-
-		echo $button;
-	}
 
 	function is_active() {
 		return !empty( $this->username );
@@ -302,9 +277,7 @@ EOT;
 	 * @access public
 	 *
 	 */
-	public function is_active() {
-		return $this->active;
-	}
+	// is_active func
 
 
 	/**
@@ -365,8 +338,32 @@ EOT;
 	 * @todo   Eliminate the array
 	 *
 	 */
-	public function render_HTML( $panel_context , $echo = false ) {
+	public function render_HTML() {
+		// $this->set_active_state($options);
 
+		if ( !$this->is_active() ) {
+			// return '';
+		}
+
+		$style = 'square '; // or 'rect-small' or 'rect-large';
+		$network = $this->key;
+		$icon = "<i class='sw swp_{$this->key}_icon'></i>";
+		$count = 300;
+		$cta = $this->cta;
+
+		$button = <<<BUTTON
+		<h1>Follow Button for $this->key</h1>
+		<div class="swfm-follow-button $style $this->key" data-newtork="$this->key">
+		  <div class="swfm-network-icon">$icon</div>
+
+		  <div class="swfm-content">
+			<div class="swfm-count">$count</div>
+			<div class="swfm-cta">$cta</div>
+		  </div>
+		</div>
+BUTTON;
+
+		echo $button;
 
 	}
 
@@ -463,16 +460,3 @@ EOT;
 	}
 
 }
-
-//* dummy data
-$args = array(
-	'key' = 'youtube',
-	'name' = 'YouTube',
-	'cta' = 'Follow',
-	'icon' = 'someicon',
-	'url' = 'https://youtube/swfw_username/videos/',
-	'color_primary' = '#000',
-	'color_accent' = '#fff'
-);
-
-$youtube = NEW SWP_Follow_Network($args)
