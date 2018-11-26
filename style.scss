@@ -1,4 +1,7 @@
 .swfw-follow-button {
+    background: cyan;
+    margin: 15px;
+
   .swfw-count {
     font-weight: normal;
   }
@@ -13,20 +16,34 @@
     width: 55px;
     height: 58px;
     position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: space-between;
 
     .swfw-cta,
     .swfw-count {
       position: absolute;
     }
 
-    .swfw-cta {
-      opacity: 0;
-      transition: opacity 300ms 300ms;
+    .swfw-count {
+        opacity: 1;
+        transition: opacity 300ms 0;
+    }
+
+    &:hover .swfw-count {
+        opacity: 0;
+		transition: opacity 300ms 300ms;
     }
 
     .swfw-cta {
-      opacity: 1;
+      opacity: 0;
       transition: opacity 300ms 0;
+    }
+
+    &:hover .swfw-cta {
+      opacity: 1;
+      transition: opacity 300ms 300ms;
     }
 }
 
