@@ -9,7 +9,7 @@ class SWFW_Follow_Container {
 	public $html;
 
 	public function __construct() {
-
+		add_filter('the_content', array( $this, 'render_html') );
 	}
 
 	/**
@@ -20,7 +20,14 @@ class SWFW_Follow_Container {
      * @return void
      */
     public function open_container() {
-        $this->html = '<div class="swfw-follow-container">';
+		$message = "Follow us on social media!";
+
+        $this->html  = '<div class="swfw-follow-container">';
+		$this->html .= "<p class='swfw-container-message'>$message</p>";
+	}
+
+	private function update_html( $network ) {
+		$this->html .= $network->render_html;
 	}
 
     /**
@@ -30,7 +37,11 @@ class SWFW_Follow_Container {
      * @return void
      */
 	public function fill_container() {
+		global $swfw_networks;
 
+		foreach( $swfw_networks as $network ) {
+			$this->html .= $network->render_html();
+		}
 	}
 
 	public function close_container() {
@@ -44,7 +55,11 @@ class SWFW_Follow_Container {
      * @see $this->open_container()
      * @return void
      */
-	public function render_html() {
-		return $this->html;
+	public function render_html( $the_content ) {
+		$this->open_container();
+		$this->fill_container();
+		$this->close_container();
+
+		return $this->html . $the_content;
 	}
 }
