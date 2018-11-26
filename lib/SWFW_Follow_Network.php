@@ -137,8 +137,6 @@ class SWFW_Follow_Network {
 		}
 
 		$swfw_networks[] = $this;
-
-		add_filter('the_content', array( $this, 'render_html') );
 	}
 
 	function generate_url() {
@@ -303,7 +301,7 @@ class SWFW_Follow_Network {
 	 * @todo   Eliminate the array
 	 *
 	 */
-	public function render_HTML( $content ) {
+	public function render_HTML() {
 		// $this->set_active_state($options);
 
 		if ( !$this->is_active() ) {
@@ -327,8 +325,7 @@ class SWFW_Follow_Network {
 		</div>
 BUTTON;
 
-		$content = $button . $content;
-		return $content;
+		return $button;
 
 	}
 
