@@ -1,3 +1,16 @@
+/* Button Container */
+
+.swfw-follow-container {
+	min-width: 375px;
+	min-height:200px;
+
+    .swfw-container-message {
+		font-weight: bold;
+	}
+}
+
+/* Individual Buttons */
+
 .swfw-follow-button {
     background: cyan;
     margin: 15px;
