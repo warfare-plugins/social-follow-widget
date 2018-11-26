@@ -111,11 +111,6 @@ class SWFW_Follow_Network {
 	public function __construct( $args ) {
 		global $swfw_networks;
 
-
-		if ( !$swfw_networks ) {
-			$swfw_networks = array();
-		}
-
 		//* $args must have keys and values for each of these.
 		$required = array( 'key', 'name', 'cta', 'url' );
 
@@ -132,7 +127,6 @@ class SWFW_Follow_Network {
 
 		// If all the required fields were not provided, we'll send a message and bail.
 		if ( count( $required ) > 0 ) {
-			die( "too many required");
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
 
 			foreach ( $required as $required_key ) {
@@ -329,7 +323,6 @@ class SWFW_Follow_Network {
 		<h1>Follow Button for $this->key</h1>
 		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
 		  <div class="swfw-network-icon">$icon</div>
-
 		  <div class="swfw-content">
 			<div class="swfw-count">$count</div>
 			<div class="swfw-cta">$cta</div>
