@@ -7,13 +7,14 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
     public function __construct() {
 		global $swfw_networks;
-		
+
 		$swfw_networks = array();
 
-		$this->load_files( '/lib/', array( 'Follow_Network' ) );
+		$this->load_files( '/lib/', array( 'Follow_Network', 'Follow_Container' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		$this->init_networks();
+		new SWFW_Follow_Container();
 	}
 
 	function load_assets() {
