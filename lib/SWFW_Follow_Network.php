@@ -115,7 +115,7 @@ class SWFW_Follow_Network {
 		$required = array( 'key', 'name', 'cta', 'url' );
 
 		foreach( $args as $key => $value ) {
-			//* Show that we have met the requirement for this $key.
+			//* Show that we included $key.
 			$index = array_search( $key, $required);
 
 			if ( is_numeric( $index ) ) {
@@ -145,11 +145,9 @@ class SWFW_Follow_Network {
 		return str_replace( 'swfw_username', $this->username, $this->url);
 	}
 
-
 	function is_active() {
 		return !empty( $this->username );
 	}
-
 
 	/**
 	 * A method to add this network object to the globally accessible array.
@@ -164,7 +162,6 @@ class SWFW_Follow_Network {
 
 
 	}
-
 
 	/**
 	 * A function to run when the object is instantiated.
@@ -319,14 +316,14 @@ class SWFW_Follow_Network {
 		$count = 300;
 		$cta = $this->cta;
 
-		$button = <<<BUTTON
-		<h1>Follow Button for $this->key</h1>
+		$button =
+<<<BUTTON
 		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
-		  <div class="swfw-network-icon">$icon</div>
-		  <div class="swfw-content">
-			<div class="swfw-count">$count</div>
-			<div class="swfw-cta">$cta</div>
-		  </div>
+			<div class="swfw-network-icon">$icon</div>
+			<div class="swfw-content">
+				<div class="swfw-count">$count</div>
+				<div class="swfw-cta">$cta</div>
+			</div>
 		</div>
 BUTTON;
 
