@@ -75,12 +75,13 @@
 
 /* Irregularly sized buttons */
 .swfw-follow-button.irregular {
-  width: auto;
-  min-width: 200px;
-  height: 32px;
   display: flex;
   flex-flow: row nowrap;
+  width: -moz-min-content;
+  width: min-content;
+  height: 32px;
   margin: 10px 5px;
+  padding-right: 20px;
 }
 .swfw-follow-button.irregular .swfw-network-icon {
   width: 32px;
