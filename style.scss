@@ -1,8 +1,11 @@
 /* Button Container */
 
 .swfw-follow-container {
-	min-width: 375px;
-	min-height:200px;
+	// min-width: 375px;
+	// min-height:200px;
+	background-color: lightgreen;
+	display: flex;
+	flex-flow: row wrap;
 
     .swfw-container-message {
 		font-weight: bold;
@@ -15,9 +18,9 @@
     background: cyan;
     margin: 15px;
 
-  .swfw-count {
-    font-weight: normal;
-  }
+	.swfw-count {
+	font-weight: normal;
+	}
     .swfw-cta {
       font-weight: bold;
     }
@@ -31,22 +34,28 @@
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: space-between;
+    align-items: center;
+	text-align: center;
+
+	.swfw-text {
+		width: 100%;
+	}
 
     .swfw-cta,
     .swfw-count {
-      position: absolute;
+	  display: block;
+	  width: 100%;
+	  position: absolute;
     }
 
     .swfw-count {
-        opacity: 1;
-        transition: opacity 300ms 0;
+      opacity: 1;
+      transition: opacity 300ms 0;
     }
 
     &:hover .swfw-count {
-        opacity: 0;
-		transition: opacity 300ms 300ms;
+      opacity: 0;
+	  transition: opacity 300ms 300ms;
     }
 
     .swfw-cta {

@@ -318,7 +318,7 @@ class SWFW_Follow_Network {
 <<<BUTTON
 		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
 			<div class="swfw-network-icon">$icon</div>
-			<div class="swfw-content">
+			<div class="swfw-text">
 				<div class="swfw-count">$count</div>
 				<div class="swfw-cta">$cta</div>
 			</div>

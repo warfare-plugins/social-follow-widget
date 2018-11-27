@@ -1,10 +1,8 @@
 /* Button Container */
 .swfw-follow-container {
-  /* min-width: 375px; */
-  /* min-height: 200px; */
+  background-color: lightgreen;
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
 }
 .swfw-follow-container .swfw-container-message {
   font-weight: bold;
@@ -29,11 +27,16 @@
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: space-between;
+  align-items: center;
+  text-align: center;
+}
+.swfw-follow-button.square .swfw-text {
+  width: 100%;
 }
 .swfw-follow-button.square .swfw-cta,
 .swfw-follow-button.square .swfw-count {
+  display: block;
+  width: 100%;
   position: absolute;
 }
 .swfw-follow-button.square .swfw-count {
