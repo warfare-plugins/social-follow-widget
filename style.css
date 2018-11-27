@@ -1,7 +1,10 @@
 /* Button Container */
 .swfw-follow-container {
-  min-width: 375px;
-  min-height: 200px;
+  /* min-width: 375px; */
+  /* min-height: 200px; */
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
 }
 .swfw-follow-container .swfw-container-message {
   font-weight: bold;
