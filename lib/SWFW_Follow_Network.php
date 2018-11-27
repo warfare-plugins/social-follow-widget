@@ -311,7 +311,7 @@ class SWFW_Follow_Network {
 		$style = 'square '; // or 'rect-small' or 'rect-large';
 		$network = $this->key;
 		$icon = "<i class='sw swp_{$this->key}_icon'></i>";
-		$count = 300;
+		$count = number_format(rand(100, 300000));
 		$cta = $this->cta;
 
 		$button =

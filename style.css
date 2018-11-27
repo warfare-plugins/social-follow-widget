@@ -42,6 +42,7 @@
 .swfw-follow-button.square .swfw-count {
   opacity: 1;
   transition: opacity 300ms 0;
+  font-size: 12px;
 }
 .swfw-follow-button.square:hover .swfw-count {
   opacity: 0;
