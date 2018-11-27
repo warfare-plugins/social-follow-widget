@@ -2,7 +2,14 @@
 .swfw-follow-container {
   background-color: lightgreen;
   display: flex;
+}
+.swfw-follow-container.square {
   flex-flow: row wrap;
+}
+.swfw-follow-container.irregular {
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: space-between;
 }
 .swfw-follow-container .swfw-container-message {
   font-weight: bold;
@@ -11,12 +18,17 @@
 /* Individual Buttons */
 .swfw-follow-button {
   background: cyan;
-  margin: 15px;
 }
-.swfw-follow-button .swfw-count {
+.swfw-follow-button .swfw-text {
+  position: relative;
+  width: 100%;
+  color: #030303;
+  font-family: "Helvetica", sans-serif;
+}
+.swfw-follow-button .swfw-text .swfw-count {
   font-weight: normal;
 }
-.swfw-follow-button .swfw-cta {
+.swfw-follow-button .swfw-text .swfw-cta {
   font-weight: bold;
 }
 
@@ -29,6 +41,10 @@
   flex-flow: column nowrap;
   align-items: center;
   text-align: center;
+  margin: 15px;
+}
+.swfw-follow-button.square .swfw-network-icon {
+  font-size: 20px;
 }
 .swfw-follow-button.square .swfw-text {
   width: 100%;
@@ -57,30 +73,39 @@
   transition: opacity 300ms 300ms;
 }
 
-.swfw-follow-button.rect-small {
+/* Irregularly sized buttons */
+.swfw-follow-button.irregular {
   width: auto;
+  min-width: 200px;
   height: 32px;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10px 5px;
 }
-.swfw-follow-button.rect-small .swfw-cta {
-  display: none;
+.swfw-follow-button.irregular .swfw-network-icon {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 32px;
+  text-align: center;
 }
-.swfw-follow-button.rect-small .swfw-cta {
-  opacity: 1;
-  transition: opacity 300ms 0;
+.swfw-follow-button.irregular .swfw-cta,
+.swfw-follow-button.irregular .swfw-count {
+  display: inline-block;
+  position: relative;
 }
-.swfw-follow-button.rect-small .swfw-cta {
-  opacity: 0;
-  transition: opacity 300ms 300ms;
+.swfw-follow-button.irregular .swfw-cta {
+  width: 0;
+  color: transparent;
+  float: left;
+  transition: width 300ms;
+  margin: 0 10px;
 }
-
-/* Small rectangular buttons. */
-.swfw-follow-button.rect-small:hover {
-  width: 100%;
+.swfw-follow-button.irregular:hover .swfw-cta {
+  width: auto;
+  color: #030303;
+  transition: all 0;
 }
-.swfw-follow-button.rect-small:hover .swfw-cta {
-  display: block;
-}
-
 /* Small rectangular buttons. */
 .swfw-follow-button.rect-large {
   /* Make the CTA look like a button. */

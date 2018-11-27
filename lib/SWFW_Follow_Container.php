@@ -24,7 +24,7 @@ class SWFW_Follow_Container {
 
 		$this->html  = "<div class='swfw-follow-container-wrap'>";
 			$this->html .= "<p class='swfw-container-message'>$message</p>";
-			$this->html .= "<div class='swfw-follow-container'>";
+			$this->html .= "<div class='swfw-follow-container irregular'>";
 	}
 
 	private function update_html( $network ) {

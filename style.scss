@@ -1,3 +1,5 @@
+$black: #030303;
+
 /* Button Container */
 
 .swfw-follow-container {
@@ -5,25 +7,41 @@
 	// min-height:200px;
 	background-color: lightgreen;
 	display: flex;
-	flex-flow: row wrap;
+
+	&.square {
+	  flex-flow: row wrap;
+	}
+
+    &.irregular {
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-items: space-between;
+	}
 
     .swfw-container-message {
 		font-weight: bold;
 	}
 }
 
-/* Individual Buttons */
 
+/* Individual Buttons */
 .swfw-follow-button {
     background: cyan;
-    margin: 15px;
 
-	.swfw-count {
-	font-weight: normal;
+	.swfw-text {
+		position: relative;
+		width: 100%;
+		color: $black;
+		font-family: 'Helvetica', sans-serif;
+
+		.swfw-count {
+		  font-weight: normal;
+		}
+
+	    .swfw-cta {
+	      font-weight: bold;
+	    }
 	}
-    .swfw-cta {
-      font-weight: bold;
-    }
 }
 
 
@@ -36,6 +54,11 @@
     flex-flow: column nowrap;
     align-items: center;
 	text-align: center;
+	margin: 15px;
+
+	.swfw-network-icon {
+		font-size: 20px;
+	}
 
 	.swfw-text {
 		width: 100%;
@@ -70,38 +93,53 @@
     }
 }
 
-.swfw-follow-button.rect-small {
+/* Irregularly sized buttons */
+.swfw-follow-button.irregular {
     width: auto;
+	min-width: 200px;
     height: 32px;
+	// padding: 0px 5px;
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 10px 5px;
+
+	.swfw-network-icon {
+		width: 32px;
+		height: 32px;
+		line-height: 32px;
+		font-size: 32px;
+		text-align: center;
+	}
+
+	.swfw-cta,
+	.swfw-count {
+		display: inline-block;
+		position: relative;
+	}
 
     .swfw-cta {
-      display: none;
+	  // visibility: collapse;
+	  width: 0;
+	  color: transparent;
+	  float: left;
+	  transition: width 300ms;
+      margin: 0 10px;
     }
 
-    .swfw-cta {
-      opacity: 1;
-      transition: opacity 300ms 0;
-    }
+	&:hover .swfw-cta {
+	  // visibility: visible;
+	  width: auto;
+	  color: $black;
+	  transition: all 0;
+	}
 
-    .swfw-cta {
-      opacity: 0;
-      transition: opacity 300ms 300ms;
-    }
+	.swfw-count {
+		// float: right;
+	}
 }
-
-/* Small rectangular buttons. */
-.swfw-follow-button.rect-small:hover {
-    width: 100%;
-
-    .swfw-cta {
-      display: block;
-    }
-}
-
 
 /* Small rectangular buttons. */
 .swfw-follow-button.rect-large {
-
 
   /* Make the CTA look like a button. */
   .swfw-cta {

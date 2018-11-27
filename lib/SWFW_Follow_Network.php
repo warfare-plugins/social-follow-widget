@@ -308,12 +308,13 @@ class SWFW_Follow_Network {
 			// return '';
 		}
 
-		$style = 'square '; // or 'rect-small' or 'rect-large';
+		$style = 'irregular '; // or 'rect-small' or 'rect-large';
 		$network = $this->key;
 		$icon = "<i class='sw swp_{$this->key}_icon'></i>";
 		$count = number_format(rand(100, 300000));
 		$cta = $this->cta;
 
+        //* Square buttons
 		$button =
 <<<BUTTON
 		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
@@ -324,6 +325,19 @@ class SWFW_Follow_Network {
 			</div>
 		</div>
 BUTTON;
+
+        //* Irregular buttons
+		$button =
+<<<BUTTON
+<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
+	<div class="swfw-network-icon">$icon</div>
+	<div class="swfw-text">
+		<div class="swfw-count">$count</div>
+		<div class="swfw-cta">$cta</div>
+	</div>
+</div>
+BUTTON;
+
 
 		return $button;
 
