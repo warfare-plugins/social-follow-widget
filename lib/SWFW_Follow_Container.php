@@ -22,8 +22,9 @@ class SWFW_Follow_Container {
     public function open_container() {
 		$message = "Follow us on social media!";
 
-        $this->html  = '<div class="swfw-follow-container">';
-		$this->html .= "<p class='swfw-container-message'>$message</p>";
+		$this->html  = "<div class='swfw-follow-container-wrap'>";
+			$this->html .= "<p class='swfw-container-message'>$message</p>";
+			$this->html .= "<div class='swfw-follow-container'>";
 	}
 
 	private function update_html( $network ) {
@@ -45,7 +46,7 @@ class SWFW_Follow_Container {
 	}
 
 	public function close_container() {
-        $this->html .= '</div>';
+        $this->html .= '</div></div>';
 	}
 
 	/**
