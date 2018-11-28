@@ -30,7 +30,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'follow_description'	=> 'Fans',
 				'color_primary'	=> '#3A589E',
 				'color_accent'	=> '#314E84',
-				'url'	=> 'xxx.com'
+				'url'	=> 'https://facebook.com'
 			),
 			array(
 				'key' => 'tumblr',
@@ -39,7 +39,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'follow_description'	=> 'Fans',
 				'color_primary' => '#39475D',
 				'color_accent' => '#27313F',
-				'url'	=> 'yyy.com'
+				'url'	=> 'https://tumblr.com'
 			),
 			array(
 				'key' => 'pinterest',
@@ -48,7 +48,25 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'follow_description'	=> 'Followers',
 				'color_primary' => '#CC2029',
 				'color_accent' => '#CC#AB1F25',
-				'url'	=> 'zzz.com'
+				'url'	=> 'https://pinterest.com'
+			),
+			array(
+				'key' => 'twitter',
+				'name' => 'Twitter',
+				'cta' => 'Follow',
+				'follow_description'	=> 'Followers',
+				'color_primary' => '#429BD5',
+				'color_accent' => '#3C87B2',
+				'url'	=> 'https://twitter.com'
+			),
+			array(
+				'key' => 'reddit',
+				'name' => 'Reddit',
+				'cta' => 'Follow',
+				'follow_description'	=> 'Followers',
+				'color_primary' => '#EF4A23',
+				'color_accent' => '#D33F27',
+				'url'	=> 'https://reddit.com'
 			)
 		);
 
