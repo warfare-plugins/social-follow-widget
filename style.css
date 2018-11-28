@@ -1,7 +1,12 @@
-/* Button Container */
+/**
+ * Button Container
+ *
+ * These styles are common to all button containers, regardless of shape or style.
+ */
 .swfw-follow-container {
   background-color: lightgreen;
   display: flex;
+  cursor: pointer;
 }
 .swfw-follow-container.square {
   flex-flow: row wrap;
@@ -15,7 +20,11 @@
   font-weight: bold;
 }
 
-/* Individual Buttons */
+/**
+ * Individual Buttons
+ *
+ * These styles are common to all Follow buttons, regardless of shape or style.
+ */
 .swfw-follow-button {
   background: cyan;
 }
@@ -31,7 +40,9 @@
   font-weight: bold;
 }
 
-/* Square buttons. */
+/**
+ * Square Buttons
+ */
 .swfw-follow-button.square {
   width: 55px;
   height: 58px;
@@ -72,7 +83,9 @@
   transition: opacity 300ms 300ms;
 }
 
-/* Irregularly sized buttons */
+/**
+ * Irregular buttons
+ */
 .swfw-follow-button.irregular {
   display: flex;
   flex-flow: row nowrap;
@@ -124,17 +137,19 @@
   max-width: none;
   color: #030303;
 }
-/* Small rectangular buttons. */
-.swfw-follow-button.rect-large {
+/**
+ * Rectangle Buttons
+ */
+.swfw-follow-button.rectangle {
   /* Make the CTA look like a button. */
 }
-.swfw-follow-button.rect-large .swfw-cta {
+.swfw-follow-button.rectangle .swfw-cta {
   padding: 20px 10px;
   border-radius: 3px;
   background: #fff;
 }
 
-.swfw-follow-button.rect-large:hover .swfw-cta {
+.swfw-follow-button.rectangle-large:hover .swfw-cta {
   padding: 20px 10px;
   border-radius: 3px;
   background: #0003;
