@@ -1,3 +1,4 @@
+$white: #fefefe;;
 $black: #030303;
 
 /**
@@ -10,6 +11,7 @@ $black: #030303;
 	// min-height:200px;
 	background-color: lightgreen;
 	display: flex;
+	position: relative;
 
 	.swfw-container-message {
 		font-weight: bold;
@@ -44,6 +46,7 @@ $black: #030303;
 	cursor: pointer;
 	border-radius: 4px;
 	font-family: 'Helvetica', sans-serif;
+	position: relative;
 
 	.swfw-text {
 		position: relative;
@@ -189,28 +192,47 @@ $black: #030303;
 .swfw-follow-button.rectangle {
 	width: 330px;
 	height: 72px;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-	justify-content: space-around;
+	// display: flex;
+	// flex-flow: row nowrap;
+	// align-items: center;
+	// justify-content: space-around;
 	margin: 10px 0;
 	cursor: initial;
+
+	> * {
+		top: 24px;
+		position: absolute;
+		display: inline-block;
+		width: -moz-min-content;
+		width: min-content;
+	}
 
   .swfw-network-icon {
 	  width: 36px;
 	  height: 24px;
 	  line-height: 24px;
 	  font-size: 36px;
-	  color: white;
+	  color: $white;
+	  left: 0;
+	  margin-left: 10px;
   }
 
   .swfw-text {
 	  font-size: 12px;
+	  line-height: 24px;
+	  left: calc(10px + 60px);
+	  color: $white;
+	  text-align: center;
+
+	  .swfw-count {
+		width: -moz-max-content;
+		width: max-content;
+	  }
   }
 
   /* Make the CTA look like a button. */
   .swfw-cta {
-	padding: 20px 10px;
+	// padding: 20px 10px;
 	border-radius: 3px;
   }
 
@@ -218,9 +240,11 @@ $black: #030303;
 	  height: 24px;
 	  width: 116px;
 	  line-height: 24px;
-	  background: white;
+	  background: $white;
 	  border-radius: 4px;
 	  text-align: center;
+	  margin-right: 10px;
+      right: 0;
 
 	  &:hover {
 		  background: rgba(30, 30, 30, .3);
