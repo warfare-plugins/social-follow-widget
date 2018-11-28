@@ -220,7 +220,7 @@ $black: #030303;
   .swfw-text {
 	  font-size: 12px;
 	  line-height: 24px;
-	  left: calc(10px + 60px);
+	  left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount} 
 	  color: $white;
 	  text-align: center;
 
