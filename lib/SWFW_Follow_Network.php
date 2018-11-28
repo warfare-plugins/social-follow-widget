@@ -303,40 +303,56 @@ class SWFW_Follow_Network {
 	 */
 	public function render_HTML() {
 		// $this->set_active_state($options);
+		//
+		$_icon = $_count = $_cta = $_cta_button = '';
 
 		if ( !$this->is_active() ) {
 			// return '';
 		}
 
-		$style = 'irregular '; // or 'rect-small' or 'rect-large';
+		$style = 'rectangle'; //
 		$network = $this->key;
 		$icon = "<i class='sw swp_{$this->key}_icon'></i>";
 		$count = number_format(rand(100, 300000));
 		$cta = $this->cta;
 
-        //* Square buttons
-		$button =
-<<<BUTTON
-		<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
-			<div class="swfw-network-icon">$icon</div>
-			<div class="swfw-text">
-				<div class="swfw-count">$count</div>
-				<div class="swfw-cta">$cta</div>
-			</div>
-		</div>
-BUTTON;
+        $_icon = "<div class='swfw-network-icon'>$icon</div>";
+		$_count = "<div class='swfw-count'>$count</div>";
+		$_cta = "<div class='swfw-cta'>$cta</div>";
+		$_style = "
+		  --color-primary: $this->color_primary;
+		  --color-accent: $this->color_accent;
+		";
+
+		if ( $style == 'rectangle' ) {
+			$_cta = "";
+			$_count = "<div class='swfw-count'>$count $this->follow_description</div>";
+			$_cta_button = "<div class='swfw-cta-button'>$cta</div>";
+		}
+
+		if ( $style == 'irregular' ) {
+			//* Just rearrange the order of elements. Is there a cleaner way to do this?
+			$move_node = $_cta;
+			$_cta = $_count;
+			$_count = $move_node;
+		}
 
         //* Irregular buttons
 		$button =
 <<<BUTTON
-<div class="swfw-follow-button $style $this->key" data-newtork="$this->key">
-	<div class="swfw-network-icon">$icon</div>
+<div style="$_style" class="swfw-follow-button $style $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+	$_icon
 	<div class="swfw-text">
-		<div class="swfw-count">$count</div>
-		<div class="swfw-cta">$cta</div>
+    	$_count
+		$_cta
 	</div>
+	$_cta_button
 </div>
 BUTTON;
+
+
+
+
 
 
 		return $button;
