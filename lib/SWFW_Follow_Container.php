@@ -21,10 +21,11 @@ class SWFW_Follow_Container {
      */
     public function open_container() {
 		$message = "Follow us on social media!";
+		$style = 'rectangle';
 
 		$this->html  = "<div class='swfw-follow-container-wrap'>";
 			$this->html .= "<p class='swfw-container-message'>$message</p>";
-			$this->html .= "<div class='swfw-follow-container irregular'>";
+			$this->html .= "<div class='swfw-follow-container $style'>";
 	}
 
 	private function update_html( $network ) {
