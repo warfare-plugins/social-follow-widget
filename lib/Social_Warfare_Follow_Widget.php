@@ -27,6 +27,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'key'	=> 'facebook',
 				'name'	=> 'Facebook',
 				'cta'	=> 'Like',
+				'follow_description'	=> 'Fans',
 				'color_primary'	=> '#3A589E',
 				'color_accent'	=> '#314E84',
 				'url'	=> 'xxx.com'
@@ -35,6 +36,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'key' => 'tumblr',
 				'name' => 'Tumblr',
 				'cta' => 'Like',
+				'follow_description'	=> 'Fans',
 				'color_primary' => '#39475D',
 				'color_accent' => '#27313F',
 				'url'	=> 'yyy.com'
@@ -43,11 +45,17 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 				'key' => 'pinterest',
 				'name' => 'Pinterst',
 				'cta' => 'Follow',
+				'follow_description'	=> 'Followers',
 				'color_primary' => '#CC2029',
 				'color_accent' => '#CC#AB1F25',
 				'url'	=> 'zzz.com'
 			)
 		);
+
+        //* duplicate dummy networks for now to fill out the container.
+		$networks = array_merge( $networks, $networks);
+		// $networks = array_merge( $networks, $networks);
+
 
 		foreach( $networks as $network ) {
 			new SWFW_Follow_Network( $network );
