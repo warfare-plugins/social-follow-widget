@@ -21,7 +21,6 @@
 }
 .swfw-follow-button .swfw-text {
   position: relative;
-  width: 100%;
   color: #030303;
   font-family: "Helvetica", sans-serif;
 }
@@ -60,13 +59,13 @@
   transition: opacity 300ms 0;
   font-size: 12px;
 }
-.swfw-follow-button.square:hover .swfw-count {
-  opacity: 0;
-  transition: opacity 300ms 300ms;
-}
 .swfw-follow-button.square .swfw-cta {
   opacity: 0;
   transition: opacity 300ms 0;
+}
+.swfw-follow-button.square:hover .swfw-count {
+  opacity: 0;
+  transition: opacity 300ms 300ms;
 }
 .swfw-follow-button.square:hover .swfw-cta {
   opacity: 1;
@@ -90,22 +89,40 @@
   font-size: 32px;
   text-align: center;
 }
-.swfw-follow-button.irregular .swfw-cta,
-.swfw-follow-button.irregular .swfw-count {
-  display: inline-block;
-  position: relative;
-}
-.swfw-follow-button.irregular .swfw-cta {
-  width: 0;
-  color: transparent;
-  float: left;
-  transition: width 300ms;
+.swfw-follow-button.irregular .swfw-text {
+  width: -moz-min-content;
+  width: min-content;
   margin: 0 10px;
+  transition: margin 300ms;
+  display: flex;
+  justify-content: center;
+  line-height: 32px;
 }
-.swfw-follow-button.irregular:hover .swfw-cta {
-  width: auto;
+.swfw-follow-button.irregular .swfw-text .swfw-cta,
+.swfw-follow-button.irregular .swfw-text .swfw-count {
+  display: inline;
+  position: relative;
+  transition: all 300ms;
+}
+.swfw-follow-button.irregular .swfw-text .swfw-cta {
+  width: 0;
+  max-width: 0;
+  overflow-x: hidden;
+  position: absolute;
+  color: transparent;
+}
+.swfw-follow-button.irregular:hover .swfw-text {
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 20px;
+}
+.swfw-follow-button.irregular:hover .swfw-text .swfw-cta {
+  width: -moz-min-content;
+  width: min-content;
+  overflow-x: visible;
+  position: relative;
+  max-width: none;
   color: #030303;
-  transition: all 0;
 }
 /* Small rectangular buttons. */
 .swfw-follow-button.rect-large {

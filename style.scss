@@ -30,7 +30,6 @@ $black: #030303;
 
 	.swfw-text {
 		position: relative;
-		width: 100%;
 		color: $black;
 		font-family: 'Helvetica', sans-serif;
 
@@ -77,20 +76,22 @@ $black: #030303;
 	  font-size: 12px;
     }
 
-    &:hover .swfw-count {
-      opacity: 0;
-	  transition: opacity 300ms 300ms;
-    }
-
     .swfw-cta {
       opacity: 0;
       transition: opacity 300ms 0;
     }
 
-    &:hover .swfw-cta {
-      opacity: 1;
-      transition: opacity 300ms 300ms;
-    }
+	&:hover {
+		.swfw-count {
+	      opacity: 0;
+		  transition: opacity 300ms 300ms;
+	    }
+
+		.swfw-cta {
+	      opacity: 1;
+	      transition: opacity 300ms 300ms;
+	    }
+	}
 }
 
 /* Irregularly sized buttons */
@@ -111,30 +112,52 @@ $black: #030303;
 		text-align: center;
 	}
 
-	.swfw-cta,
-	.swfw-count {
-		display: inline-block;
-		position: relative;
+	.swfw-text {
+		width: -moz-min-content;
+        width: min-content;
+		margin: 0 10px;
+		transition: margin 300ms;
+		display: flex;
+		justify-content: center;
+		line-height: 32px;
+
+		.swfw-cta,
+		.swfw-count {
+			display: inline;
+			position: relative;
+			transition: all 300ms;
+		}
+
+	    .swfw-cta {
+		  width: 0;
+		  max-width: 0;
+		  overflow-x: hidden;
+		  position: absolute;
+		  color: transparent;
+	    }
+
+		.swfw-count {
+            // left: 20%;
+		}
 	}
 
-    .swfw-cta {
-	  // visibility: collapse;
-	  width: 0;
-	  color: transparent;
-	  float: left;
-	  transition: width 300ms;
-      margin: 0 10px;
-    }
+    &:hover .swfw-text {
+		width: -moz-max-content;
+        width: max-content;
+        margin: 0 20px;
 
-	&:hover .swfw-cta {
-	  // visibility: visible;
-	  width: auto;
-	  color: $black;
-	  transition: all 0;
-	}
+		.swfw-cta {
+		  width: -moz-min-content;
+		  width: min-content;
+		  overflow-x: visible;
+		  position: relative;
+		  max-width: none;
+		  color: $black;
+		}
 
-	.swfw-count {
-		// float: right;
+		&:hover .swfw-count {
+			// left: 100%;
+		}
 	}
 }
 
