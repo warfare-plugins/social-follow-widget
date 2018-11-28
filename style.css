@@ -6,7 +6,6 @@
 .swfw-follow-container {
   background-color: lightgreen;
   display: flex;
-  cursor: pointer;
 }
 .swfw-follow-container.square {
   flex-flow: row wrap;
@@ -27,6 +26,7 @@
  */
 .swfw-follow-button {
   background: cyan;
+  cursor: pointer;
 }
 .swfw-follow-button .swfw-text {
   position: relative;
@@ -42,6 +42,7 @@
 
 /**
  * Square Buttons
+ *
  */
 .swfw-follow-button.square {
   width: 55px;
@@ -85,15 +86,16 @@
 
 /**
  * Irregular buttons
+ *
  */
 .swfw-follow-button.irregular {
   display: flex;
   flex-flow: row nowrap;
   width: -moz-min-content;
   width: min-content;
-  height: 32px;
   margin: 10px 5px;
-  padding-right: 20px;
+  padding: 5px 10px 5px 5px;
+  border-radius: 4px;
 }
 .swfw-follow-button.irregular .swfw-network-icon {
   width: 32px;
@@ -119,26 +121,27 @@
 }
 .swfw-follow-button.irregular .swfw-text .swfw-cta {
   width: 0;
-  max-width: 0;
   overflow-x: hidden;
   position: absolute;
   color: transparent;
+  margin-right: 0;
+  font-weight: normal;
 }
 .swfw-follow-button.irregular:hover .swfw-text {
   width: -moz-max-content;
   width: max-content;
-  margin: 0 20px;
 }
 .swfw-follow-button.irregular:hover .swfw-text .swfw-cta {
   width: -moz-min-content;
   width: min-content;
   overflow-x: visible;
   position: relative;
-  max-width: none;
+  margin-right: 10px;
   color: #030303;
 }
 /**
  * Rectangle Buttons
+ *
  */
 .swfw-follow-button.rectangle {
   /* Make the CTA look like a button. */
