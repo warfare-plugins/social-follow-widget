@@ -67,7 +67,7 @@ $black: #030303;
  * Square Buttons
  *
  */
-.swfw-follow-button.square {
+.swfw-follow-container.square .swfw-follow-button {
     width: 55px;
     height: 58px;
     position: relative;
@@ -121,7 +121,7 @@ $black: #030303;
  * Irregular buttons
  *
  */
-.swfw-follow-button.irregular {
+.swfw-follow-container.irregular .swfw-follow-button {
 	display: flex;
 	flex-flow: row nowrap;
 	width: -moz-min-content;
@@ -189,7 +189,7 @@ $black: #030303;
  * Rectangle Buttons
  *
  */
-.swfw-follow-button.rectangle {
+.swfw-follow-container.rectangle .swfw-follow-button {
 	width: 330px;
 	height: 72px;
 	// display: flex;
@@ -220,7 +220,7 @@ $black: #030303;
   .swfw-text {
 	  font-size: 12px;
 	  line-height: 24px;
-	  left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount} 
+	  left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount}
 	  color: $white;
 	  text-align: center;
 
