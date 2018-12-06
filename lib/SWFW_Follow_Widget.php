@@ -1,6 +1,6 @@
 <?php
 
-class Follow_Widget extends SWP_Maybe_Widget {
+class SWFW_Follow_Widget extends SWP_Maybe_Widget {
 	function __construct() {
 		$this->key = 'social_warfare_follow_widget';
 
