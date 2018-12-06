@@ -12,8 +12,16 @@
  *
  */
 
-class SWFW_Facebook {
+class SWFW_Facebook extends SWFW_Follow_Network {
     public function __construct() {
+		$this->key = 'facebook';
+		$this->name = 'Facebook';
+		$this->cta = 'Like';
+		$this->follow_description = 'Fans';
+		$this->color_primary = '#3A589E';
+		$this->color_accent = '#314E84';
+
+		parent::__construct();
 
         $this->base_follow_url = 'https://facebook.com/' . $this->follow_id;
 
