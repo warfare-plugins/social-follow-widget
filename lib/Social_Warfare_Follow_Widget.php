@@ -24,15 +24,6 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	function init_networks() {
 		$networks = array(
 			array(
-				'key'	=> 'facebook',
-				'name'	=> 'Facebook',
-				'cta'	=> 'Like',
-				'follow_description'	=> 'Fans',
-				'color_primary'	=> '#3A589E',
-				'color_accent'	=> '#314E84',
-				'url'	=> 'https://facebook.com'
-			),
-			array(
 				'key' => 'tumblr',
 				'name' => 'Tumblr',
 				'cta' => 'Like',
