@@ -26,8 +26,4 @@ class SWFW_Facebook extends SWFW_Follow_Network {
         $this->base_follow_url = 'https://facebook.com/' . $this->follow_id;
 
 	}
-
-    public function render_HTML() {
-
-	}
 }
