@@ -1,14 +1,19 @@
 <?php
+if (!class_exists( 'SWP_Maybe_Widget' ) ) {
+	return;
+}
 
-class SWFW_Follow_Widget extends SWP_Maybe_Widget {
+// class SWFW_Follow_Widget extends SWP_Maybe_Widget {
+class SWFW_Follow_Widget extends WP_Widget {
 	function __construct() {
-		$this->key = 'social_warfare_follow_widget';
-
 		$args = array(
-			'name'	=> 'Social Warfare Follow Widget'
+			'key' => 'social_warfare_follow_widget',
+			'name'	=> 'Social Warfare Follow Widget',
 		);
 
-		parent::__construct();
+		// parent::__construct( $args );
+		parent::__construct( false, $name = 'FINDERR22' );
+
 	}
 
 	function generate_form_HTML( $settings ) {
