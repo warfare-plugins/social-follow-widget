@@ -303,57 +303,48 @@ class SWFW_Follow_Network {
 	 */
 	public function render_HTML() {
 		// $this->set_active_state($options);
-		//
-		$_icon = $_count = $_cta = $_cta_button = '';
-
 		if ( !$this->is_active() ) {
 			// return '';
 		}
 
-		$style = 'rectangle'; //
+		$style = 'rectangle';
+		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$network = $this->key;
-		$icon = "<i class='sw swp_{$this->key}_icon'></i>";
+		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
 		$count = number_format(rand(100, 300000));
 		$cta = $this->cta;
 
-        $_icon = "<div class='swfw-network-icon'>$icon</div>";
-		$_count = "<div class='swfw-count'>$count</div>";
-		$_cta = "<div class='swfw-cta'>$cta</div>";
-		$_style = "
-		  --color-primary: $this->color_primary;
-		  --color-accent: $this->color_accent;
-		";
+        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
+		$count_html = "<div class='swfw-count'>$count</div>";
+		$cta_html = "<div class='swfw-cta'>$cta</div>";
+		$cta_button_html = '';
+
 
 		if ( $style == 'rectangle' ) {
-			$_cta = "";
-			$_count = "<div class='swfw-count'>$count $this->follow_description</div>";
+			$cta_html = "";
+			$count_html = "<div class='swfw-count'>$count $this->follow_description</div>";
 			$_cta_button = "<div class='swfw-cta-button'>$cta</div>";
 		}
 
 		if ( $style == 'irregular' ) {
 			//* Just rearrange the order of elements. Is there a cleaner way to do this?
-			$move_node = $_cta;
-			$_cta = $_count;
-			$_count = $move_node;
+			$move_node = $cta_html;
+			$cta_html = $count_html;
+			$count_html = $move_node;
 		}
 
-        //* Irregular buttons
+        //* EOT syntax is lame but useful :(
 		$button =
 <<<BUTTON
-<div style="$_style" class="swfw-follow-button $style $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
-	$_icon
+<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+	$icon_html
 	<div class="swfw-text">
-    	$_count
-		$_cta
+    	$count_html
+		$cta_html
 	</div>
-	$_cta_button
+	$cta_button_html
 </div>
 BUTTON;
-
-
-
-
-
 
 		return $button;
 
