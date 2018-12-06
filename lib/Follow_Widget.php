@@ -5,12 +5,12 @@ class Follow_Widget extends SWP_Maybe_Widget {
 		parent::__construct();
 	}
 
-	function render_form_HTML( $settings ) {
+	function generate_form_HTML( $settings ) {
 		$html = '';
         return $html;
 	}
 
-	function render_widget_HTML( $args, $settings ) {
+	function generate_widget_HTML( $args, $settings ) {
 		$html = '';
         return $html;
 	}
