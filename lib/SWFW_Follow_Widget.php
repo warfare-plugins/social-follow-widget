@@ -1,22 +1,16 @@
 <?php
-if (!class_exists( 'SWP_Maybe_Widget' ) ) {
+if (!class_exists( 'SWP_Widget' ) ) {
 	return;
 }
 
-class SWFW_Follow_Widget extends SWP_Maybe_Widget {
+class SWFW_Follow_Widget extends SWP_Widget {
 	function __construct() {
 		$this->args = array(
 			'key' => strtolower( __CLASS__ ),
 			'name'	=> 'Social Warfare: Follow Widget',
 		);
 
-		add_action('widgets_init', array( $this, 'register_self') );
-
 		parent::__construct( $this->args );
-	}
-
-	function register_self() {
-		register_widget( __CLASS__ );
 	}
 
 	function generate_form_HTML( $settings ) {
