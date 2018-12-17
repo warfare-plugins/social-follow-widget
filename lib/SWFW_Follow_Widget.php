@@ -5,29 +5,38 @@ if (!class_exists( 'SWP_Widget' ) ) {
 
 class SWFW_Follow_Widget extends SWP_Widget {
 	function __construct() {
-		$this->args = array(
+		$widget = array(
 			'key' => strtolower( __CLASS__ ),
-			'name'	=> 'Social Warfare: Follow Widget',
+			'name'	=> 'Social Follow by Warfare Plugins',
 		);
 
-		parent::__construct( $this->args );
+		parent::__construct( $widget );
 	}
 
 	function generate_form_HTML( $settings ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
+        $html = '';
 
-		$html .= '<form></form>';
+		foreach( $networks as $network ) {
+		    $html .= $network->generate_backend_HTML();
+		}
         return $html;
 	}
 
 	function generate_widget_HTML( $args, $settings ) {
 		$html = '<h1>I am a widget!</h1>';
-		$html .= '<pre>widget</pre>';
+		$networks = apply_filters( 'swfw_follow_networks', array() );
+
+		foreach( $networks as $network ) {
+		    $html .= $network->generate_frontend_HTML();
+		}
+
         return $html;
 	}
 
 	/**
-	* Inhereted from WP_Widget. Handler for saving new settings.
+	* Inhereted from WP_Widget.
+    * Handler for saving new settings.
     *
 	* By default will always save changed settings.
 	* Please override in child class to filter and sanitize data.
