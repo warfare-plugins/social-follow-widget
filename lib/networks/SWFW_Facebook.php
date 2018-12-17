@@ -21,11 +21,10 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 			'follow_description' =>  'Fans',
 			'color_primary' =>  '#3A589E',
 			'color_accent' =>  '#314E84',
+			'url'	=> 'https://facebook.com'
 		);
 
 
 		parent::__construct( $network );
-
-        $this->base_follow_url = 'https://facebook.com/';
 	}
 }

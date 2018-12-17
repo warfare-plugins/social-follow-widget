@@ -20,11 +20,10 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#CC2029',
-			'color_accent' => '#AB1F25'
+			'color_accent' => '#AB1F25',
+			'url'	=> 'https://pinterest.com/'
 		);
 
 		parent::__construct( $network );
-
-        $this->base_follow_url = 'https://pinterest.com/';
 	}
 }

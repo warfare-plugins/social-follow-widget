@@ -20,11 +20,10 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#EF4A23',
-			'color_accent' => '#D33F27'
+			'color_accent' => '#D33F27',
+			'url'	=> 'https://Reddit.com/'
 		);
 
 		parent::__construct( $network );
-
-        $this->base_follow_url = 'https://Reddit.com/';
 	}
 }
