@@ -37,10 +37,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		    'Tumblr'
 		);
 
-
-		foreach( $networks as $network ) {
-			$this->load_files( '/lib/networks', $networks );
-		}
+		$this->load_files( '/lib/networks/', $networks, true );
 	}
 
 	/**
@@ -51,11 +48,15 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 * @return none     The files are loaded into memory.
 	 *
 	 */
-	private function load_files( $path, $files ) {
+	private function load_files( $path, $files, $instantiate = false ) {
 		foreach( $files as $file ) {
 			//* Add the vendor prefix to the file name.
-			$file = "SWFW_" . $file;
-			require_once SWFW_PLUGIN_DIR . $path . $file . '.php';
+			$class = "SWFW_" . $file;
+			require_once SWFW_PLUGIN_DIR . $path . $class . '.php';
+
+			if ( $instantiate ) {
+				new $class();
+			}
 		}
 	}
 }
