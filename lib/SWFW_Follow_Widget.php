@@ -5,20 +5,37 @@ if (!class_exists( 'SWP_Widget' ) ) {
 
 class SWFW_Follow_Widget extends SWP_Widget {
 	function __construct() {
+		$key = strtolower( __CLASS__ );
+		$name = 'Social Follow by Warfare Plugins';
+
 		$widget = array(
-			'key' => strtolower( __CLASS__ ),
-			'name'	=> 'Social Follow by Warfare Plugins',
+			'classname' => $key,
+			'description' => 'Increase follower growth for your favorite social networks.',
 		);
 
-		parent::__construct( $widget );
+		parent::__construct( $key, $name, $widget );
+	}
+
+	function defaults() {
+		$defaults = array();
+
+
+
+		return [
+
+		];
 	}
 
 	function generate_form_HTML( $settings ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
         $html = '';
 
+
+
 		foreach( $networks as $network ) {
-		    $html .= $network->generate_backend_HTML();
+			$key = $key = "swp_{$this->key}_follow_username";
+			$value = isset($settings[$key]) ? $settings[$key] : '';
+		    $html .= $network->generate_backend_HTML( $value );
 		}
         return $html;
 	}
@@ -49,6 +66,10 @@ class SWFW_Follow_Widget extends SWP_Widget {
     *
     */
 	public function update( $new_settings = array(), $old_settings  = array()) {
+		error_log('new settings');
+		error_log(var_export($new_settings, 1));
+		error_log('old_settings');
+		error_log(var_export($old_settings, 1));
 		if ($new_settings == $old_settings) {
 			return false;
 		}
