@@ -27,7 +27,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	}
 
 	/**
-    * Handler for saving new settings.
+	* Inhereted from WP_Widget. Handler for saving new settings.
     *
 	* By default will always save changed settings.
 	* Please override in child class to filter and sanitize data.
