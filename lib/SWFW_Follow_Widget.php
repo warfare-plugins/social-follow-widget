@@ -14,7 +14,8 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	}
 
 	function generate_form_HTML( $settings ) {
-		$html = '<h1>I am a form!</h1>';
+		$networks = apply_filters( 'swfw_follow_networks', array() );
+
 		$html .= '<form></form>';
         return $html;
 	}
@@ -23,5 +24,26 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		$html = '<h1>I am a widget!</h1>';
 		$html .= '<pre>widget</pre>';
         return $html;
+	}
+
+	/**
+    * Handler for saving new settings.
+    *
+	* By default will always save changed settings.
+	* Please override in child class to filter and sanitize data.
+    *
+    * @since  1.0.0
+    * @access public
+    * @param  array $new_instance Updated values as input by the user in WP_Widget::form()
+    * @param  array $old_instance Previously set values.
+    * @return array The new values to store in the database.
+    *
+    */
+	public function update( $new_settings = array(), $old_settings  = array()) {
+		if ($new_settings == $old_settings) {
+			return false;
+		}
+
+		return $new_settings;
 	}
 }
