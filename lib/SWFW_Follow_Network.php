@@ -159,7 +159,22 @@ class SWFW_Follow_Network {
 	}
 
 
+    public function generate_backend_HTML() {
+		error_log('generating html');
+		error_log($this->key);
+		$key = "swp_{$this->key}_follow_username";
 
+		//* EOT syntax is lame but useful
+		$field =
+<<<FIELD
+<div class="swfw-follow-field $this->key" data-network="$this->key">
+    <div class="swfw-follow-field-icon"><i class="sw swp_{$this->key}_icon"></i></div>
+    <p>$this->name</p>
+	<input name={$key} id="$key" type="text" placeholder="Username" />
+</div>
+FIELD;
+        return $field;
+	}
 
 	/**
 	 * Create the HTML to display the share button
