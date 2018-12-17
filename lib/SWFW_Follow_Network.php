@@ -117,26 +117,22 @@ class SWFW_Follow_Network {
 		foreach( $args as $key => $value ) {
 			//* Show that we included $key.
 			$index = array_search( $key, $required);
-
 			if ( is_numeric( $index ) ) {
 				unset($required[$index]);
 			}
-
 			$this->$key = $value;
 		}
 
 		// If all the required fields were not provided, we'll send a message and bail.
 		if ( count( $required ) > 0 ) {
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
-
 			foreach ( $required as $required_key ) {
 				error_log( $required_key );
 			}
-
 			return;
 		}
 
-		$swfw_networks[] = $this;
+		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
 	}
 
 	function generate_url() {
@@ -151,14 +147,14 @@ class SWFW_Follow_Network {
 	 * A method to add this network object to the globally accessible array.
 	 *
 	 * @since  3.0.0 | 06 APR 2018 | Created
-	 * @param  none
-	 * @return none
+	 * @hook   filter| swp_follow_networks  
+	 * @param  array $networks All of the created Social Follow Network classes.
+	 * @return array $networks With `$this` network in the array.
 	 * @access public
 	 *
 	 */
-	public function add_to_global() {
-
-
+	public function register_self( $networks ) {
+        return array_merge( $networks, array( $this ) );
 	}
 
 	/**
