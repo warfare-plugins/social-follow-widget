@@ -30,51 +30,16 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 	function init_networks() {
 		$networks = array(
-			array(
-				'key' => 'tumblr',
-				'name' => 'Tumblr',
-				'cta' => 'Like',
-				'follow_description'	=> 'Fans',
-				'color_primary' => '#39475D',
-				'color_accent' => '#27313F',
-				'url'	=> 'https://tumblr.com'
-			),
-			array(
-				'key' => 'pinterest',
-				'name' => 'Pinterst',
-				'cta' => 'Follow',
-				'follow_description'	=> 'Followers',
-				'color_primary' => '#CC2029',
-				'color_accent' => '#CC#AB1F25',
-				'url'	=> 'https://pinterest.com'
-			),
-			array(
-				'key' => 'twitter',
-				'name' => 'Twitter',
-				'cta' => 'Follow',
-				'follow_description'	=> 'Followers',
-				'color_primary' => '#429BD5',
-				'color_accent' => '#3C87B2',
-				'url'	=> 'https://twitter.com'
-			),
-			array(
-				'key' => 'reddit',
-				'name' => 'Reddit',
-				'cta' => 'Follow',
-				'follow_description'	=> 'Followers',
-				'color_primary' => '#EF4A23',
-				'color_accent' => '#D33F27',
-				'url'	=> 'https://reddit.com'
-			)
+			'Facebook',
+			'Pinterest',
+			'Reddit',
+			'Twitter',
+		    'Tumblr'
 		);
-
-        //* duplicate dummy networks for now to fill out the container.
-		$networks = array_merge( $networks, $networks);
-		// $networks = array_merge( $networks, $networks);
 
 
 		foreach( $networks as $network ) {
-			new SWFW_Follow_Network( $network );
+			$this->load_files( '/lib/networks', $networks );
 		}
 	}
 
