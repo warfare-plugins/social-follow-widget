@@ -171,7 +171,7 @@ class SWFW_Follow_Network {
 	 * @todo   Eliminate the array
 	 *
 	 */
-	public function render_HTML() {
+	public function generate_frontend_HTML() {
 		// $this->set_active_state($options);
 		if ( !$this->is_active() ) {
 			// return '';
