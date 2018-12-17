@@ -18,7 +18,7 @@ class SWFW_Follow_Network {
 	 * SWP_Debug_Trait provides useful tool like error handling.
 	 *
 	 */
-	use SWP_Debug_Trait;
+	// use SWP_Debug_Trait;
 
 
 	/**
@@ -319,7 +319,6 @@ class SWFW_Follow_Network {
 		$cta_html = "<div class='swfw-cta'>$cta</div>";
 		$cta_button_html = '';
 
-
 		if ( $style == 'rectangle' ) {
 			$cta_html = "";
 			$count_html = "<div class='swfw-count'>$count $this->follow_description</div>";
@@ -333,7 +332,7 @@ class SWFW_Follow_Network {
 			$count_html = $move_node;
 		}
 
-        //* EOT syntax is lame but useful :(
+        //* EOT syntax is lame but useful
 		$button =
 <<<BUTTON
 <div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
@@ -347,7 +346,6 @@ class SWFW_Follow_Network {
 BUTTON;
 
 		return $button;
-
 	}
 
 
