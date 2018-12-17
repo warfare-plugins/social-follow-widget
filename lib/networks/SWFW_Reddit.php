@@ -14,15 +14,17 @@
 
 class SWFW_Reddit extends SWFW_Follow_Network {
     public function __construct() {
-		$this->key = 'reddit';
-		$this->name = 'Reddit';
-		$this->cta = 'Follow';
-		$this->follow_description = 'Followers';
-		$this->color_primary = '#EF4A23';
-		$this->color_accent = '#D33F27';
+		$network = array(
+			'key' => 'reddit',
+			'name' => 'Reddit',
+			'cta' => 'Follow',
+			'follow_description' => 'Followers',
+			'color_primary' => '#EF4A23',
+			'color_accent' => '#D33F27'
+		);
 
-		parent::__construct();
+		parent::__construct( $network );
 
-        $this->base_follow_url = 'https://Reddit.com/' . $this->follow_query;
+        $this->base_follow_url = 'https://Reddit.com/';
 	}
 }

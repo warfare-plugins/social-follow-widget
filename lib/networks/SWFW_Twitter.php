@@ -1,4 +1,4 @@
-<?php
+'<?php
 
 /**
  * SWFW_Twitter
@@ -14,16 +14,17 @@
 
 class SWFW_Twitter extends SWFW_Follow_Network {
     public function __construct() {
-		$this->key = 'twitter';
-		$this->name = 'Twitter';
-		$this->cta = 'Follow';
-		$this->follow_description = 'Followers';
-		$this->color_primary = '#429BD5';
-		$this->color_accent = '#3C87B2';
+		$network = array(
+			'key' => 'twitter',
+			'name' => 'Twitter',
+			'cta' => 'Follow',
+			'follow_description' => 'Followers',
+			'color_primary' => '#429BD5',
+			'color_accent' => '#3C87B2'
+		);
 
-		parent::__construct();
+		parent::__construct( $network );
 
-        $this->base_follow_url = 'https://twitter.com/' . $this->follow_query;
-
+        $this->base_follow_url = 'https://twitter.com/';
 	}
 }

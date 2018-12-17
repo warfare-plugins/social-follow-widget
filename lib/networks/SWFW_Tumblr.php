@@ -14,15 +14,17 @@
 
 class SWFW_Tumblr extends SWFW_Follow_Network {
     public function __construct() {
-		$this->key = 'tumblr';
-		$this->name = 'Tumblr';
-		$this->cta = 'Follow';
-		$this->follow_description = 'Followers';
-		$this->color_primary = '#39475D';
-		$this->color_accent = '#27313F';
+		$network = array(
+			'key' => 'tumblr',
+			'name' => 'Tumblr',
+			'cta' => 'Follow',
+			'follow_description' => 'Followers',
+			'color_primary' => '#39475D',
+			'color_accent' => '#27313F'
+		);
 
-		parent::__construct();
+		parent::__construct( $network );
 
-        $this->base_follow_url = 'https://tumblr.com/' . $this->follow_query;
+        $this->base_follow_url = 'https://tumblr.com/';
 	}
 }
