@@ -159,9 +159,7 @@ class SWFW_Follow_Network {
 	}
 
 
-    public function generate_backend_HTML() {
-		error_log('generating html');
-		error_log($this->key);
+    public function generate_backend_HTML( $value ) {
 		$key = "swp_{$this->key}_follow_username";
 
 		//* EOT syntax is lame but useful
@@ -170,7 +168,7 @@ class SWFW_Follow_Network {
 <div class="swfw-follow-field $this->key" data-network="$this->key">
     <div class="swfw-follow-field-icon"><i class="sw swp_{$this->key}_icon"></i></div>
     <p>$this->name</p>
-	<input name={$key} id="$key" type="text" placeholder="Username" />
+	<input name={$key} id="$key" type="text" placeholder="Username" value="$value"/>
 </div>
 FIELD;
         return $field;
