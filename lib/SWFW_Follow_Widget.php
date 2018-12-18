@@ -13,30 +13,22 @@ class SWFW_Follow_Widget extends SWP_Widget {
 			'description' => 'Increase follower growth for your favorite social networks.',
 		);
 
+		$this->defaults = array(
+			'title' => 'Follow me on social media'
+		);
+
 		parent::__construct( $key, $name, $widget );
 	}
 
-	function defaults() {
-		$defaults = array();
-
-
-
-		return [
-
-		];
-	}
-
-	function generate_form_HTML( $settings ) {
+	function generate_form_HTML( $settings, $html = '' ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
-        $html = '';
-
-
 
 		foreach( $networks as $network ) {
-			$key = $key = "swp_{$this->key}_follow_username";
-			$value = isset($settings[$key]) ? $settings[$key] : '';
-		    $html .= $network->generate_backend_HTML( $value );
+			$name = "swp_{$network->key}_follow_username";
+			$value = isset($settings[$name]) ? $settings[$name] : '';
+		    $html .= $network->generate_backend_HTML( $name, $value );
 		}
+
         return $html;
 	}
 
@@ -66,14 +58,12 @@ class SWFW_Follow_Widget extends SWP_Widget {
     *
     */
 	public function update( $new_settings = array(), $old_settings  = array()) {
-		error_log('new settings');
-		error_log(var_export($new_settings, 1));
-		error_log('old_settings');
-		error_log(var_export($old_settings, 1));
-		if ($new_settings == $old_settings) {
-			return false;
+	    $updated_settings = array_merge($old_settings, $new_settings);
+		return $new_settings;
+		if ($updated_settings == $old_settings) {
+			return $old_settings;
 		}
 
-		return $new_settings;
+		return $updated_settings;
 	}
 }
