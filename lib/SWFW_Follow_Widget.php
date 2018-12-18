@@ -51,7 +51,7 @@ OPTIONS;
 SELECT;
 	}
 
-	function generate_form_HTML( $settings, $html = '' ) {
+	function generate_form_HTML( $settings = array() ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 
 		$html .= $this->generate_form_title($settings['title']);
