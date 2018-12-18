@@ -35,9 +35,6 @@
   font-family: "Helvetica", sans-serif;
   position: relative;
 }
-.swfw-follow-button p {
-  margin: 0;
-}
 .swfw-follow-button .swfw-text {
   position: relative;
   color: #030303;
@@ -155,7 +152,7 @@
   overflow-x: visible;
   position: relative;
   margin-right: 10px;
-  color: #030303;
+  color: #fefefe;
 }
 /**
  * Rectangle Buttons

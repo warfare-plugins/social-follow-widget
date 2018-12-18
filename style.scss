@@ -43,10 +43,6 @@ $black: #030303;
 	font-family: 'Helvetica', sans-serif;
 	position: relative;
 
-	p {
-		margin: 0;
-	}
-
 	.swfw-text {
       position: relative;
       color: $black;
@@ -185,7 +181,7 @@ $black: #030303;
 			overflow-x: visible;
 			position: relative;
 			margin-right: 10px;
-			color: $black;
+			color: $white;
 		}
 
 		&:hover .swfw-count {

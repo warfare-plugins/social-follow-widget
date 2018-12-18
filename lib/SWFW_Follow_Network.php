@@ -161,8 +161,8 @@ class SWFW_Follow_Network {
 	</div>
 
 	<div class="swfw-text">
-		<p class='swfw-count'>$this->count</p>
-		<p class='swfw-cta'>$this->cta</p>
+		<span class='swfw-count'>$this->count</span>
+		<span class='swfw-cta'>$this->cta</span>
 	</div>
 </div>
 BUTTON;
@@ -181,7 +181,7 @@ BUTTON;
 	</div>
 
 	<div class="swfw-text">
-		<p class='swfw-count'>$this->count $this->follow_description</p>
+		<p class='swfw-count' style='margin: 0'>$this->count $this->follow_description</p>
 	</div>
 
 	<div class='swfw-cta-button'>
@@ -204,8 +204,8 @@ BUTTON;
 		</div>
 
 		<div class="swfw-text">
-			<p class='swfw-cta'>$this->cta</p>
-			<p class='swfw-count'>$this->count</p>
+			<span class='swfw-cta'>$this->cta</span>
+			<span class='swfw-count'>$this->count</span>
 		</div>
 	</div>
 </a>
