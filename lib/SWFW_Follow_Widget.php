@@ -16,13 +16,28 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		parent::__construct( $key, $name, $widget );
 	}
 
+	function generate_form_title( $title = "Follow me on social media" ) {
+		$wp_id = $this->get_field_id( 'title' );
+		$wp_name = $this->get_field_name( 'title');
+
+		return
+<<<TITLE
+<div class="swfw-follow-field">
+	<label for={$wp_id}><b>Widget Title</b></label>
+	<input type="text" id="$wp_id" name="$wp_name" value="$title" placeholder="$title" />
+</div>
+TITLE;
+	}
+
 	function generate_form_HTML( $settings, $html = '' ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
+
+		$html .= $this->generate_form_title($settings['title']);
 
 		foreach( $networks as $network ) {
 			$key = $network->key . '_username';
 			$wp_id = $this->get_field_id( $key );
-			$wp_name = $this->get_field_name( $key);
+			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
 		    $field =
 	//* (Must be left-aligned). EOT syntax is lame but useful.
