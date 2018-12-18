@@ -92,15 +92,18 @@ FIELD;
     * @return string $html    The html to be echoed by the parent class.
     */
 	function generate_widget_HTML( $settings ) {
-		$html = '';
+		$shape = $settings['shape'];
+		$html = "<div class='swfw-follow-container $shape'>";
 
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$buttons = '';
 
 		foreach($networks as $network) {
-            $buttons .= $network->generate_frontend_HTML( $settings['shape'] );
+            $buttons .= $network->generate_frontend_HTML( $shape );
 		}
-        return $html . $buttons;
+
+		$html .= $buttons;
+        return $html .= "</div>";
 	}
 
 	/**
