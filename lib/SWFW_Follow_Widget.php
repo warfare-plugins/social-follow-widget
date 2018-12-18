@@ -60,15 +60,11 @@ SELECT;
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		// echo 'finderr', var_dump($settings);
 		//
-		error_log('settings at shape before');
-		error_log($settings['shape']);
 		$defaults = array(
 			'title'	=> 'Follow me on social media',
 			'shape'	=> 'square'
 		);
 
-		error_log('settings at shape after');
-        error_log($settings['shape']);
 		foreach($defaults as $key => $default) {
 			if ( !isset( $settings[$key] ) ) {
 				$settings[$key] = $default;
@@ -120,7 +116,9 @@ FIELD;
 		$buttons = '';
 
 		foreach($networks as $network) {
-            $buttons .= $network->generate_frontend_HTML( $shape );
+			$key = $network->key.'_username';
+            $network->username = isset( $settings[$key] ) ? $settings[$key] : '';
+			$buttons .= $network->generate_frontend_HTML( $shape );
 		}
 
 		$html .= $buttons;
@@ -142,8 +140,9 @@ FIELD;
     *
     */
 	public function update( $new_settings = array(), $old_settings  = array()) {
-		// error_log('new_settings');
-		// error_log(var_export($new_settings, 1));
+		foreach ($new_settings as $key => $value) {
+			$new_settings[$key] = esc_html( $value );
+		}
 	    return $new_settings;
 	}
 }
