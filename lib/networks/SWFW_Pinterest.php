@@ -21,7 +21,7 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			'follow_description' => 'Followers',
 			'color_primary' => '#CC2029',
 			'color_accent' => '#AB1F25',
-			'url'	=> 'https://pinterest.com/'
+			'url'	=> 'https://pinterest.com/swfw_username'
 		);
 
 		parent::__construct( $network );

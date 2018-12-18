@@ -21,7 +21,7 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 			'follow_description' => 'Followers',
 			'color_primary' => '#EF4A23',
 			'color_accent' => '#D33F27',
-			'url'	=> 'https://Reddit.com/'
+			'url'	=> 'https://reddit.com/user/swfw_username'
 		);
 
 		parent::__construct( $network );
