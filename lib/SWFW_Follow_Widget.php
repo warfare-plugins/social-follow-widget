@@ -30,14 +30,14 @@ TITLE;
 	}
 
 	function generate_shape_select($selection) {
-		$wp_id = $this->get_field_id( 'button_shape' );
-		$wp_name = $this->get_field_name( 'button_shape');
+		$wp_id = $this->get_field_id( 'shape' );
+		$wp_name = $this->get_field_name( 'shape');
 
 		$options =
 <<<OPTIONS
 	<option value='square'>Square</option>
     <option value='rectangle'>Rectangle</option>
-	<option vallue='irregular'>Irregular</option>
+	<option value='irregular'>Irregular</option>
 OPTIONS;
 
 		return
@@ -55,7 +55,7 @@ SELECT;
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 
 		$html .= $this->generate_form_title($settings['title']);
-		$html .= $this->generate_shape_select($settings['button_shape']);
+		$html .= $this->generate_shape_select($settings['shape']);
 
 		foreach( $networks as $network ) {
 			$key = $network->key . '_username';
@@ -78,7 +78,7 @@ FIELD;
 	}
 
 	function generate_widget_title( $title ) {
-		$html = "<h1>$title</h1>";
+		return "<h1>$title</h1>";
 	}
 
 	/**
@@ -98,9 +98,9 @@ FIELD;
 		$buttons = '';
 
 		foreach($networks as $network) {
-
+            $buttons .= $network->generate_frontend_HTML( $settings['shape'] );
 		}
-        return $html;
+        return $html . $buttons;
 	}
 
 	/**
