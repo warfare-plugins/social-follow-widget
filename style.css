@@ -4,7 +4,6 @@
  * These styles are common to all button containers, regardless of shape or style.
  */
 .swfw-follow-container {
-  background-color: lightgreen;
   display: flex;
   position: relative;
 }
@@ -21,6 +20,8 @@
 }
 .swfw-follow-container.rectangle {
   flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 /**
@@ -29,8 +30,6 @@
  * These styles are common to all Follow buttons, regardless of shape or style.
  */
 .swfw-follow-button {
-  background: var(--color-primary);
-  border: 1px solid var(--color-accent);
   cursor: pointer;
   border-radius: 4px;
   font-family: "Helvetica", sans-serif;
@@ -152,6 +151,10 @@
 .swfw-follow-button.rectangle {
   width: 330px;
   height: 72px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
   margin: 10px 0;
   cursor: initial;
   /* Make the CTA look like a button. */
@@ -184,6 +187,7 @@
   width: max-content;
 }
 .swfw-follow-button.rectangle .swfw-cta {
+  /* padding: 20px 10px; */
   border-radius: 3px;
 }
 .swfw-follow-button.rectangle .swfw-cta-button {

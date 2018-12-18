@@ -7,9 +7,6 @@ $black: #030303;
  * These styles are common to all button containers, regardless of shape or style.
  */
 .swfw-follow-container {
-	// min-width: 375px;
-	// min-height:200px;
-	background-color: lightgreen;
 	display: flex;
 	position: relative;
 
@@ -29,8 +26,8 @@ $black: #030303;
 
     &.rectangle {
 		flex-flow: column nowrap;
-		// justify-content: flex-start;
-		// align-items: flex-start;
+		justify-content: flex-start;
+		align-items: flex-start;
 	}
 }
 
@@ -41,8 +38,6 @@ $black: #030303;
  * These styles are common to all Follow buttons, regardless of shape or style.
  */
 .swfw-follow-button {
-    background: var(--color-primary);
-	border: 1px solid var(--color-accent);
 	cursor: pointer;
 	border-radius: 4px;
 	font-family: 'Helvetica', sans-serif;
@@ -67,7 +62,7 @@ $black: #030303;
  * Square Buttons
  *
  */
-.swfw-follow-container.square .swfw-follow-button {
+.swfw-follow-button.square {
     width: 55px;
     height: 58px;
     position: relative;
@@ -121,7 +116,7 @@ $black: #030303;
  * Irregular buttons
  *
  */
-.swfw-follow-container.irregular .swfw-follow-button {
+.swfw-follow-button.irregular {
 	display: flex;
 	flex-flow: row nowrap;
 	width: -moz-min-content;
@@ -189,13 +184,13 @@ $black: #030303;
  * Rectangle Buttons
  *
  */
-.swfw-follow-container.rectangle .swfw-follow-button {
+.swfw-follow-button.rectangle {
 	width: 330px;
 	height: 72px;
-	// display: flex;
-	// flex-flow: row nowrap;
-	// align-items: center;
-	// justify-content: space-around;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
 	margin: 10px 0;
 	cursor: initial;
 
@@ -232,7 +227,7 @@ $black: #030303;
 
   /* Make the CTA look like a button. */
   .swfw-cta {
-	// padding: 20px 10px;
+	/* padding: 20px 10px; */
 	border-radius: 3px;
   }
 
