@@ -13,10 +13,6 @@ class SWFW_Follow_Widget extends SWP_Widget {
 			'description' => 'Increase follower growth for your favorite social networks.',
 		);
 
-		$this->defaults = array(
-			'title' => 'Follow me on social media'
-		);
-
 		parent::__construct( $key, $name, $widget );
 	}
 
@@ -24,9 +20,20 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 
 		foreach( $networks as $network ) {
-			$name = "swp_{$network->key}_follow_username";
-			$value = isset($settings[$name]) ? $settings[$name] : '';
-		    $html .= $network->generate_backend_HTML( $name, $value );
+			$key = $network->key . '_username';
+			$wp_id = $this->get_field_id( $key );
+			$wp_name = $this->get_field_name( $key);
+			$value = isset( $settings[$key]) ? $settings[$key] : '';
+		    $field =
+	//* (Must be left-aligned). EOT syntax is lame but useful.
+<<<FIELD
+<div class="swfw-follow-field">
+    <div class="swfw-follow-field-icon"><i class="sw swp_{$network->key}_icon"></i></div>
+    <label for="$wp_id">$network->name</label>
+	<input id="$wp_id" name="$wp_name" type="text" placeholder="Username" value="$value"/>
+</div>
+FIELD;
+	         $html .= $field;
 		}
 
         return $html;
@@ -35,10 +42,6 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	function generate_widget_HTML( $args, $settings ) {
 		$html = '<h1>I am a widget!</h1>';
 		$networks = apply_filters( 'swfw_follow_networks', array() );
-
-		foreach( $networks as $network ) {
-		    $html .= $network->generate_frontend_HTML();
-		}
 
         return $html;
 	}
@@ -58,12 +61,6 @@ class SWFW_Follow_Widget extends SWP_Widget {
     *
     */
 	public function update( $new_settings = array(), $old_settings  = array()) {
-	    $updated_settings = array_merge($old_settings, $new_settings);
-		return $new_settings;
-		if ($updated_settings == $old_settings) {
-			return $old_settings;
-		}
-
-		return $updated_settings;
+	    return $new_settings;
 	}
 }
