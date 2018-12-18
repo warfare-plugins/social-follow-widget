@@ -38,7 +38,6 @@ function swfw_initiate_plugin() {
 	}
 
 	else {
-		// die("by");
 		if ( !function_exists( 'swp_needs_core' ) ) :
 		    function swp_needs_core() {
 		        echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
