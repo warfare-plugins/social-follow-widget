@@ -149,7 +149,6 @@ class SWFW_Follow_Network {
         return array_merge( $networks, array( $this ) );
 	}
 
-
 	function generate_url() {
 		return str_replace( 'swfw_username', $this->username, $this->url);
 	}
@@ -158,7 +157,7 @@ class SWFW_Follow_Network {
 		return !empty( $this->username );
 	}
 
-	private function generate_square_HTML() {
+	private function generate_square_HTML( $style ) {
 		$style = 'square';
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$network = $this->key;
@@ -173,7 +172,7 @@ class SWFW_Follow_Network {
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+<div class="swfw-follow-button square $this->key" data-network="$this->key" >
 	$icon_html
 	<div class="swfw-text">
 		$count_html
@@ -184,44 +183,31 @@ class SWFW_Follow_Network {
 BUTTON;
 	}
 
-	private function generate_rectangle_HTML() {
-		$style = 'rectangle';
+	private function generate_rectangle_HTML( ) {
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
-		$network = $this->key;
-		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
 		$count = number_format(rand(100, 300000));
-		$cta = $this->cta;
-
-        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
-		$count_html = "<div class='swfw-count'>$count</div>";
-		$cta_html = "<div class='swfw-cta'>$cta</div>";
-		$cta_button_html = '';
-
-		if ( $style == 'rectangle' ) {
-			$cta_html = "";
-			$count_html = "<div class='swfw-count'>$count $this->follow_description</div>";
-			$_cta_button = "<div class='swfw-cta-button'>$cta</div>";
-		}
+		$background = "background-color: $this->color_primary";
+		$border = "border: 1px solid $this->color_accent";
+		$href= $this->generate_url();
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
-	$icon_html
+<div class="swfw-follow-button rectangle $this->key" data-network="$this->key" style="$background; $border">
+	<div class='swfw-network-icon'><i class='sw swp_{$this->key}_icon'></i></div>
 	<div class="swfw-text">
-		$count_html
-		$cta_html
+		<div class='swfw-count'>$count $this->follow_description</div>
 	</div>
-	$cta_button_html
+	<div class='swfw-cta-button'>
+	    <a href="$href">$this->cta</a>
+	</div>
 </div>
 BUTTON;
 	}
 
-	public function generate_irregular_HTML() {
+	public function generate_irregular_HTML( $style ) {
 		if ( !$this->is_active() ) {
 			return '';
 		}
-
-		$style = 'irregular';
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$network = $this->key;
 		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
@@ -241,7 +227,7 @@ BUTTON;
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+<div class="swfw-follow-button irregular $this->key" data-network="$this->key" >
 	$icon_html
 	<div class="swfw-text">
     	$count_html
@@ -263,11 +249,17 @@ BUTTON;
 	 *
 	 */
 	public function generate_frontend_HTML( $shape ) {
-		if ( !$this->is_active() ) {
-			return '';
-		}
+		// die(var_dump("frontend shape" . $shape));
+		// if ( !$this->is_active() ) {
+		// 	return '';
+		// }
+		//
+		$style = [
+			'background'	=> $this->color_primary,
+			'border'	=> '1px solid ' . $this->color_accent,
+		];
 
-		$func = "generate_" . $shape . "HTML";
-		return $this->$func();
+		$func = "generate_" . $shape . "_HTML";
+		return $this->$func( $style );
 	}
 }
