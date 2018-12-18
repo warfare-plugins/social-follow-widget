@@ -33,12 +33,17 @@ TITLE;
 		$wp_id = $this->get_field_id( 'shape' );
 		$wp_name = $this->get_field_name( 'shape' );
 
-		$options =
-<<<OPTIONS
-	<option value='square'>Square</option>
-    <option value='rectangle'>Rectangle</option>
-	<option value='irregular'>Irregular</option>
-OPTIONS;
+		$opts = array(
+			'square'	=> 'Square',
+			'rectangle'	=> 'Rectangle',
+			'irregular'	=> 'Irregular'
+		);
+
+        $options = '';
+		foreach($opts as $key => $name) {
+			$selected = selected($selection, $key, false);
+			$options .= "<option value='$key' $selected>$name</option>";
+		}
 
 		return
 <<<SELECT
@@ -53,20 +58,25 @@ SELECT;
 
 	function generate_form_HTML( $settings ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
-
+		// echo 'finderr', var_dump($settings);
+		//
+		error_log('settings at shape before');
+		error_log($settings['shape']);
 		$defaults = array(
 			'title'	=> 'Follow me on social media',
 			'shape'	=> 'square'
 		);
 
+		error_log('settings at shape after');
+        error_log($settings['shape']);
 		foreach($defaults as $key => $default) {
 			if ( !isset( $settings[$key] ) ) {
 				$settings[$key] = $default;
 			}
 		}
 
-		$html = $this->generate_title_input($title);
-		$html .= $this->generate_shape_select($shape);
+		$html = $this->generate_title_input($settings['title']);
+		$html .= $this->generate_shape_select($settings['shape']);
 
 		foreach( $networks as $network ) {
 			$key = $network->key . '_username';
@@ -132,6 +142,8 @@ FIELD;
     *
     */
 	public function update( $new_settings = array(), $old_settings  = array()) {
+		// error_log('new_settings');
+		// error_log(var_export($new_settings, 1));
 	    return $new_settings;
 	}
 }
