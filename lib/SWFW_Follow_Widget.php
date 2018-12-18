@@ -23,16 +23,39 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		return
 <<<TITLE
 <div class="swfw-follow-field">
-	<label for={$wp_id}><b>Widget Title</b></label>
+	<label for={$wp_id}>Widget Title</label>
 	<input type="text" id="$wp_id" name="$wp_name" value="$title" placeholder="$title" />
 </div>
 TITLE;
+	}
+
+	function generate_shape_select($selection) {
+		$wp_id = $this->get_field_id( 'button_shape' );
+		$wp_name = $this->get_field_name( 'button_shape');
+
+		$options =
+<<<OPTIONS
+	<option value='square'>Square</option>
+    <option value='rectangle'>Rectangle</option>
+	<option vallue='irregular'>Irregular</option>
+OPTIONS;
+
+		return
+<<<SELECT
+<div class="swfw-follow-field">
+	<label for={$wp_id}>Button Shape</label>
+	<select id="$wp_id" name="$wp_name" value="$title">
+        $options
+	</select>
+</div>
+SELECT;
 	}
 
 	function generate_form_HTML( $settings, $html = '' ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 
 		$html .= $this->generate_form_title($settings['title']);
+		$html .= $this->generate_shape_select($settings['button_shape']);
 
 		foreach( $networks as $network ) {
 			$key = $network->key . '_username';
@@ -54,10 +77,29 @@ FIELD;
         return $html;
 	}
 
-	function generate_widget_HTML( $args, $settings ) {
-		$html = '<h1>I am a widget!</h1>';
-		$networks = apply_filters( 'swfw_follow_networks', array() );
+	function generate_widget_title( $title ) {
+		$html = "<h1>$title</h1>";
+	}
 
+	/**
+    * Builds the widget, including data passed in from `register_sidebar`
+    *
+    * @since  1.0.0
+    * @access public
+    * @param  array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+    *                         These arguments are passed in from the `register_sidebar()` function.
+	* @param  array $instance The settings for the particular instance of the widget.
+    * @return string $html    The html to be echoed by the parent class.
+    */
+	function generate_widget_HTML( $settings ) {
+		$html = '';
+
+		$networks = apply_filters( 'swfw_follow_networks', array() );
+		$buttons = '';
+
+		foreach($networks as $network) {
+
+		}
         return $html;
 	}
 
