@@ -22,7 +22,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 
 		return
 <<<TITLE
-<div class="swfw-follow-field">
+<div class="swfw-input-field">
 	<label for={$wp_id}>Widget Title</label>
 	<input type="text" id="$wp_id" name="$wp_name" value="$title" placeholder="$title" />
 </div>
@@ -42,7 +42,7 @@ OPTIONS;
 
 		return
 <<<SELECT
-<div class="swfw-follow-field">
+<div class="swfw-input-field">
 	<label for={$wp_id}>Button Shape</label>
 	<select id="$wp_id" name="$wp_name" value="$title">
         $options
