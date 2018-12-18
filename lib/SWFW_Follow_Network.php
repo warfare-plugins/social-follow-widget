@@ -159,19 +159,6 @@ class SWFW_Follow_Network {
 	}
 
 
-    public function generate_backend_HTML( $name, $value ) {
-		//* EOT syntax is lame but useful
-		$field =
-<<<FIELD
-<div class="swfw-follow-field">
-    <div class="swfw-follow-field-icon"><i class="sw swp_{$this->key}_icon"></i></div>
-    <label for="$name">$this->name</label>
-	<input name="$name" type="text" placeholder="Username" value="$value"/>
-</div>
-FIELD;
-        return $field;
-	}
-
 	/**
 	 * Create the HTML to display the share button
 	 *
