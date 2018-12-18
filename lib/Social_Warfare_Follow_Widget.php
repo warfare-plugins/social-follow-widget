@@ -20,7 +20,6 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		$this->init_networks();
-		// new SWFW_Follow_Container();
 		new SWFW_Follow_Widget();
 	}
 
