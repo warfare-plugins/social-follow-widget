@@ -35,15 +35,21 @@
   font-family: "Helvetica", sans-serif;
   position: relative;
 }
+.swfw-follow-button p {
+  margin: 0;
+}
 .swfw-follow-button .swfw-text {
   position: relative;
   color: #030303;
 }
-.swfw-follow-button .swfw-text .swfw-count {
+.swfw-follow-button .swfw-count {
   font-weight: normal;
 }
-.swfw-follow-button .swfw-text .swfw-cta {
+.swfw-follow-button .swfw-cta {
   font-weight: bold;
+}
+.swfw-follow-button .swfw-cta a {
+  color: white;
 }
 
 /**
@@ -58,13 +64,15 @@
   flex-flow: column nowrap;
   align-items: center;
   text-align: center;
-  margin: 15px;
+  margin: 5px;
+  color: #fefefe;
 }
 .swfw-follow-button.square .swfw-network-icon {
   font-size: 20px;
 }
 .swfw-follow-button.square .swfw-text {
   width: 100%;
+  color: #fefefe;
 }
 .swfw-follow-button.square .swfw-cta,
 .swfw-follow-button.square .swfw-count {
@@ -101,6 +109,7 @@
   width: min-content;
   margin: 10px 5px;
   padding: 5px 10px 5px 5px;
+  color: #fefefe;
 }
 .swfw-follow-button.irregular .swfw-network-icon {
   width: 32px;
@@ -117,6 +126,7 @@
   display: flex;
   justify-content: center;
   line-height: 32px;
+  color: white;
 }
 .swfw-follow-button.irregular .swfw-text .swfw-cta,
 .swfw-follow-button.irregular .swfw-text .swfw-count {
@@ -131,6 +141,9 @@
   color: transparent;
   margin-right: 0;
   font-weight: normal;
+}
+.swfw-follow-button.irregular .swfw-text:hover .swfw-cta {
+  color: #fefefe;
 }
 .swfw-follow-button.irregular:hover .swfw-text {
   width: -moz-max-content;

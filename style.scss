@@ -43,17 +43,25 @@ $black: #030303;
 	font-family: 'Helvetica', sans-serif;
 	position: relative;
 
+	p {
+		margin: 0;
+	}
+
 	.swfw-text {
-		position: relative;
-		color: $black;
+      position: relative;
+      color: $black;
+	}
 
-		.swfw-count {
-		  font-weight: normal;
-		}
+	.swfw-count {
+	  font-weight: normal;
+	}
 
-	    .swfw-cta {
-	      font-weight: bold;
-	    }
+	.swfw-cta {
+	  font-weight: bold;
+	}
+
+	.swfw-cta a {
+		color: white;
 	}
 }
 
@@ -70,7 +78,8 @@ $black: #030303;
     flex-flow: column nowrap;
     align-items: center;
 	text-align: center;
-	margin: 15px;
+	margin: 5px;
+	color: $white;
 
 	.swfw-network-icon {
 		font-size: 20px;
@@ -78,6 +87,8 @@ $black: #030303;
 
 	.swfw-text {
 		width: 100%;
+		color: $white;
+
 	}
 
     .swfw-cta,
@@ -123,6 +134,7 @@ $black: #030303;
 	width: min-content;
 	margin: 10px 5px;
 	padding: 5px 10px 5px 5px;
+	color: $white;
 
 	.swfw-network-icon {
 		width: 32px;
@@ -140,6 +152,7 @@ $black: #030303;
 		display: flex;
 		justify-content: center;
 		line-height: 32px;
+		color: white;
 
 		.swfw-cta,
 		.swfw-count {
@@ -157,7 +170,8 @@ $black: #030303;
 		  font-weight: normal;
 	    }
 
-		.swfw-count {
+		&:hover .swfw-cta {
+			color: $white;
 		}
 	}
 
