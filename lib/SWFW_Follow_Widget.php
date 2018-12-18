@@ -16,7 +16,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		parent::__construct( $key, $name, $widget );
 	}
 
-	function generate_form_title( $title = "Follow me on social media" ) {
+	function generate_title_input( $title ) {
 		$wp_id = $this->get_field_id( 'title' );
 		$wp_name = $this->get_field_name( 'title');
 
@@ -31,7 +31,7 @@ TITLE;
 
 	function generate_shape_select($selection) {
 		$wp_id = $this->get_field_id( 'shape' );
-		$wp_name = $this->get_field_name( 'shape');
+		$wp_name = $this->get_field_name( 'shape' );
 
 		$options =
 <<<OPTIONS
@@ -44,18 +44,29 @@ OPTIONS;
 <<<SELECT
 <div class="swfw-input-field">
 	<label for={$wp_id}>Button Shape</label>
-	<select id="$wp_id" name="$wp_name" value="$title">
+	<select id="$wp_id" name="$wp_name" value="$selection">
         $options
 	</select>
 </div>
 SELECT;
 	}
 
-	function generate_form_HTML( $settings = array() ) {
+	function generate_form_HTML( $settings ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 
-		$html .= $this->generate_form_title($settings['title']);
-		$html .= $this->generate_shape_select($settings['shape']);
+		$defaults = array(
+			'title'	=> 'Follow me on social media',
+			'shape'	=> 'square'
+		);
+
+		foreach($defaults as $key => $default) {
+			if ( !isset( $settings[$key] ) ) {
+				$settings[$key] = $default;
+			}
+		}
+
+		$html = $this->generate_title_input($title);
+		$html .= $this->generate_shape_select($shape);
 
 		foreach( $networks as $network ) {
 			$key = $network->key . '_username';
