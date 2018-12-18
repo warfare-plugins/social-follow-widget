@@ -158,23 +158,33 @@ class SWFW_Follow_Network {
 		return !empty( $this->username );
 	}
 
+	private function generate_square_HTML() {
+		$style = 'square';
+		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
+		$network = $this->key;
+		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
+		$count = number_format(rand(100, 300000));
+		$cta = $this->cta;
 
-	/**
-	 * Create the HTML to display the share button
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
-	 * @return array $array The modified array which will now contain the html for this button
-	 * @todo   Eliminate the array
-	 *
-	 */
-	public function generate_frontend_HTML() {
-		// $this->set_active_state($options);
-		if ( !$this->is_active() ) {
-			// return '';
-		}
+        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
+		$count_html = "<div class='swfw-count'>$count</div>";
+		$cta_html = "<div class='swfw-cta'>$cta</div>";
+		$cta_button_html = '';
 
+		return
+<<<BUTTON
+<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+	$icon_html
+	<div class="swfw-text">
+		$count_html
+		$cta_html
+	</div>
+	$cta_button_html
+</div>
+BUTTON;
+	}
+
+	private function generate_rectangle_HTML() {
 		$style = 'rectangle';
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$network = $this->key;
@@ -193,15 +203,43 @@ class SWFW_Follow_Network {
 			$_cta_button = "<div class='swfw-cta-button'>$cta</div>";
 		}
 
-		if ( $style == 'irregular' ) {
-			//* Just rearrange the order of elements. Is there a cleaner way to do this?
-			$move_node = $cta_html;
-			$cta_html = $count_html;
-			$count_html = $move_node;
+		return
+<<<BUTTON
+<div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
+	$icon_html
+	<div class="swfw-text">
+		$count_html
+		$cta_html
+	</div>
+	$cta_button_html
+</div>
+BUTTON;
+	}
+
+	public function generate_irregular_HTML() {
+		if ( !$this->is_active() ) {
+			return '';
 		}
 
-        //* EOT syntax is lame but useful
-		$button =
+		$style = 'irregular';
+		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
+		$network = $this->key;
+		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
+		$count = number_format(rand(100, 300000));
+		$cta = $this->cta;
+
+        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
+		$count_html = "<div class='swfw-count'>$count</div>";
+		$cta_html = "<div class='swfw-cta'>$cta</div>";
+		$cta_button_html = '';
+
+
+		//* Just rearrange the order of elements. Is there a cleaner way to do this?
+		$move_node = $cta_html;
+		$cta_html = $count_html;
+		$count_html = $move_node;
+
+		return
 <<<BUTTON
 <div class="swfw-follow-button $this->key" data-network="$this->key" color="$this->color_primary" data-accent-color="$this->color_accent">
 	$icon_html
@@ -212,7 +250,24 @@ class SWFW_Follow_Network {
 	$cta_button_html
 </div>
 BUTTON;
+	}
 
-		return $button;
+	/**
+	 * Create the HTML to display the share button
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
+	 * @return array $array The modified array which will now contain the html for this button
+	 * @todo   Eliminate the array
+	 *
+	 */
+	public function generate_frontend_HTML( $shape ) {
+		if ( !$this->is_active() ) {
+			return '';
+		}
+
+		$func = "generate_" . $shape . "HTML";
+		return $this->$func();
 	}
 }
