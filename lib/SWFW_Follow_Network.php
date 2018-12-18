@@ -73,23 +73,7 @@ class SWFW_Follow_Network {
 
 
 	/**
-	 * The generated html for the button
-	 *
-	 * After the first time the HTML is generated, we will store it in this variable
-	 * so that when it is needed for the second or third panel on the page, the render
-	 * html method will not have to make all the computations again.
-	 *
-	 * The html will be stored in an array indexed by post ID's. For example $this->html[27]
-	 * will contain the HTML for this button that was generated for post with 27 as ID.
-	 *
-	 * @var array
-	 *
-	 */
-	public $html_store = array();
-
-
-	/**
-	 * The Base URL for followin a user on this network
+	 * The URL for following a user on this network.
 	 *
 	 * This will allow us to generate the follow link for networks that only use just
 	 * one URL parameter, the URL to the post. This way we can use a boilerplate method
@@ -99,7 +83,7 @@ class SWFW_Follow_Network {
 	 * @var string
 	 *
 	 */
-	public $base_follow_url = '';
+	public $url = '';
 
     /**
      * Whether or not to show the share count for this network.
@@ -123,6 +107,8 @@ class SWFW_Follow_Network {
 			$this->$key = $value;
 		}
 
+		$this->establish_count();
+
 		// If all the required fields were not provided, we'll send a message and bail.
 		if ( count( $required ) > 0 ) {
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
@@ -133,6 +119,12 @@ class SWFW_Follow_Network {
 		}
 
 		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
+	}
+
+	protected function establish_count() {
+		if (!isset($this->count)) {
+			$this->count = number_format(rand(100, 300000));
+		}
 	}
 
 	/**
@@ -157,84 +149,66 @@ class SWFW_Follow_Network {
 		return !empty( $this->username );
 	}
 
-	private function generate_square_HTML( $style ) {
-		$style = 'square';
-		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
-		$network = $this->key;
-		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
-		$count = number_format(rand(100, 300000));
-		$cta = $this->cta;
-
-        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
-		$count_html = "<div class='swfw-count'>$count</div>";
-		$cta_html = "<div class='swfw-cta'>$cta</div>";
-		$cta_button_html = '';
+	private function generate_square_HTML( ) {
+		$background = "background-color: $this->color_primary";
+		$border = "border: 1px solid $this->color_accent";
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button square $this->key" data-network="$this->key" >
-	$icon_html
-	<div class="swfw-text">
-		$count_html
-		$cta_html
+<div class="swfw-follow-button square $this->key" style="$border; $background">
+	<div class='swfw-network-icon'>
+	    <i class='sw swp_{$this->key}_icon'></i>
 	</div>
-	$cta_button_html
+
+	<div class="swfw-text">
+		<p class='swfw-count'>$this->count</p>
+		<p class='swfw-cta'>$this->cta</p>
+	</div>
 </div>
 BUTTON;
 	}
 
 	private function generate_rectangle_HTML( ) {
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
-		$count = number_format(rand(100, 300000));
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
-		$href= $this->generate_url();
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button rectangle $this->key" data-network="$this->key" style="$background; $border">
-	<div class='swfw-network-icon'><i class='sw swp_{$this->key}_icon'></i></div>
-	<div class="swfw-text">
-		<div class='swfw-count'>$count $this->follow_description</div>
+<div class="swfw-follow-button rectangle $this->key" style="$background; $border">
+	<div class='swfw-network-icon'>
+	    <i class='sw swp_{$this->key}_icon'></i>
 	</div>
+
+	<div class="swfw-text">
+		<p class='swfw-count'>$this->count $this->follow_description</p>
+	</div>
+
 	<div class='swfw-cta-button'>
-	    <a href="$href">$this->cta</a>
+	    <a target="_blank" href="{$this->generate_url()}">$this->cta</a>
 	</div>
 </div>
 BUTTON;
 	}
 
-	public function generate_irregular_HTML( $style ) {
-		if ( !$this->is_active() ) {
-			return '';
-		}
-		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
-		$network = $this->key;
-		$network_icon = "<i class='sw swp_{$this->key}_icon'></i>";
-		$count = number_format(rand(100, 300000));
-		$cta = $this->cta;
-
-        $icon_html = "<div class='swfw-network-icon'>$network_icon</div>";
-		$count_html = "<div class='swfw-count'>$count</div>";
-		$cta_html = "<div class='swfw-cta'>$cta</div>";
-		$cta_button_html = '';
-
-
-		//* Just rearrange the order of elements. Is there a cleaner way to do this?
-		$move_node = $cta_html;
-		$cta_html = $count_html;
-		$count_html = $move_node;
+	public function generate_irregular_HTML( ) {
+		$background = "background-color: $this->color_primary";
+		$border = "border: 1px solid $this->color_accent";
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button irregular $this->key" data-network="$this->key" >
-	$icon_html
-	<div class="swfw-text">
-    	$count_html
-		$cta_html
+<a target="_blank" href="{$this->generate_url()}">
+	<div class="swfw-follow-button irregular $this->key" style="$background; $border">
+		<div class='swfw-network-icon'>
+		    <i class='sw swp_{$this->key}_icon'></i>
+		</div>
+
+		<div class="swfw-text">
+			<p class='swfw-cta'>$this->cta</p>
+			<p class='swfw-count'>$this->count</p>
+		</div>
 	</div>
-	$cta_button_html
-</div>
+</a>
 BUTTON;
 	}
 
@@ -249,17 +223,11 @@ BUTTON;
 	 *
 	 */
 	public function generate_frontend_HTML( $shape ) {
-		// die(var_dump("frontend shape" . $shape));
-		// if ( !$this->is_active() ) {
-		// 	return '';
-		// }
-		//
-		$style = [
-			'background'	=> $this->color_primary,
-			'border'	=> '1px solid ' . $this->color_accent,
-		];
+		if ( !$this->is_active() ) {
+			return '';
+		}
 
-		$func = "generate_" . $shape . "_HTML";
-		return $this->$func( $style );
+		$generate = "generate_" . $shape . "_HTML";
+		return $this->$generate();
 	}
 }
