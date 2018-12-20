@@ -118,7 +118,7 @@ function initialize_social_follow_widget() {
 	 */
     if ( class_exists( 'Puc_v4_Factory') ) :
         $update_checker = Puc_v4_Factory::buildUpdateChecker(
-        	'https://github.com/warfare-plugins/social-warfare-pro/',
+        	'https://github.com/warfare-plugins/social-follow-widget',
         	__FILE__,
         	'social-follow-widget'
         );
