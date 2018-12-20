@@ -80,7 +80,6 @@ function initialize_social_follow_widget() {
         require_once( $addon_path );
     endif;
 
-
 	/**
 	 * Version Compatibility
 	 *
@@ -89,14 +88,14 @@ function initialize_social_follow_widget() {
 	 *
 	 */
 
-	if( class_exists( 'Social_Warfare_Addon' ) && version_compare( SWP_VERSION , '3.5.0' ) >= 0 ) {
+	if( class_exists( 'Social_Warfare_Addon' ) && version_compare( SWP_VERSION , '3.5.0' ) <= 0 ) {
+
 		$addon_path = SWFW_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
 		if( file_exists( $addon_path ) ) {
 			require_once $addon_path;
 			new Social_Warfare_Follow_Widget();
 		}
     }
-
 
 	/**
 	 * If core is simply too far out of date, we will create a dashboard notice
