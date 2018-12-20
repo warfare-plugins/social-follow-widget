@@ -6,6 +6,21 @@ if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
     public function __construct() {
+		$this->name          = 'Social Warfare - Follow Me';
+        $this->key           = 'social-follow-widget';
+        $this->core_required = '3.5.0';
+        $this->product_id    = 63157; // @TODO this is the Pro product id, SWFW needs its own.
+        $this->version       = SWFW_VERSION;
+        $this->filepath      = SWFW_PLUGIN_FILE;
+
+		parent::__construct();
+
+		if ($this->is_registered) {
+			$this->init();
+		}
+	}
+
+	public function init() {
 		global $swfw_networks;
 
 		$swfw_networks = array();
@@ -23,11 +38,11 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		new SWFW_Follow_Widget();
 	}
 
-	function load_assets() {
+	public function load_assets() {
 		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/style.css' );
 	}
 
-	function init_networks() {
+	public function init_networks() {
 		$networks = array(
 			'Facebook',
 			'Pinterest',
