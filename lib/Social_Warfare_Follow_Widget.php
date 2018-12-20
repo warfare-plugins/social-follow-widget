@@ -9,7 +9,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		$this->name          = 'Social Warfare - Follow Me';
         $this->key           = 'social-follow-widget';
         $this->core_required = '3.5.0';
-        $this->product_id    = 63157; // @TODO this is the Pro product id, SWFW needs its own.
+        $this->product_id    = 253345;
         $this->version       = SWFW_VERSION;
         $this->filepath      = SWFW_PLUGIN_FILE;
 
