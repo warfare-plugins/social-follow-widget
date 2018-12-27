@@ -9,7 +9,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
     /**
      * Initializes the plugin with required data.
      *
-     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @since 1.0.0 | 3 DEC 2018 | Created.
      * @param void
      * @return void
      *
@@ -33,7 +33,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
     /**
      * Loads plugin data and initializes classes.
      *
-     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @since 1.0.0 | 3 DEC 2018 | Created.
      * @param void
      * @return void
      *
@@ -59,7 +59,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
     /**
      * Loads plugin styles.
      *
-     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @since 1.0.0 | 3 DEC 2018 | Created.
      * @param void
      * @return void
      *
@@ -72,7 +72,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
     /**
      * Loads each of the network-specifc SWFW_Network classes.
      *
-     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @since 1.0.0 | 3 DEC 2018 | Created.
      * @param void
      * @return void
      *
@@ -93,7 +93,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	/**
 	 * Loads an array of related files.
 	 *
-	 * @since 1.0.0 | 13 DEC 2018 | Created.
+	 * @since 1.0.0 | 3 DEC 2018 | Created.
 	 * @param  string   $path  The relative path to the files home.
 	 * @param  array    $files The name of the files (classes), no vendor prefix.
 	 * @param  bool     $instantiate Whether or not to immediately instantiate the class. Default false.
