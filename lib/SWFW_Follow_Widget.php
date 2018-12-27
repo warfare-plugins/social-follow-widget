@@ -1,9 +1,24 @@
 <?php
+/**
+ * Requres parent class provided by Social Warfare Core.
+ *
+ */
 if (!class_exists( 'SWP_Widget' ) ) {
 	return;
 }
 
 class SWFW_Follow_Widget extends SWP_Widget {
+
+
+	/**
+     * Instantiates a WordPress Widget by providing $this data to SWP_Widget.
+     *
+     * @since 1.0.0 | 03 DEC 2018 | Created.
+     * @see social-warfare\lib\widgets\SWP_Widget::__construct()
+     * @param none
+     * @return void
+     *
+     */
 	function __construct() {
 		$key = strtolower( __CLASS__ );
 		$name = 'Social Follow by Warfare Plugins';
@@ -16,6 +31,15 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		parent::__construct( $key, $name, $widget );
 	}
 
+
+	/**
+	 * Creates an input[type=text] which corresponds to the widget's display title.
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @param string $title The display title for the widget.
+	 * @return string Fully qualified HTML to render the input.
+	 *
+	 */
 	function generate_title_input( $title ) {
 		$wp_id = $this->get_field_id( 'title' );
 		$wp_name = $this->get_field_name( 'title');
@@ -29,6 +53,16 @@ class SWFW_Follow_Widget extends SWP_Widget {
 TITLE;
 	}
 
+
+	/**
+	 * Creates an input[type=select] which corresponds to the button shape.
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @param string $selection The currently selected button shape.
+	 *                          One of ['square', 'rectangle', 'irregular']
+	 * @return string Fully qualified HTML to render the select.
+	 *
+	 */
 	function generate_shape_select($selection) {
 		$wp_id = $this->get_field_id( 'shape' );
 		$wp_name = $this->get_field_name( 'shape' );
@@ -56,10 +90,16 @@ TITLE;
 SELECT;
 	}
 
+	/**
+	 * Generates the backend display <form>.
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @param array $settings The settings as previously saved.
+	 * @return string Fully qualified HTML to render the form.
+	 *
+	 */
 	function generate_form_HTML( $settings ) {
 		$networks = apply_filters( 'swfw_follow_networks', array() );
-		// echo 'finderr', var_dump($settings);
-		//
 		$defaults = array(
 			'title'	=> 'Follow me on social media',
 			'shape'	=> 'square'
@@ -80,7 +120,6 @@ SELECT;
 			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
 		    $field =
-	//* (Must be left-aligned). EOT syntax is lame but useful.
 <<<FIELD
 <div class="swfw-follow-field">
     <div class="swfw-follow-field-icon"><i class="sw swp_{$network->key}_icon"></i></div>
@@ -94,19 +133,31 @@ FIELD;
         return $html;
 	}
 
+	/**
+	 * Creates the frontend display title. Required by parent::widget().
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @param string $title The display title for the widget.
+	 * @return string Fully qualified HTML for the display title.
+	 *
+	 */
 	function generate_widget_title( $title ) {
 		return "<h1>$title</h1>";
 	}
 
+
 	/**
-    * Builds the widget, including data passed in from `register_sidebar`
+    * Builds the front end display, including data passed in from `register_sidebar`
     *
-    * @since  1.0.0
+    * `register_sidebar` may be called by the theme and pass in more data. This
+    * extra data is applied in parent::widget().
+    *
+    * @since  1.0.0 | 03 DEC 2018 | Created.
     * @access public
-    * @param  array $args     Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-    *                         These arguments are passed in from the `register_sidebar()` function.
-	* @param  array $instance The settings for the particular instance of the widget.
-    * @return string $html    The html to be echoed by the parent class.
+	* @hook   filter \ swfw_follow_networks | An array of SWFW_Follow_Network objects.
+	* @param  array $settings The settings as input & saved in the backend.
+    * @return string $html Fully qualified HTML to display a Social Follow Widget.
+    *
     */
 	function generate_widget_HTML( $settings ) {
 		$shape = $settings['shape'];
@@ -125,9 +176,9 @@ FIELD;
         return $html .= "</div>";
 	}
 
+
 	/**
-	* Inhereted from WP_Widget.
-    * Handler for saving new settings.
+	* Inhereted from WP_Widget. Handler for saving new settings.
     *
 	* By default will always save changed settings.
 	* Please override in child class to filter and sanitize data.
@@ -139,10 +190,11 @@ FIELD;
     * @return array The new values to store in the database.
     *
     */
-	public function update( $new_settings = array(), $old_settings  = array()) {
+	public function update( $new_settings, $old_settings ) {
 		foreach ($new_settings as $key => $value) {
 			$new_settings[$key] = esc_html( $value );
 		}
+
 	    return $new_settings;
 	}
 }

@@ -113,12 +113,12 @@ class SWFW_Follow_Network {
 		global $swfw_networks;
 
 		$required = array( 'key', 'name', 'cta', 'url' );
-
 		foreach( $args as $key => $value ) {
 			$index = array_search( $key, $required );
 			if ( is_numeric( $index ) ) {
 				unset($required[$index]);
 			}
+
 			$this->$key = $value;
 		}
 
@@ -138,17 +138,17 @@ class SWFW_Follow_Network {
 
 
 	/**
-	 * Right now, a temporary helper until we get the real count.
+	 * A temporary helper until we get the real count.
 	 */
 	protected function establish_count() {
 		if (!isset($this->count)) {
-			$this->count = number_format(rand(100, 300000));
+			$this->count = number_format(rand(100, 300000)) . '*';
 		}
 	}
 
 
 	/**
-	 * Adds this network object to the globally accessible array.
+	 * Adds $this to the array of other used Network objects.
 	 *
 	 * @since  1.0.0 | 06 APR 2018 | Created
 	 * @hook   filter| swp_follow_networks | Applied in SWFW_Follow_Widget

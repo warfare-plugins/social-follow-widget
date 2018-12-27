@@ -10,7 +10,6 @@ class SWFW_Follow_Container {
 	public $html;
 
 
-
     /**
      * Applys a WordPress hook for the_content.
      *
