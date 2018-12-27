@@ -14,7 +14,7 @@ class SWFW_Follow_Container {
     /**
      * Applys a WordPress hook for the_content.
      *
-     * @since 1.0.0 | 3 DEC 2018 | Created.
+     * @since 1.0.0 | 03 DEC 2018 | Created.
      * @hook filter | the_content | Origin WP Core.
      * @return void
      *
@@ -45,7 +45,7 @@ class SWFW_Follow_Container {
 	/**
 	 * Adds HTML to $this->html.
 	 *
-	 * @since 1.0.0 | 3 DEC 2018 | Created.
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
 	 * @param string $network The fully qualified social Follow Button HTML.
 	 * @return void
 	 *
