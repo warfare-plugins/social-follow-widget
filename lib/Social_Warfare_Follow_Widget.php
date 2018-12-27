@@ -5,6 +5,15 @@ if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
+
+    /**
+     * Initializes the plugin with required data.
+     *
+     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @param void
+     * @return void
+     *
+     */
     public function __construct() {
 		$this->name          = 'Social Warfare - Follow Me';
         $this->key           = 'social-follow-widget';
@@ -20,11 +29,19 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		}
 	}
 
+
+    /**
+     * Loads plugin data and initializes classes.
+     *
+     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @param void
+     * @return void
+     *
+     */
 	public function init() {
 		global $swfw_networks;
 
 		$swfw_networks = array();
-
 		$files = array(
 			'Follow_Network',
 			'Follow_Container',
@@ -38,10 +55,28 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		new SWFW_Follow_Widget();
 	}
 
+
+    /**
+     * Loads plugin styles.
+     *
+     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @param void
+     * @return void
+     *
+     */
 	public function load_assets() {
 		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/style.css' );
 	}
 
+
+    /**
+     * Loads each of the network-specifc SWFW_Network classes.
+     *
+     * @since 1.0.0 | 13 DEC 2018 | Created.
+     * @param void
+     * @return void
+     *
+     */
 	public function init_networks() {
 		$networks = array(
 			'Facebook',
@@ -54,17 +89,20 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		$this->load_files( '/lib/networks/', $networks, true );
 	}
 
+
 	/**
 	 * Loads an array of related files.
 	 *
+	 * @since 1.0.0 | 13 DEC 2018 | Created.
 	 * @param  string   $path  The relative path to the files home.
 	 * @param  array    $files The name of the files (classes), no vendor prefix.
+	 * @param  bool     $instantiate Whether or not to immediately instantiate the class. Default false.
 	 * @return none     The files are loaded into memory.
 	 *
 	 */
 	private function load_files( $path, $files, $instantiate = false ) {
 		foreach( $files as $file ) {
-			//* Add the vendor prefix to the file name.
+
 			$class = "SWFW_" . $file;
 			require_once SWFW_PLUGIN_DIR . $path . $class . '.php';
 
