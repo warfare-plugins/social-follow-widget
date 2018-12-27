@@ -10,15 +10,17 @@
  * @package   SocialWarfare\Functions\Social-Networks
  * @copyright Copyright (c) 2018, Warfare Plugins, LLC
  * @license   GPL-3.0+
- * @since 3.0.0 | 05 APR 2018 | Created
+ * @since 1.0.0 | 05 APR 2018 | Created
  *
  */
 class SWFW_Follow_Network {
+
+
 	/**
 	 * SWP_Debug_Trait provides useful tool like error handling.
 	 *
 	 */
-	// use SWP_Debug_Trait;
+	use SWP_Debug_Trait;
 
 
 	/**
@@ -85,6 +87,7 @@ class SWFW_Follow_Network {
 	 */
 	public $url = '';
 
+
     /**
      * Whether or not to show the share count for this network.
      *
@@ -92,15 +95,27 @@ class SWFW_Follow_Network {
      */
     public $show_shares = false;
 
+
+	/**
+     * Apply network arguments to create $this.
+     *
+     * To verify that all of the $required keys are provided,
+     * we we remove it from the array once it is found.
+     * If any items remain in the array, this Network does not meet our
+     * requirements to be built.
+     *
+     * @since 1.0.0 | 26 NOV 2018 | Created.
+     * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | applied in
+     * @return void
+     *
+     */
 	public function __construct( $args ) {
 		global $swfw_networks;
 
-		//* $args must have keys and values for each of these.
 		$required = array( 'key', 'name', 'cta', 'url' );
 
 		foreach( $args as $key => $value ) {
-			//* Show that we included $key.
-			$index = array_search( $key, $required);
+			$index = array_search( $key, $required );
 			if ( is_numeric( $index ) ) {
 				unset($required[$index]);
 			}
@@ -109,8 +124,8 @@ class SWFW_Follow_Network {
 
 		$this->establish_count();
 
-		// If all the required fields were not provided, we'll send a message and bail.
 		if ( count( $required ) > 0 ) {
+			// If all the required fields were not provided, we'll send a message and bail.
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
 			foreach ( $required as $required_key ) {
 				error_log( $required_key );
@@ -121,17 +136,22 @@ class SWFW_Follow_Network {
 		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
 	}
 
+
+	/**
+	 * Right now, a temporary helper until we get the real count.
+	 */
 	protected function establish_count() {
 		if (!isset($this->count)) {
 			$this->count = number_format(rand(100, 300000));
 		}
 	}
 
+
 	/**
-	 * A method to add this network object to the globally accessible array.
+	 * Adds this network object to the globally accessible array.
 	 *
-	 * @since  3.0.0 | 06 APR 2018 | Created
-	 * @hook   filter| swp_follow_networks
+	 * @since  1.0.0 | 06 APR 2018 | Created
+	 * @hook   filter| swp_follow_networks | Applied in SWFW_Follow_Widget
 	 * @param  array $networks All of the created Social Follow Network classes.
 	 * @return array $networks With `$this` network in the array.
 	 * @access public
@@ -141,33 +161,98 @@ class SWFW_Follow_Network {
         return array_merge( $networks, array( $this ) );
 	}
 
+
+	/**
+	 * Replaces the placeholder text 'swfw_username' with the actual username.
+	 *
+	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @hook   filter| swp_follow_networks | Applied in SWFW_Follow_Widget
+	 * @param void
+	 * @return string A URL which goes to the 'Follow' page for this network.
+	 *
+	 */
 	function generate_url() {
 		return str_replace( 'swfw_username', $this->username, $this->url);
 	}
 
+
+	/**
+	 * Indicates that this Network is used if a username is provided.
+	 *
+	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @param void
+	 * @return bool True if this network has a username in the DB, else false.
+	 *
+	 */
 	function is_active() {
 		return !empty( $this->username );
 	}
 
+
+	/**
+	 * A controller for generating button html.
+	 *
+	 * This will read the user's options, and the apply the appropriate
+	 * callback method to generate a button of a particular shape.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
+	 * @return array $array The modified array which will now contain the html for this button
+	 * @todo   Eliminate the array
+	 *
+	 */
+	function generate_frontend_HTML( $shape ) {
+		if ( !$this->is_active() ) {
+			return '';
+		}
+
+		$generate = "generate_" . $shape . "_HTML";
+		return $this->$generate();
+	}
+
+
+	/**
+	 * Renders Square button HTML.
+	 *
+	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @access private | This is the only class that should ever render follow button HTML.
+	 * @param void
+	 * @return string Fully qualified HTML for a Square follow button.
+	 * @TODO This needs an <a> tag!!!!
+	 *
+	 */
 	private function generate_square_HTML( ) {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button square $this->key" style="$border; $background">
-	<div class='swfw-network-icon'>
-	    <i class='sw swp_{$this->key}_icon'></i>
-	</div>
+<a target="_blank" href="{$this->generate_url()}">
+	<div class="swfw-follow-button square $this->key" style="$border; $background">
+		<div class='swfw-network-icon'>
+		    <i class='sw swp_{$this->key}_icon'></i>
+		</div>
 
-	<div class="swfw-text">
-		<span class='swfw-count'>$this->count</span>
-		<span class='swfw-cta'>$this->cta</span>
+		<div class="swfw-text">
+			<span class='swfw-count'>$this->count</span>
+			<span class='swfw-cta'>$this->cta</span>
+		</div>
 	</div>
-</div>
+</a>
 BUTTON;
 	}
 
+
+	/**
+	 * Renders Rectangle button HTML.
+	 *
+	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @access private | This is the only class that should ever render follow button HTML.
+	 * @param void
+	 * @return string Fully qualified HTML for a Square follow button.
+	 *
+	 */
 	private function generate_rectangle_HTML( ) {
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$background = "background-color: $this->color_primary";
@@ -191,6 +276,16 @@ BUTTON;
 BUTTON;
 	}
 
+
+	/**
+	 * Renders Irregular button HTML.
+	 *
+	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @access private | This is the only class that should ever render follow button HTML.
+	 * @param void
+	 * @return string Fully qualified HTML for an Irregular follow button.
+	 *
+	 */
 	public function generate_irregular_HTML( ) {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
@@ -210,24 +305,5 @@ BUTTON;
 	</div>
 </a>
 BUTTON;
-	}
-
-	/**
-	 * Create the HTML to display the share button
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
-	 * @return array $array The modified array which will now contain the html for this button
-	 * @todo   Eliminate the array
-	 *
-	 */
-	public function generate_frontend_HTML( $shape ) {
-		if ( !$this->is_active() ) {
-			return '';
-		}
-
-		$generate = "generate_" . $shape . "_HTML";
-		return $this->$generate();
 	}
 }
