@@ -126,7 +126,10 @@ class SWFW_Follow_Network {
 		$this->establish_count();
 
 		if ( count( $required ) > 0 ) {
-			// If all the required fields were not provided, we'll send a message and bail.
+			/**
+			 *  If all the required fields were not provided, we'll send a message and bail.
+			 *
+			 */
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
 			foreach ( $required as $required_key ) {
 				error_log( $required_key );
