@@ -11,9 +11,18 @@
  * @since     1.0.0 | Created
  *
  */
-
 class SWFW_Pinterest extends SWFW_Follow_Network {
-    public function __construct() {
+
+
+	/**
+	 * Applies network-specific data to the SWFW_Follow_Network
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @see SWFW_Follow_Network
+	 * @param void
+	 * @return void
+	 */
+	public function __construct() {
 		$network = array(
 			'key' => 'pinterest',
 			'name' => 'Pinterest',
