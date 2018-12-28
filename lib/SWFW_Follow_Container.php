@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * This creates the opening and closing HTML for the follow container.
+ *
+ * It calls on each individual SWFW_Follow_Network's render_html() to
+ * fill the container with buttons.
+ *
+ */
 class SWFW_Follow_Container {
 
 

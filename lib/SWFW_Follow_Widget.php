@@ -7,22 +7,23 @@ if (!class_exists( 'SWP_Widget' ) ) {
 	return;
 }
 
+
+
 class SWFW_Follow_Widget extends SWP_Widget {
 
 
 	/**
-     * Instantiates a WordPress Widget by providing $this data to SWP_Widget.
-     *
-     * @since 1.0.0 | 03 DEC 2018 | Created.
-     * @see social-warfare\lib\widgets\SWP_Widget::__construct()
-     * @param none
-     * @return void
-     *
-     */
+	 * Instantiates a WordPress Widget by providing $this data to SWP_Widget.
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @see social-warfare\lib\widgets\SWP_Widget::__construct()
+	 * @param none
+	 * @return void
+	 *
+	 */
 	function __construct() {
 		$key = strtolower( __CLASS__ );
 		$name = 'Social Follow by Warfare Plugins';
-
 		$widget = array(
 			'classname' => $key,
 			'description' => 'Increase follower growth for your favorite social networks.',
@@ -73,7 +74,7 @@ TITLE;
 			'irregular'	=> 'Irregular'
 		);
 
-        $options = '';
+		$options = '';
 		foreach($opts as $key => $name) {
 			$selected = selected($selection, $key, false);
 			$options .= "<option value='$key' $selected>$name</option>";
@@ -84,7 +85,7 @@ TITLE;
 <div class="swfw-input-field">
 	<label for={$wp_id}>Button Shape</label>
 	<select id="$wp_id" name="$wp_name" value="$selection">
-        $options
+		$options
 	</select>
 </div>
 SELECT;
@@ -119,18 +120,18 @@ SELECT;
 			$wp_id = $this->get_field_id( $key );
 			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
-		    $field =
+			$field =
 <<<FIELD
 <div class="swfw-follow-field">
-    <div class="swfw-follow-field-icon"><i class="sw swp_{$network->key}_icon"></i></div>
-    <label for="$wp_id">$network->name</label>
+	<div class="swfw-follow-field-icon"><i class="sw swp_{$network->key}_icon"></i></div>
+	<label for="$wp_id">$network->name</label>
 	<input id="$wp_id" name="$wp_name" type="text" placeholder="Username" value="$value"/>
 </div>
 FIELD;
-	         $html .= $field;
+			 $html .= $field;
 		}
 
-        return $html;
+		return $html;
 	}
 
 	/**
@@ -147,18 +148,18 @@ FIELD;
 
 
 	/**
-    * Builds the front end display, including data passed in from `register_sidebar`
-    *
-    * `register_sidebar` may be called by the theme and pass in more data. This
-    * extra data is applied in parent::widget().
-    *
-    * @since  1.0.0 | 03 DEC 2018 | Created.
-    * @access public
+	* Builds the front end display, including data passed in from `register_sidebar`
+	*
+	* `register_sidebar` may be called by the theme and pass in more data. This
+	* extra data is applied in parent::widget().
+	*
+	* @since  1.0.0 | 03 DEC 2018 | Created.
+	* @access public
 	* @hook   filter \ swfw_follow_networks | An array of SWFW_Follow_Network objects.
 	* @param  array $settings The settings as input & saved in the backend.
-    * @return string $html Fully qualified HTML to display a Social Follow Widget.
-    *
-    */
+	* @return string $html Fully qualified HTML to display a Social Follow Widget.
+	*
+	*/
 	function generate_widget_HTML( $settings ) {
 		$shape = $settings['shape'];
 		$html = "<div class='swfw-follow-container $shape'>";
@@ -168,33 +169,33 @@ FIELD;
 
 		foreach($networks as $network) {
 			$key = $network->key.'_username';
-            $network->username = isset( $settings[$key] ) ? $settings[$key] : '';
+			$network->username = isset( $settings[$key] ) ? $settings[$key] : '';
 			$buttons .= $network->generate_frontend_HTML( $shape );
 		}
 
 		$html .= $buttons;
-        return $html .= "</div>";
+		return $html .= "</div>";
 	}
 
 
 	/**
 	* Inhereted from WP_Widget. Handler for saving new settings.
-    *
+	*
 	* By default will always save changed settings.
 	* Please override in child class to filter and sanitize data.
-    *
-    * @since  1.0.0
-    * @access public
-    * @param  array $new_instance Updated values as input by the user in WP_Widget::form()
-    * @param  array $old_instance Previously set values.
-    * @return array The new values to store in the database.
-    *
-    */
+	*
+	* @since  1.0.0
+	* @access public
+	* @param  array $new_instance Updated values as input by the user in WP_Widget::form()
+	* @param  array $old_instance Previously set values.
+	* @return array The new values to store in the database.
+	*
+	*/
 	public function update( $new_settings, $old_settings ) {
 		foreach ($new_settings as $key => $value) {
 			$new_settings[$key] = esc_html( $value );
 		}
 
-	    return $new_settings;
+		return $new_settings;
 	}
 }

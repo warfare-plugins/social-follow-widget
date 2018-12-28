@@ -3,6 +3,11 @@ if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 	return;
 }
 
+
+/**
+ * This class loads plugin assets and applies plugin-specific data to the Addon.
+ *
+ */
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 
