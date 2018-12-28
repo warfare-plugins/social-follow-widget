@@ -74,10 +74,10 @@ TITLE;
 			'irregular'	=> 'Irregular'
 		);
 
-		$options = '';
+		$options_html = '';
 		foreach($opts as $key => $name) {
 			$selected = selected($selection, $key, false);
-			$options .= "<option value='$key' $selected>$name</option>";
+			$options_html .= "<option value='$key' $selected>$name</option>";
 		}
 
 		return
@@ -85,7 +85,7 @@ TITLE;
 <div class="swfw-input-field">
 	<label for={$wp_id}>Button Shape</label>
 	<select id="$wp_id" name="$wp_name" value="$selection">
-		$options
+		$options_html
 	</select>
 </div>
 SELECT;
