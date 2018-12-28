@@ -61,10 +61,10 @@ function initialize_social_follow_widget() {
 	 * need to activate core.
 	 *
 	 */
-    if ( !defined( 'SWP_VERSION' ) ) :
-        add_action( 'admin_notices', 'swp_needs_core' );
-        return;
-    endif;
+	if ( !defined( 'SWP_VERSION' ) ) :
+		add_action( 'admin_notices', 'swp_needs_core' );
+		return;
+	endif;
 
 
 	/**
@@ -76,9 +76,9 @@ function initialize_social_follow_widget() {
 	 *
 	 */
 	$addon_path = SWP_PLUGIN_DIR . '/lib/Social_Warfare_Addon.php';
-    if ( !class_exists( 'Social_Warfare_Addon' ) && file_exists( $addon_path ) ) :
-        require_once( $addon_path );
-    endif;
+	if ( !class_exists( 'Social_Warfare_Addon' ) && file_exists( $addon_path ) ) :
+		require_once( $addon_path );
+	endif;
 
 	/**
 	 * Version Compatibility
@@ -88,14 +88,14 @@ function initialize_social_follow_widget() {
 	 *
 	 */
 
-	if( class_exists( 'Social_Warfare_Addon' ) && version_compare( SWP_VERSION , '3.5.0' ) <= 0 ) {
+	if ( class_exists( 'Social_Warfare_Addon' ) && version_compare( SWP_VERSION , '3.5.0' ) <= 0 ) {
 
 		$addon_path = SWFW_PLUGIN_DIR . '/lib/Social_Warfare_Follow_Widget.php';
-		if( file_exists( $addon_path ) ) {
+		if ( file_exists( $addon_path ) ) {
 			require_once $addon_path;
 			new Social_Warfare_Follow_Widget();
 		}
-    }
+	}
 
 	/**
 	 * If core is simply too far out of date, we will create a dashboard notice
@@ -104,7 +104,7 @@ function initialize_social_follow_widget() {
 	 *
 	 */
 	else {
-        add_filter( 'swp_admin_notices', 'swp_addon_update_notification' );
+		add_filter( 'swp_admin_notices', 'swp_addon_update_notification' );
 	}
 
 
@@ -116,14 +116,14 @@ function initialize_social_follow_widget() {
 	 * exists, and if so, it uses it to check for updates from GitHub.
 	 *
 	 */
-    if ( class_exists( 'Puc_v4_Factory') ) :
-        $update_checker = Puc_v4_Factory::buildUpdateChecker(
-        	'https://github.com/warfare-plugins/social-follow-widget',
-        	__FILE__,
-        	'social-follow-widget'
-        );
-        $update_checker->getVcsApi()->enableReleaseAssets();
-    endif;
+	if ( class_exists( 'Puc_v4_Factory') ) :
+		$update_checker = Puc_v4_Factory::buildUpdateChecker(
+			'https://github.com/warfare-plugins/social-follow-widget',
+			__FILE__,
+			'social-follow-widget'
+		);
+		$update_checker->getVcsApi()->enableReleaseAssets();
+	endif;
 }
 
 
@@ -140,9 +140,9 @@ function initialize_social_follow_widget() {
  *
  */
 if ( !function_exists( 'swp_needs_core' ) ) :
-    function swp_needs_core() {
-        echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
-    }
+	function swp_needs_core() {
+		echo '<div class="update-nag notice is-dismissable"><p><b>Important:</b> You currently have Social Warfare - Pro installed without our Core plugin installed.<br/>Please download the free core version of our plugin from the <a href="https://wordpress.org/plugins/social-warfare/" target="_blank">WordPress plugins repository</a>.</p></div>';
+	}
 endif;
 
 
@@ -156,24 +156,24 @@ endif;
  *
  */
  function swp_addon_update_notification( $notices = array() ) {
-     if (is_string( $notices ) ) {
-         $notices = array();
-     }
+	 if ( is_string( $notices ) ) {
+		 $notices = array();
+	 }
 
-     $notices[] = array(
-         'key'   => 'update_notice_follow_widget_' . SWFW_VERSION, // database key unique to this version.
-         'message'   => 'Looks like your copy of Social Warfare - Follow Widget isn\'t up to date with Core. While you can still use both of these plugins, we highly recommend you keep Warfare Plugins products up-to-date for the best of what we have to offer.',
-         'ctas'  => array(
-             array(
-                 'action'    => 'Remind me in a week.',
-                 'timeframe' => 7 // dismiss for one week.
-             ),
-             array(
-                 'action'    => 'Thanks for letting me know.',
-                 'timeframe' => 0 // permadismiss for this version.
-             )
-         )
-     );
+	 $notices[] = array(
+		 'key'   => 'update_notice_follow_widget_' . SWFW_VERSION, // database key unique to this version.
+		 'message'   => 'Looks like your copy of Social Warfare - Follow Widget isn\'t up to date with Core. While you can still use both of these plugins, we highly recommend you keep Warfare Plugins products up-to-date for the best of what we have to offer.',
+		 'ctas'  => array(
+			 array(
+				 'action'    => 'Remind me in a week.',
+				 'timeframe' => 7 // dismiss for one week.
+			 ),
+			 array(
+				 'action'    => 'Thanks for letting me know.',
+				 'timeframe' => 0 // permadismiss for this version.
+			 )
+		 )
+	 );
 
-     return $notices;
+	 return $notices;
 }
