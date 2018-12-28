@@ -11,21 +11,21 @@ if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 
-    /**
-     * Initializes the plugin with required data.
-     *
-     * @since 1.0.0 | 3 DEC 2018 | Created.
-     * @param void
-     * @return void
-     *
-     */
-    public function __construct() {
+	/**
+	 * Initializes the plugin with required data.
+	 *
+	 * @since 1.0.0 | 3 DEC 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
+	public function __construct() {
 		$this->name          = 'Social Warfare - Follow Me';
-        $this->key           = 'social-follow-widget';
-        $this->core_required = '3.5.0';
-        $this->product_id    = 253345;
-        $this->version       = SWFW_VERSION;
-        $this->filepath      = SWFW_PLUGIN_FILE;
+		$this->key           = 'social-follow-widget';
+		$this->core_required = '3.5.0';
+		$this->product_id    = 253345;
+		$this->version       = SWFW_VERSION;
+		$this->filepath      = SWFW_PLUGIN_FILE;
 
 		parent::__construct();
 
@@ -35,14 +35,14 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	}
 
 
-    /**
-     * Loads plugin data and initializes classes.
-     *
-     * @since 1.0.0 | 3 DEC 2018 | Created.
-     * @param void
-     * @return void
-     *
-     */
+	/**
+	 * Loads plugin data and initializes classes.
+	 *
+	 * @since 1.0.0 | 3 DEC 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
 	public function init() {
 		global $swfw_networks;
 
@@ -61,34 +61,34 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	}
 
 
-    /**
-     * Loads plugin styles.
-     *
-     * @since 1.0.0 | 3 DEC 2018 | Created.
-     * @param void
-     * @return void
-     *
-     */
+	/**
+	 * Loads plugin styles.
+	 *
+	 * @since 1.0.0 | 3 DEC 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
 	public function load_assets() {
 		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/style.css' );
 	}
 
 
-    /**
-     * Loads each of the network-specifc SWFW_Network classes.
-     *
-     * @since 1.0.0 | 3 DEC 2018 | Created.
-     * @param void
-     * @return void
-     *
-     */
+	/**
+	 * Loads each of the network-specifc SWFW_Network classes.
+	 *
+	 * @since 1.0.0 | 3 DEC 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
 	public function init_networks() {
 		$networks = array(
 			'Facebook',
 			'Pinterest',
 			'Reddit',
 			'Twitter',
-		    'Tumblr'
+			'Tumblr'
 		);
 
 		$this->load_files( '/lib/networks/', $networks, true );

@@ -22,7 +22,7 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 	 * @param void
 	 * @return void
 	 */
-    public function __construct() {
+	public function __construct() {
 		$network = array(
 			'key' => 'reddit',
 			'name' => 'Reddit',

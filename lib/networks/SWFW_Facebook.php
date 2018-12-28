@@ -22,8 +22,8 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 * @param void
 	 * @return void
 	 */
-    public function __construct() {
-        $network = array(
+	public function __construct() {
+		$network = array(
 			'key' =>  'facebook',
 			'name' =>  'Facebook',
 			'cta' =>  'Like',

@@ -16,28 +16,28 @@ class SWFW_Follow_Container {
 	public $html;
 
 
-    /**
-     * Applys a WordPress hook for the_content.
-     *
-     * @since 1.0.0 | 03 DEC 2018 | Created.
-     * @hook filter | the_content | Origin WP Core.
-     * @return void
-     *
-     */
+	/**
+	 * Applys a WordPress hook for the_content.
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @hook filter | the_content | Origin WP Core.
+	 * @return void
+	 *
+	 */
 	public function __construct() {
 		add_filter('the_content', array( $this, 'render_html') );
 	}
 
 
 	/**
-     * Instantiates the HTML for the follow container.
-     *
-     * @since 3.5.0 | 26 NOV 2018 | Created.
-     * @see $this->close_container()
-     * @return void
-     *
-     */
-    public function open_container() {
+	 * Instantiates the HTML for the follow container.
+	 *
+	 * @since 3.5.0 | 26 NOV 2018 | Created.
+	 * @see $this->close_container()
+	 * @return void
+	 *
+	 */
+	public function open_container() {
 		$message = "Follow us on social media!";
 		$style = 'rectangle';
 
@@ -60,17 +60,17 @@ class SWFW_Follow_Container {
 	}
 
 
-    /**
-     * Appends each network's HTML to the container's markup.
-     *
-     * global $swfw_networks originates from
-     * Social_Warfare_Follow_Widget->init().
-     * We expect it to be an array of SWFW_Follow_Network objects.
-     *
-     * @since 1.0.0 | 26 NOV 2018 | Created.
-     * @return void
-     *
-     */
+	/**
+	 * Appends each network's HTML to the container's markup.
+	 *
+	 * global $swfw_networks originates from
+	 * Social_Warfare_Follow_Widget->init().
+	 * We expect it to be an array of SWFW_Follow_Network objects.
+	 *
+	 * @since 1.0.0 | 26 NOV 2018 | Created.
+	 * @return void
+	 *
+	 */
 	public function fill_container() {
 		global $swfw_networks;
 
@@ -92,17 +92,17 @@ class SWFW_Follow_Container {
 	 *
 	 */
 	public function close_container() {
-        $this->html .= '</div></div>';
+		$this->html .= '</div></div>';
 	}
 
 
 	/**
-     * Builds the HTML to display the Follow Container.
-     *
-     * @since 3.5.0 | 26 NOV 2018 | Created.
-     * @see $this->open_container()
-     * @return void
-     */
+	 * Builds the HTML to display the Follow Container.
+	 *
+	 * @since 3.5.0 | 26 NOV 2018 | Created.
+	 * @see $this->open_container()
+	 * @return void
+	 */
 	public function render_html( $the_content ) {
 		$this->open_container();
 		$this->fill_container();

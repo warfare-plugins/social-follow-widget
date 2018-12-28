@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * SWP_Follow_Network
  *
@@ -88,27 +89,27 @@ class SWFW_Follow_Network {
 	public $url = '';
 
 
-    /**
-     * Whether or not to show the share count for this network.
-     *
-     * @var boolean $show_shares;
-     */
-    public $show_shares = false;
+	/**
+	 * Whether or not to show the share count for this network.
+	 *
+	 * @var boolean $show_shares;
+	 */
+	public $show_shares = false;
 
 
 	/**
-     * Apply network arguments to create $this.
-     *
-     * To verify that all of the $required keys are provided,
-     * we we remove it from the array once it is found.
-     * If any items remain in the array, this Network does not meet our
-     * requirements to be built.
-     *
-     * @since 1.0.0 | 26 NOV 2018 | Created.
-     * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | applied in
-     * @return void
-     *
-     */
+	 * Apply network arguments to create $this.
+	 *
+	 * To verify that all of the $required keys are provided,
+	 * we we remove it from the array once it is found.
+	 * If any items remain in the array, this Network does not meet our
+	 * requirements to be built.
+	 *
+	 * @since 1.0.0 | 26 NOV 2018 | Created.
+	 * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | applied in
+	 * @return void
+	 *
+	 */
 	public function __construct( $args ) {
 		global $swfw_networks;
 
@@ -158,7 +159,7 @@ class SWFW_Follow_Network {
 	 *
 	 */
 	public function register_self( $networks ) {
-        return array_merge( $networks, array( $this ) );
+		return array_merge( $networks, array( $this ) );
 	}
 
 
@@ -231,7 +232,7 @@ class SWFW_Follow_Network {
 <a target="_blank" href="{$this->generate_url()}">
 	<div class="swfw-follow-button square $this->key" style="$border; $background">
 		<div class='swfw-network-icon'>
-		    <i class='sw swp_{$this->key}_icon'></i>
+			<i class='sw swp_{$this->key}_icon'></i>
 		</div>
 
 		<div class="swfw-text">
@@ -262,7 +263,7 @@ BUTTON;
 <<<BUTTON
 <div class="swfw-follow-button rectangle $this->key" style="$background; $border">
 	<div class='swfw-network-icon'>
-	    <i class='sw swp_{$this->key}_icon'></i>
+		<i class='sw swp_{$this->key}_icon'></i>
 	</div>
 
 	<div class="swfw-text">
@@ -270,7 +271,7 @@ BUTTON;
 	</div>
 
 	<div class='swfw-cta-button'>
-	    <a target="_blank" href="{$this->generate_url()}">$this->cta</a>
+		<a target="_blank" href="{$this->generate_url()}">$this->cta</a>
 	</div>
 </div>
 BUTTON;
@@ -295,7 +296,7 @@ BUTTON;
 <a target="_blank" href="{$this->generate_url()}">
 	<div class="swfw-follow-button irregular $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
-		    <i class='sw swp_{$this->key}_icon'></i>
+			<i class='sw swp_{$this->key}_icon'></i>
 		</div>
 
 		<div class="swfw-text">
