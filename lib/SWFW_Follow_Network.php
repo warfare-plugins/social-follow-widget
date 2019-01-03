@@ -98,6 +98,13 @@ class SWFW_Follow_Network {
 
 
 	/**
+	 * An instance of SWP_Auth_Controller for this network.
+	 * @var object SWP_Auth_Controller
+	 */
+	public $auth_helper = null;
+
+
+	/**
 	 * Apply network arguments to create $this.
 	 *
 	 * To verify that all of the $required keys are provided,
@@ -124,6 +131,11 @@ class SWFW_Follow_Network {
 		}
 
 		$this->establish_count();
+		$this->establish_username();
+
+		if ( !empty( $this->username ) ) {
+			$this->establish_auth_helper();
+		}
 
 		if ( count( $required ) > 0 ) {
 			/**
@@ -154,16 +166,47 @@ class SWFW_Follow_Network {
 	/**
 	 * Fetches the stored username from the database, if it exists.
 	 *
+	 * Since there can be any number of copies of the same widget,
+	 * we'll have to check each instance for whatever networks that instance
+	 * needs.
+	 *
 	 * @since 3.5.0 | 03 JAN 2018 | Created.
 	 * @param void
 	 * @return bool True iff the username exists, else false.
+	 *
 	 */
 	protected function establish_username() {
-		$settings = get_option( 'widget_swfw_follow_widget' );
-		if ( !empty( $settings[$this->key . '_username' ] ) ) {
-			return $this->username = $settings[$this->key . '_username' ];
+		$widgets = get_option( 'widget_swfw_follow_widget' );
+
+		foreach( $widgets as $key => $settings ) {
+			// This is a wordress field.
+			if ( '_multiwidget' == $key ) {
+				continue;
+			}
+
+			// This is an instance of a SWFW_Widget.
+			if ( is_numeric( $key ) ) {
+				if ( !empty( $settings[$this->key . '_username'] ) ) {
+					return $this->username = $settings[$this->key . '_username' ];
+				}
+			}
 		}
+
+
 		return false;
+	}
+
+
+	protected function establish_auth_helper() {
+		// die(var_dump('establish_auth_helper' . $this->key));
+		$Class = 'SWP_' . ucfirst( $this->key ) . '_Auth';
+		$instance = new $Class();
+
+		if ( false == $instance->has_credentials ) {
+			add_filter( 'swp_authorizations', array( $instance, 'add_to_authorizations' ) );
+		}
+
+		return $this->auth_helper = $instance;
 	}
 
 
