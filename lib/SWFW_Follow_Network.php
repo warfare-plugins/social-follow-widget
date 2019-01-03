@@ -152,6 +152,22 @@ class SWFW_Follow_Network {
 
 
 	/**
+	 * Fetches the stored username from the database, if it exists.
+	 *
+	 * @since 3.5.0 | 03 JAN 2018 | Created.
+	 * @param void
+	 * @return bool True iff the username exists, else false.
+	 */
+	protected function establish_username() {
+		$settings = get_option( 'widget_swfw_follow_widget' );
+		if ( !empty( $settings[$this->key . '_username' ] ) ) {
+			return $this->username = $settings[$this->key . '_username' ];
+		}
+		return false;
+	}
+
+
+	/**
 	 * Adds $this to the array of other used Network objects.
 	 *
 	 * @since  1.0.0 | 06 APR 2018 | Created
