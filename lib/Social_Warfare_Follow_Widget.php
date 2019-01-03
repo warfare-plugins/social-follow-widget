@@ -2,8 +2,6 @@
 if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 	return;
 }
-
-
 /**
  * This class loads plugin assets and applies plugin-specific data to the Addon.
  *
@@ -70,7 +68,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 *
 	 */
 	public function load_assets() {
-		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/style.css' );
+		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/assets/style.css' );
 	}
 
 
