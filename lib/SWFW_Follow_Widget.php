@@ -150,12 +150,12 @@ FIELD;
 	/**
 	* Builds the front end display, including data passed in from `register_sidebar`
 	*
-	* `register_sidebar` may be called by the theme and pass in more data. This
-	* extra data is applied in parent::widget().
+	* `register_sidebar` could be called by the theme and pass in more data.
+	*  This extra data is applied in parent::widget().
 	*
 	* @since  1.0.0 | 03 DEC 2018 | Created.
 	* @access public
-	* @hook   filter \ swfw_follow_networks | An array of SWFW_Follow_Network objects.
+	* @hook   filter | swfw_follow_networks | Array of SWFW_Follow_Network objects.
 	* @param  array $settings The settings as input & saved in the backend.
 	* @return string $html Fully qualified HTML to display a Social Follow Widget.
 	*
@@ -168,8 +168,11 @@ FIELD;
 		$buttons = '';
 
 		foreach($networks as $network) {
+			if ( false == $network->is_active() ) {
+				continue;
+			}
+
 			$key = $network->key.'_username';
-			$network->username = isset( $settings[$key] ) ? $settings[$key] : '';
 			$buttons .= $network->generate_frontend_HTML( $shape );
 		}
 
