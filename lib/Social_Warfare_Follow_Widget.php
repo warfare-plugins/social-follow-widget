@@ -18,7 +18,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 *
 	 */
 	public function __construct() {
-		$this->name          = 'Social Warfare - Follow Me';
+		$this->name          = 'Social Warfare - Follow Widet';
 		$this->key           = 'social-follow-widget';
 		$this->core_required = '3.5.0';
 		$this->product_id    = 253345;
