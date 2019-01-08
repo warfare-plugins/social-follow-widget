@@ -130,6 +130,8 @@ class SWFW_Follow_Network {
 			$this->$key = $value;
 		}
 
+		$this->network = $this->key;
+
 		$this->establish_count();
 		$this->establish_username();
 		$this->establish_auth_helper();
@@ -194,16 +196,14 @@ class SWFW_Follow_Network {
 
 
 	protected function establish_auth_helper() {
-		$Class = 'SWP_' . ucfirst( $this->key ) . '_Auth';
-
-		if ( !class_exists( $Class ) ) {
+		if ( !class_exists( 'SWP_Auth_Helper' ) ) {
 			/**
 			 * This should not be reached, but is a safety mechanism.
 			 */
 			return;
 		}
 
-		$instance = new $Class();
+		$instance = new SWP_Auth_Helper( $this->network );
 		add_filter( 'swp_authorizations', array( $instance, 'add_to_authorizations' ) );
 
 		return $this->auth_helper = $instance;
