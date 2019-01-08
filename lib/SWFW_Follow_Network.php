@@ -132,10 +132,7 @@ class SWFW_Follow_Network {
 
 		$this->establish_count();
 		$this->establish_username();
-
-		if ( !empty( $this->username ) ) {
-			$this->establish_auth_helper();
-		}
+		$this->establish_auth_helper();
 
 		if ( count( $required ) > 0 ) {
 			/**
@@ -192,19 +189,22 @@ class SWFW_Follow_Network {
 			}
 		}
 
-
 		return false;
 	}
 
 
 	protected function establish_auth_helper() {
-		// die(var_dump('establish_auth_helper' . $this->key));
 		$Class = 'SWP_' . ucfirst( $this->key ) . '_Auth';
-		$instance = new $Class();
 
-		if ( false == $instance->has_credentials ) {
-			add_filter( 'swp_authorizations', array( $instance, 'add_to_authorizations' ) );
+		if ( !class_exists( $Class ) ) {
+			/**
+			 * This should not be reached, but is a safety mechanism.
+			 */
+			return;
 		}
+
+		$instance = new $Class();
+		add_filter( 'swp_authorizations', array( $instance, 'add_to_authorizations' ) );
 
 		return $this->auth_helper = $instance;
 	}
