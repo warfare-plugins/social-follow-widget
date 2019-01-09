@@ -87,7 +87,8 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 			'Reddit',
 			'Twitter',
 			'Tumblr',
-			'Instagram'
+			'Instagram',
+			'Vimeo'
 		);
 
 		$this->load_files( '/lib/networks/', $networks, true );
