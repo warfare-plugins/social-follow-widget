@@ -8,7 +8,6 @@ if (!class_exists( 'SWP_Widget' ) ) {
 }
 
 
-
 class SWFW_Follow_Widget extends SWP_Widget {
 
 
@@ -30,6 +29,38 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		);
 
 		parent::__construct( $key, $name, $widget );
+	}
+
+
+	/**
+	 * Fetches all instances of this widget.
+	 *
+	 * Since there can be any number of copies of the same widget,
+	 * we'll have to check each instance for the networks it uses.
+	 *
+	 * @since 3.5.0 | 10 JAN 2018 | Created.
+	 * @param void
+	 * @return array List of all the user-created widgets for the site.
+	 *
+	 */
+	public static function get_widgets() {
+		$widgets = get_option( 'widget_swfw_follow_widget', array());
+
+		foreach( $widgets as $key => $settings ) {
+			// This is a wordress field, not a widget.
+			if ( '_multiwidget' == $key ) {
+				continue;
+			}
+
+			// This is an instance of a SWFW_Widget.
+			if ( is_numeric( $key ) ) {
+				// Intentionally left blank.
+			} else {
+				unset($widgets[$key]);
+			}
+		}
+
+		return $widgets;
 	}
 
 
