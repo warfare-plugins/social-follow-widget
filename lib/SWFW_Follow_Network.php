@@ -166,8 +166,7 @@ class SWFW_Follow_Network {
 	 * Fetches the stored username from the database, if it exists.
 	 *
 	 * Since there can be any number of copies of the same widget,
-	 * we'll have to check each instance for whatever networks that instance
-	 * needs.
+	 * we'll have to check each instance for the networks it uses.
 	 *
 	 * @since 3.5.0 | 03 JAN 2018 | Created.
 	 * @param void
@@ -175,19 +174,11 @@ class SWFW_Follow_Network {
 	 *
 	 */
 	protected function establish_username() {
-		$widgets = get_option( 'widget_swfw_follow_widget' );
+		$widgets = SWFW_Follow_Widget::get_widgets();
 
 		foreach( $widgets as $key => $settings ) {
-			// This is a wordress field.
-			if ( '_multiwidget' == $key ) {
-				continue;
-			}
-
-			// This is an instance of a SWFW_Widget.
-			if ( is_numeric( $key ) ) {
-				if ( !empty( $settings[$this->key . '_username'] ) ) {
-					return $this->username = $settings[$this->key . '_username' ];
-				}
+			if ( !empty( $settings[$this->key . '_username'] ) ) {
+				return $this->username = $settings[$this->key . '_username' ];
 			}
 		}
 
