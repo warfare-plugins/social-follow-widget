@@ -30,7 +30,9 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			'follow_description' => 'Followers',
 			'color_primary' => '#429BD5',
 			'color_accent' => '#3C87B2',
-			'url'	=> 'https://twitter.com/swfw_username'
+			'url'	=> 'https://twitter.com/swfw_username',
+			'needs_authorization' => true
+			
 		);
 
 		parent::__construct( $network );
