@@ -203,7 +203,7 @@ class SWFW_Follow_Network {
 		/**
 		 * There are no features for this network that require authorization.
 		 */
-		if ( false == $this->$needs_authorization ) {
+		if ( false == $this->needs_authorization ) {
 			return;
 		}
 
