@@ -345,22 +345,22 @@ BUTTON;
 
 
 	/**
-	 * Renders Irregular button HTML.
+	 * Renders Buttons button HTML.
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created
 	 * @access private | This is the only class that should ever render follow button HTML.
 	 * @param void
-	 * @return string Fully qualified HTML for an Irregular follow button.
+	 * @return string Fully qualified HTML for an Buttons follow button.
 	 *
 	 */
-	public function generate_irregular_HTML( ) {
+	public function generate_buttons_HTML( ) {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
 
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->generate_url()}">
-	<div class="swfw-follow-button irregular $this->key" style="$background; $border">
+	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
 			<i class='sw swp_{$this->key}_icon'></i>
 		</div>

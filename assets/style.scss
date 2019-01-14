@@ -18,7 +18,7 @@ $black: #030303;
 	  flex-flow: row wrap;
 	}
 
-    &.irregular {
+    &.buttons {
 		flex-flow: column nowrap;
 		justify-content: flex-start;
 		align-items: space-between;
@@ -120,10 +120,10 @@ $black: #030303;
 
 
 /**
- * Irregular buttons
+ * Buttons buttons
  *
  */
-.swfw-follow-button.irregular {
+.swfw-follow-button.buttons {
 	display: flex;
 	flex-flow: row nowrap;
 	width: -moz-min-content;

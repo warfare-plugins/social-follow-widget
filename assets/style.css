@@ -13,7 +13,7 @@
 .swfw-follow-container.square {
   flex-flow: row wrap;
 }
-.swfw-follow-container.irregular {
+.swfw-follow-container.buttons {
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: space-between;
@@ -96,10 +96,10 @@
 }
 
 /**
- * Irregular buttons
+ * Buttons buttons
  *
  */
-.swfw-follow-button.irregular {
+.swfw-follow-button.buttons {
   display: flex;
   flex-flow: row nowrap;
   width: -moz-min-content;
@@ -108,14 +108,14 @@
   padding: 5px 10px 5px 5px;
   color: #fefefe;
 }
-.swfw-follow-button.irregular .swfw-network-icon {
+.swfw-follow-button.buttons .swfw-network-icon {
   width: 32px;
   height: 32px;
   line-height: 32px;
   font-size: 32px;
   text-align: center;
 }
-.swfw-follow-button.irregular .swfw-text {
+.swfw-follow-button.buttons .swfw-text {
   width: -moz-min-content;
   width: min-content;
   margin: 0 10px;
@@ -125,13 +125,13 @@
   line-height: 32px;
   color: white;
 }
-.swfw-follow-button.irregular .swfw-text .swfw-cta,
-.swfw-follow-button.irregular .swfw-text .swfw-count {
+.swfw-follow-button.buttons .swfw-text .swfw-cta,
+.swfw-follow-button.buttons .swfw-text .swfw-count {
   display: inline;
   position: relative;
   transition: all 300ms;
 }
-.swfw-follow-button.irregular .swfw-text .swfw-cta {
+.swfw-follow-button.buttons .swfw-text .swfw-cta {
   width: 0;
   overflow-x: hidden;
   position: absolute;
@@ -139,14 +139,14 @@
   margin-right: 0;
   font-weight: normal;
 }
-.swfw-follow-button.irregular .swfw-text:hover .swfw-cta {
+.swfw-follow-button.buttons .swfw-text:hover .swfw-cta {
   color: #fefefe;
 }
-.swfw-follow-button.irregular:hover .swfw-text {
+.swfw-follow-button.buttons:hover .swfw-text {
   width: -moz-max-content;
   width: max-content;
 }
-.swfw-follow-button.irregular:hover .swfw-text .swfw-cta {
+.swfw-follow-button.buttons:hover .swfw-text .swfw-cta {
   width: -moz-min-content;
   width: min-content;
   overflow-x: visible;
