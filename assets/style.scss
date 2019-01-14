@@ -24,7 +24,7 @@ $black: #030303;
 		align-items: space-between;
 	}
 
-    &.rectangle {
+    &.block {
 		flex-flow: column nowrap;
 		justify-content: flex-start;
 		align-items: flex-start;
@@ -191,10 +191,10 @@ $black: #030303;
 
 
 /**
- * Rectangle Buttons
+ * Block Buttons
  *
  */
-.swfw-follow-button.rectangle {
+.swfw-follow-button.block {
 	width: 330px;
 	height: 72px;
 	display: flex;

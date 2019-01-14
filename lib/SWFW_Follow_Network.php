@@ -312,7 +312,7 @@ BUTTON;
 
 
 	/**
-	 * Renders Rectangle button HTML.
+	 * Renders Block button HTML.
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created
 	 * @access private | This is the only class that should ever render follow button HTML.
@@ -320,14 +320,14 @@ BUTTON;
 	 * @return string Fully qualified HTML for a Square follow button.
 	 *
 	 */
-	private function generate_rectangle_HTML( ) {
+	private function generate_block_HTML( ) {
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
 
 		return
 <<<BUTTON
-<div class="swfw-follow-button rectangle $this->key" style="$background; $border">
+<div class="swfw-follow-button block $this->key" style="$background; $border">
 	<div class='swfw-network-icon'>
 		<i class='sw swp_{$this->key}_icon'></i>
 	</div>

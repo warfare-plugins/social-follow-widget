@@ -91,7 +91,7 @@ TITLE;
 	 *
 	 * @since 1.0.0 | 03 DEC 2018 | Created.
 	 * @param string $selection The currently selected button shape.
-	 *                          One of ['square', 'rectangle', 'irregular']
+	 *                          One of ['square', 'block', 'irregular']
 	 * @return string Fully qualified HTML to render the select.
 	 *
 	 */
@@ -101,7 +101,7 @@ TITLE;
 
 		$opts = array(
 			'square'	=> 'Square',
-			'rectangle'	=> 'Rectangle',
+			'block'	=> 'Block',
 			'irregular'	=> 'Irregular'
 		);
 
