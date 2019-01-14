@@ -192,6 +192,13 @@ class SWFW_Follow_Network {
 	}
 
 
+	protected function establish_icon() {
+		$icon = SWP_SVG::get($this->key);
+		echo 'Key: ' . $this->key . PHP_EOL;
+		die(var_dump($icon));
+	}
+
+
 	protected function establish_auth_helper() {
 		if ( !class_exists( 'SWP_Auth_Helper' ) ) {
 			/**
