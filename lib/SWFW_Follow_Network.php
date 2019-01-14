@@ -103,6 +103,12 @@ class SWFW_Follow_Network {
 	 */
 	public $auth_helper = null;
 
+	/**
+	 * Whether or not this network should request an oAuth access_token.
+	 * @var bool $needs_authorization
+	 */
+	public $needs_authorization = false;
+
 
 	/**
 	 * Apply network arguments to create $this.
@@ -191,6 +197,13 @@ class SWFW_Follow_Network {
 			/**
 			 * This should not be reached, but is a safety mechanism.
 			 */
+			return;
+		}
+
+		/**
+		 * There are no features for this network that require authorization.
+		 */
+		if ( false == $this->$needs_authorization ) {
 			return;
 		}
 
