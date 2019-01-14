@@ -174,7 +174,7 @@ FIELD;
 	 *
 	 */
 	function generate_widget_title( $title ) {
-		return "<h1>$title</h1>";
+		return "<h4>$title</h4>";
 	}
 
 
