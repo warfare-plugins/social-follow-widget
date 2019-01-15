@@ -32,9 +32,30 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			'color_accent' => '#AB1F25',
 			'url'	=> 'https://pinterest.com/swfw_username',
 			'needs_authorization' => true
-			
 		);
 
 		parent::__construct( $network );
+	}
+
+	public function get_count_request_url() {
+		$access_token = $this->auth_helper->get_access_token();
+		if ( false == $access_token ) {
+			return false;
+		}
+
+		// Only pass in `id` for the fields parameter to reduce their SQL query.
+		return 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id';
+	}
+
+	public function parse_request() {
+		if ( empty( $this->response ) ) {
+			return false;
+		}
+
+		if ( empty( $this->response->data || !is_array( $this->response->data) ) ) {
+			return false;
+		}
+
+		return count( $this->response->data );
 	}
 }
