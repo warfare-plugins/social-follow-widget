@@ -33,9 +33,7 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 			'url'	=> 'https://instagram.com/swfw_username',
 			'needs_authorization' => true
 		);
-
 		parent::__construct( $network );
-		die(var_dump(SWP_Credential_Helper::get_access_token('instagram')));
 	}
 
 
@@ -49,13 +47,13 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 	 */
 	public function get_api_link() {
 		$access_token = $this->auth_helper->get_access_token();
+
 		if ( false == $access_token ) {
 			return false;
 		}
-
-		// Only pass in `id` for the fields parameter to reduce their SQL query.
-		return 'https://api.instagram.com/v1/users/self/?access_token='.$access_token;
+		return 'https://api.instagram.com/v1/users/self?access_token='.$access_token;
 	}
+
 
 
 	/**
@@ -82,5 +80,24 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 		}
 
 		return $this->response->data->counts->followed_by;
+	}
+
+
+	/**
+	 * Creates the sha256 signature required for the Instagram request.
+	 *
+	 * @param  string $endpoint [description]
+	 * @param  array $params   [description]
+	 * @param  string $secret   [description]
+	 * @return string           The encoded signature.
+	 *
+	 */
+	private function generate_sig($endpoint, $params, $secret) {
+		  $sig = $endpoint;
+		  ksort($params);
+		  foreach ($params as $key => $val) {
+			$sig .= "|$key=$val";
+		  }
+		  return hash_hmac('sha256', $sig, $secret, false);
 	}
 }
