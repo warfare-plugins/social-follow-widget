@@ -174,7 +174,7 @@ abstract class SWFW_Follow_Network {
 	 *               else bool `false`.
 	 *
 	 */
-	abstract function get_api_link( $url );
+	abstract function get_api_link();
 
 
 	/**
@@ -185,7 +185,7 @@ abstract class SWFW_Follow_Network {
 	 * @return mixed Often an object.
 	 *
 	 */
-	abstract function parse_api_response( $response );
+	abstract function parse_api_response();
 
 
 
