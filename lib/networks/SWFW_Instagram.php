@@ -35,5 +35,52 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
+		die(var_dump(SWP_Credential_Helper::get_access_token('instagram')));
+	}
+
+
+	/**
+	 * Instagram-specific request_url.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed The request URL if credenetials exist, else bool `false`.
+	 *
+	 */
+	public function get_api_link() {
+		$access_token = $this->auth_helper->get_access_token();
+		if ( false == $access_token ) {
+			return false;
+		}
+
+		// Only pass in `id` for the fields parameter to reduce their SQL query.
+		return 'https://api.instagram.com/v1/users/self/?access_token='.$access_token;
+	}
+
+
+	/**
+	 * Instagram-specific response handling.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return int The follow count provided by Pinterest, or 0.
+	 *
+	 */
+	public function parse_api_response() {
+		if ( empty( $this->response ) ) {
+			return 0;
+		}
+
+		$this->response = json_decode( $this->response );
+
+		if ( empty ( $this->response->data ) || empty( $this->response->data->counts ) ) {
+			return 0;
+		}
+
+		if ( empty( $this->response->data->counts->followed_by ) ) {
+			return false;
+		}
+
+		return $this->response->data->counts->followed_by;
 	}
 }
