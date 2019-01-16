@@ -154,7 +154,7 @@ SELECT;
 			$field =
 <<<FIELD
 <div class="swfw-follow-field">
-	<div class="swfw-follow-field-icon"><i class="sw swp_{$network->key}_icon"></i></div>
+	<div class="swfw-follow-field-icon">{$network->icon_svg}</div>
 	<label for="$wp_id">$network->name</label>
 	<input id="$wp_id" name="$wp_name" type="text" placeholder="Username" value="$value"/>
 </div>
