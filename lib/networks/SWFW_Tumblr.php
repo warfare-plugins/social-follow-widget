@@ -21,6 +21,7 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 	 * @see SWFW_Follow_Network
 	 * @param void
 	 * @return void
+	 *
 	 */
 	public function __construct() {
 		$network = array(
@@ -36,40 +37,8 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
-		$this->init_client();
-
-	}
-
-
-	/**
-	 * Loads the Tumblr SDK and initiates the helper as $this->client.
-	 *
-	 * @since 1.0.0 | 16 JAN 2019 | Created.
-	 * @param void
-	 * @return Object \Tumblr\Client The tumblr API client.
-	 *
-	 */
-	public function init_client() {
-
-		if ( empty( $this->username ) ) {
-			return;
-		}
-
-		$access_token = $this->auth_helper->get_access_token();
-		$access_secret= $this->auth_helper->get_access_secret();
-
-		if ( empty( $access_token ) || empty ( $access_secret ) ) {
-			return;
-		}
-
-		require_once __DIR__ . '/../SDKs/Tumblr/API/Client.php';
-		require_once __DIR__ . '/../SDKs/Tumblr/API/RequestException.php';
-		require_once __DIR__ . '/../SDKs/Tumblr/API/RequestHandler.php';
-
-		$this->client = new Tumblr\AP\Client(
-			$access_token,
-			$access_secret
-		);
+		// $x = SWP_Credential_Helper::get_token( 'tumblr', 'client_token' );
+		// die(var_dump($x));
 	}
 
 
