@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * SWP_Follow_Network
  *
@@ -14,7 +12,7 @@
  * @since 1.0.0 | 05 APR 2018 | Created
  *
  */
-class SWFW_Follow_Network {
+abstract class SWFW_Follow_Network {
 
 
 	/**
@@ -103,11 +101,19 @@ class SWFW_Follow_Network {
 	 */
 	public $auth_helper = null;
 
+
 	/**
 	 * Whether or not this network should request an oAuth access_token.
 	 * @var bool $needs_authorization
 	 */
 	public $needs_authorization = false;
+
+
+	/**
+	 * The ready to print <svg/> for the network icon.
+	 * @var string $icon_svg
+	 */
+	public $icon_svg = '';
 
 
 	/**
@@ -139,6 +145,7 @@ class SWFW_Follow_Network {
 		$this->network = $this->key;
 
 		$this->establish_count();
+		$this->establish_icon();
 		$this->establish_username();
 		$this->establish_auth_helper();
 
@@ -156,6 +163,19 @@ class SWFW_Follow_Network {
 
 		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
 	}
+
+
+	/**
+	 * Provides the link to make follow count requests.
+	 *
+	 * @since  1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed String if we are able to make a follow count request,
+	 *               else bool `false`.
+	 *
+	 */
+	abstract function get_api_link( $url );
+
 
 
 	/**
@@ -193,9 +213,13 @@ class SWFW_Follow_Network {
 
 
 	protected function establish_icon() {
-		$icon = SWP_SVG::get($this->key);
-		echo 'Key: ' . $this->key . PHP_EOL;
-		die(var_dump($icon));
+		$icon_svg = SWP_SVG::get( $this->key );
+		if ( !empty( $icon_svg ) ) {
+			$this->icon_svg = $icon_svg;
+		}
+		else {
+			echo '<pre>No icon for ' . $this->key . '</pre><br/>';
+		}
 	}
 
 
@@ -239,7 +263,7 @@ class SWFW_Follow_Network {
 	/**
 	 * Replaces the placeholder text 'swfw_username' with the actual username.
 	 *
-	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @since  1.0.0 | 03 DEC 2018 | Created.
 	 * @hook   filter| swp_follow_networks | Applied in SWFW_Follow_Widget
 	 * @param void
 	 * @return string A URL which goes to the 'Follow' page for this network.
@@ -253,7 +277,7 @@ class SWFW_Follow_Network {
 	/**
 	 * Indicates that this Network is used if a username is provided.
 	 *
-	 * @since  1.0.0 | 03 DEC 2018 | Created
+	 * @since  1.0.0 | 03 DEC 2018 | Created.
 	 * @param void
 	 * @return bool True if this network has a username in the DB, else false.
 	 *
@@ -269,7 +293,7 @@ class SWFW_Follow_Network {
 	 * This will read the user's options, and the apply the appropriate
 	 * callback method to generate a button of a particular shape.
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.0 | 03 DEC 2018 | Created.
 	 * @access public
 	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
 	 * @return array $array The modified array which will now contain the html for this button
@@ -296,7 +320,7 @@ class SWFW_Follow_Network {
 	 * @TODO This needs an <a> tag!!!!
 	 *
 	 */
-	private function generate_square_HTML( ) {
+	private function generate_square_HTML() {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
 
@@ -305,7 +329,7 @@ class SWFW_Follow_Network {
 <a target="_blank" href="{$this->generate_url()}">
 	<div class="swfw-follow-button square $this->key" style="$border; $background">
 		<div class='swfw-network-icon'>
-			<i class='sw swp_{$this->key}_icon'></i>
+			{$network->icon_svg}
 		</div>
 
 		<div class="swfw-text">
@@ -327,7 +351,7 @@ BUTTON;
 	 * @return string Fully qualified HTML for a Square follow button.
 	 *
 	 */
-	private function generate_block_HTML( ) {
+	private function generate_block_HTML() {
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
@@ -336,7 +360,7 @@ BUTTON;
 <<<BUTTON
 <div class="swfw-follow-button block $this->key" style="$background; $border">
 	<div class='swfw-network-icon'>
-		<i class='sw swp_{$this->key}_icon'></i>
+		{$network->icon_svg}
 	</div>
 
 	<div class="swfw-text">
@@ -369,7 +393,7 @@ BUTTON;
 <a target="_blank" href="{$this->generate_url()}">
 	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
-			<i class='sw swp_{$this->key}_icon'></i>
+			{$network->icon_svg}
 		</div>
 
 		<div class="swfw-text">
