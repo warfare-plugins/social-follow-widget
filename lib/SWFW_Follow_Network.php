@@ -280,7 +280,7 @@ abstract class SWFW_Follow_Network {
 	 * @return string A URL which goes to the 'Follow' page for this network.
 	 *
 	 */
-	function generate_url() {
+	function generate_follow_link() {
 		return str_replace( 'swfw_username', $this->username, $this->url);
 	}
 
@@ -337,7 +337,7 @@ abstract class SWFW_Follow_Network {
 
 		return
 <<<BUTTON
-<a target="_blank" href="{$this->generate_url()}">
+<a target="_blank" href="{$this->generate_follow_link()}">
 	<div class="swfw-follow-button square $this->key" style="$border; $background">
 		<div class='swfw-network-icon'>
 			{$network->icon_svg}
@@ -379,7 +379,7 @@ BUTTON;
 	</div>
 
 	<div class='swfw-cta-button'>
-		<a target="_blank" href="{$this->generate_url()}">$this->cta</a>
+		<a target="_blank" href="{$this->generate_follow_link()}">$this->cta</a>
 	</div>
 </div>
 BUTTON;
@@ -401,7 +401,7 @@ BUTTON;
 
 		return
 <<<BUTTON
-<a target="_blank" href="{$this->generate_url()}">
+<a target="_blank" href="{$this->generate_follow_link()}">
 	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
 			{$network->icon_svg}
