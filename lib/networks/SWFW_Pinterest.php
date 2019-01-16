@@ -71,6 +71,8 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			return 0;
 		}
 
+		$this->response = json_decode( $this->response );
+
 		if ( empty( $this->response->data || !is_array( $this->response->data) ) ) {
 			return 0;
 		}
