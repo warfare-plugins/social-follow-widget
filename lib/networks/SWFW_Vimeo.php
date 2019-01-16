@@ -36,4 +36,58 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 
 		parent::__construct( $network );
 	}
+
+
+	/**
+	 * Vimeo-specific request_url.
+	 *
+	 * Since Vimeo requies Authentication headers, we will go ahead and
+	 * immediately make the request here. The returned value indicates
+	 * whether or not the response had a body.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return bool True if a response was received from Vimeo, else false.
+	 *
+	 */
+	public function get_api_link() {
+		$access_token = $this->auth_helper->get_access_token();
+
+		if ( empty ( $this->username ) ) {
+			return false;
+		}
+
+		if ( false == $access_token ) {
+			return false;
+		}
+
+		$url = "https://api.vimeo.com/users/{$this->username}/followers";
+		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
+		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
+
+		return (bool) $this->response;
+	}
+
+
+	/**
+	 * Vimeo-specific response handling.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return int The follow count provided by Vimeo, or 0.
+	 *
+	 */
+	public function parse_api_response() {
+		if ( empty( $this->response ) ) {
+			return 0;
+		}
+
+		$this->response = json_decode( $this->response );
+
+		if ( empty( $this->response->total ) ) {
+			return 0;
+		}
+
+		return (int) $this->response->total;
+	}
 }
