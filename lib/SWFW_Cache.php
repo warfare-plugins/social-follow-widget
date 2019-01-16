@@ -2,8 +2,9 @@
 
 class SWFW_Cache {
 
+
 	/**
-	 * For this addon, we will consider the age limit to be 24 hours.
+	 * For this addon we will consider the age limit to be 24 hours.
 	 *
 	 * @return boolean True iff `last_updated` is less than 24 hours old.
 	 *
@@ -21,7 +22,7 @@ class SWFW_Cache {
 	 *
 	 * @param  array $counts The ['network_key' => (int) follow_count] data.
 	 * @return bool  True iff the counts were updated, else false.
-	 * 
+	 *
 	 */
 	public static function update_follow_counts( $counts ) {
 		$now = time() / DAY_IN_SECONDS;

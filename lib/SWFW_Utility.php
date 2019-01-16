@@ -11,17 +11,13 @@ class SWFW_Utility {
 	 * of Social_Warfare_Follow_Widget.
 	 *
 	 * @var array $options
+	 *
 	 */
 	public static $options = array();
-	public static $instance;
-
-	public function __construct() {
-
-	}
 
 
 	/**
-	 * Fetches a optionsd item, if it exists.
+	 * Fetches an option if it exists.
 	 *
 	 * @param  string $key The target data.
 	 * @return mixed The value if it exists, else bool `false`.
@@ -43,7 +39,7 @@ class SWFW_Utility {
 	/**
 	 * Retrieves the associative array of plugin options.
 	 *
-	 * If the options do not exist, they are created.
+	 * If the options do not exist they are created.
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void

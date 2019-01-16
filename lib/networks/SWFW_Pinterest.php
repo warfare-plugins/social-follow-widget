@@ -21,6 +21,7 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 	 * @see SWFW_Follow_Network
 	 * @param void
 	 * @return void
+	 *
 	 */
 	public function __construct() {
 		$network = array(
@@ -37,6 +38,15 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 		parent::__construct( $network );
 	}
 
+
+	/**
+	 * Pinterest-specific request_url.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed The request URL if credenetials exist, else bool `false`.
+	 *
+	 */
 	public function get_count_request_url() {
 		$access_token = $this->auth_helper->get_access_token();
 		if ( false == $access_token ) {
@@ -47,13 +57,22 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 		return 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id';
 	}
 
+
+	/**
+	 * Pinterest-specific response handling.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return int The follow count provided by Pinterest, or 0.
+	 *
+	 */
 	public function parse_request() {
 		if ( empty( $this->response ) ) {
-			return false;
+			return 0;
 		}
 
 		if ( empty( $this->response->data || !is_array( $this->response->data) ) ) {
-			return false;
+			return 0;
 		}
 
 		return count( $this->response->data );

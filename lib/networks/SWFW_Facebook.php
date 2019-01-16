@@ -40,8 +40,12 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 
 
 	/**
-	 * [get_count_request_url description]
-	 * @return [type] [description]
+	 * Facebook-specific request_url.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed The request URL if credenetials exist, else bool `false`.
+	 *
 	 */
 	public function get_count_request_url() {
 		if ( !$this->auth_helper->has_credentials ) {
@@ -49,6 +53,11 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		}
 
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
+
+		/**
+		 * Work in progress below. Not complete. 
+		 *
+		 */
 
 		// $endpoint = "/{$this->username}/fan_count";
 		$app_id = '2194481457470892';
