@@ -177,6 +177,17 @@ abstract class SWFW_Follow_Network {
 	abstract function get_api_link( $url );
 
 
+	/**
+	 * Decode the network-specific response to a useable format.
+	 *
+	 * @since  1.0.0 | 16 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed Often an object.
+	 *
+	 */
+	abstract function parse_api_response( $response );
+
+
 
 	/**
 	 * A temporary helper until we get the real count.
