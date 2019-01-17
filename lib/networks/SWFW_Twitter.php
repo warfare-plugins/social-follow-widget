@@ -32,12 +32,67 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			'color_accent' => '#3C87B2',
 			'url'	=> 'https://twitter.com/swfw_username',
 			'needs_authorization' => true
-
 		);
 
+		/**
+		 * Debug code.
+		 * Uncomment to delete the twitter tokens.
+		 */
+		// SWP_Credential_Helper::delete_token('twitter');
+		// SWP_Credential_Helper::delete_token('twitter', 'access_secret');
+		// die('Deleted!');
+
 		parent::__construct( $network );
-		$this->get_api_link();
-		$this->parse_api_response();
+
+		/**
+		 * Debug code.
+		 * Uncomment to run the API request.
+		 */
+		// $this->test();
+		// die;
+
+	}
+
+
+	/**
+	 * Testing out the Twitter SDK.
+	 * @see /lib/SDKs/Twitter/TwitterAPIExchange.php
+	 * or https://github.com/J7mbo/twitter-api-php
+	 */
+	public function test() {
+		ini_set('display_errors', 1);
+		require_once __DIR__ . '/../SDKs/Twitter/TwitterAPIExchange.php';
+
+		/**
+		 * These keys are about to get committed to github.
+		 * We can regenerate new ones when it works.
+		 *
+		 */
+		$swp_token = 'e9s2lOAMBpOmxegN3PNoSSUmm';
+		$swp_secret = 'Zj8nksxoC2lITOim7XWMZDI6wWviQHmhldB5ZlcfUmAIfd9Yc5';
+		$access_token = SWP_Credential_Helper::get_token('twitter');
+		$access_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
+
+
+		$settings = array(
+			'oauth_access_token' => $swp_token,
+			'oauth_access_token_secret' => $swp_secret,
+			'consumer_key' => $access_token,
+			'consumer_secret' => $access_secret
+		);
+
+		$twitter = new TwitterAPIExchange($settings);
+
+
+		/** Perform a GET request and echo the response **/
+		/** Note: Set the GET field BEFORE calling buildOauth(); **/
+		$url = 'https://api.twitter.com/1.1/followers/ids';
+		$requestMethod = 'GET';
+		$twitter = new TwitterAPIExchange($settings);
+		echo $twitter->setGetfield($getfield)
+					 ->buildOauth($url, $requestMethod)
+					 ->performRequest();
+
 	}
 
 
@@ -54,17 +109,29 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 *
 	 */
 	public function get_api_link() {
-		$access_token = $this->auth_helper->get_access_token();
+		require_once __DIR__ . '/../SDKs/Twitter/autoload.php';
 
-		if ( empty ( $access_token ) ) {
-			// die('no toke');
-			return false;
-		}
+// OLD KEYS
+	   $swp_token = 'QcnQ0AFCuhsPPUHrrs3dOYRcP';
+	   $swp_secret = 'FLX7TbylCISQAgQac4N0rRuIKtcNr157loUT9OVVWYa6SQ6fCz';
+	   $access_token = SWP_Credential_Helper::get_token('twitter');
+	   $access_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
 
-		// $client_key = 'QcnQ0AFCuhsPPUHrrs3dOYRcP';
-		// $client_secret = 'FLX7TbylCISQAgQac4N0rRuIKtcNr157loUT9OVVWYa6SQ6fCz';
+		// echo '<br/>$swp_token: '.$swp_token.PHP_EOL;
+		// echo '<br/>$swp_secret: '.$swp_secret.PHP_EOL;
+		// echo '<br/>$access_token: '.$access_token.PHP_EOL;
+		// echo '<br/>$access_secret: '.$access_secret.PHP_EOL;
 
-		$url = "https://api.twitter.com/1.1/followers/ids.json";
+
+		$connection = new \Abraham\TwitterOAuth\TwitterOAuth( $swp_token, $swp_secret, $access_token, $access_secret );
+		// $followers = $connection->get('followers/ids');
+		$credentials = $connection->get('account/verify_credentials');
+		die(var_dump($credentials));
+
+		die('<br/>Creds'.var_dump($credentials));
+
+
+		$url = "https://api.twitter.com/1.1/followers/ids";
 		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
 		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
 
