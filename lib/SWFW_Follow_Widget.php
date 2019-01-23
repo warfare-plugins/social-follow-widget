@@ -151,12 +151,13 @@ SELECT;
 			$wp_id = $this->get_field_id( $key );
 			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
+			$placeholder = isset( $this->placeholder ) ? $this->placeholder : 'Username';
 			$field =
 <<<FIELD
 <div class="swfw-follow-field">
 	<div class="swfw-follow-field-icon">{$network->icon_svg}</div>
 	<label for="$wp_id">$network->name</label>
-	<input id="$wp_id" name="$wp_name" type="text" placeholder="Username" value="$value"/>
+	<input id="$wp_id" name="$wp_name" type="text" placeholder="$placeholder" value="$value"/>
 </div>
 FIELD;
 			 $html .= $field;
