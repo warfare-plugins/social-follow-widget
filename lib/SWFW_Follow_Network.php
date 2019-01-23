@@ -119,11 +119,6 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * Apply network arguments to create $this.
 	 *
-	 * To verify that all of the $required keys are provided,
-	 * we we remove it from the array once it is found.
-	 * If any items remain in the array, this Network does not meet our
-	 * requirements to be built.
-	 *
 	 * @since 1.0.0 | 26 NOV 2018 | Created.
 	 * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | applied in
 	 * @return void
@@ -132,6 +127,15 @@ abstract class SWFW_Follow_Network {
 	public function __construct( $args ) {
 		global $swfw_networks;
 
+
+		/**
+		 * To verify that all of the $required keys are provided,
+		 * we we remove it from the array once it is found.
+		 *
+		 * If any items remain in the array, this Network does not meet our
+		 * requirements to be built.
+		 *
+		 */
 		$required = array( 'key', 'name', 'cta', 'url' );
 		foreach( $args as $key => $value ) {
 			$index = array_search( $key, $required );

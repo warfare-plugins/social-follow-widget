@@ -2,8 +2,11 @@
 if ( !class_exists( 'Social_Warfare_Addon' ) ) {
 	return;
 }
+
+
 /**
- * This class loads plugin assets and applies plugin-specific data to the Addon.
+ * This class loads plugin assets and applies this plugin data to
+ * the generic Social_Warfare_Addon class.
  *
  */
 class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
@@ -86,7 +89,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 			// 'Pinterest',
 			// 'Reddit',
 			'Twitter',
-			// 'Tumblr',
+			'Tumblr',
 			// 'Instagram',
 			// 'Vimeo'
 		);
