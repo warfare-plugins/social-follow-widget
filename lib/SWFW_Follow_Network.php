@@ -334,10 +334,11 @@ abstract class SWFW_Follow_Network {
 	private function generate_square_HTML() {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
+		$href= $this->generate_follow_link();
 
 		return
 <<<BUTTON
-<a target="_blank" href="{$this->generate_follow_link()}">
+<a target="_blank" href="{$href}">
 	<div class="swfw-follow-button square $this->key" style="$border; $background">
 		<div class='swfw-network-icon'>
 			{$network->icon_svg}
@@ -366,6 +367,7 @@ BUTTON;
 		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
+		$href = $this->generate_follow_link();
 
 		return
 <<<BUTTON
@@ -379,7 +381,7 @@ BUTTON;
 	</div>
 
 	<div class='swfw-cta-button'>
-		<a target="_blank" href="{$this->generate_follow_link()}">$this->cta</a>
+		<a target="_blank" href="{$href}">$this->cta</a>
 	</div>
 </div>
 BUTTON;
@@ -398,10 +400,11 @@ BUTTON;
 	public function generate_buttons_HTML( ) {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
+		$href = $this->generate_follow_link();
 
 		return
 <<<BUTTON
-<a target="_blank" href="{$this->generate_follow_link()}">
+<a target="_blank" href="{$href}">
 	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
 			{$network->icon_svg}
