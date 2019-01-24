@@ -89,8 +89,8 @@ abstract class SWFW_Follow_Network {
 
 	/**
 	 * Whether or not to show the share count for this network.
-	 *
 	 * @var boolean $show_shares;
+	 *
 	 */
 	public $show_shares = false;
 
@@ -98,6 +98,7 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * An instance of SWP_Auth_Controller for this network.
 	 * @var object SWP_Auth_Controller
+	 *
 	 */
 	public $auth_helper = null;
 
@@ -105,6 +106,7 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * Whether or not this network should request an oAuth access_token.
 	 * @var bool $needs_authorization
+	 * 
 	 */
 	public $needs_authorization = false;
 
@@ -112,8 +114,17 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * The ready to print <svg/> for the network icon.
 	 * @var string $icon_svg
+	 *
 	 */
 	public $icon_svg = '';
+
+
+	/**
+	 * The total number of followers for this network.
+	 * @var int $follow_count
+	 *
+	 */
+	public $follow_count = 0;
 
 
 	/**
