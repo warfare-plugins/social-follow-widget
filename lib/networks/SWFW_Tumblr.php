@@ -33,17 +33,14 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 			'color_accent' => '#27313F',
 			'url'	=> 'https://swfw_username.tumblr.com',
 			'needs_authorization' => true
-
 		);
 
 		parent::__construct( $network );
-		// $x = SWP_Credential_Helper::get_token( 'tumblr', 'client_token' );
-		// die(var_dump($x));
 	}
 
 
 	/**
-	 * Pinterest-specific request_url.
+	 * Tumblr-specific request_url.
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
@@ -51,18 +48,31 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 	 *
 	 */
 	public function get_api_link() {
+		require_once __DIR__ . '/../SDKs/Tumblr/vendor/autoload.php';
+
 		$access_token = $this->auth_helper->get_access_token();
-		if ( false == $access_token ) {
+		$access_secret = $this->auth_helper->get_access_secret();
+
+		if ( empty( $access_token )  ) {
 			return false;
 		}
 
-		// Only pass in `id` for the fields parameter to reduce their SQL query.
-		return 'https://api.tumblr.com/v2/blog/'.$this->username.'/followers';
+		if (  empty( $access_secret )) {
+			return false;
+		}
+
+		$swp_key = '417XX50OsviGipm7S0d3CoQq7tYI8pR2sDDXgOj6NPODxlTcU0';
+		$swp_secret = 'v00cOcheNGOrOoHzU6WnU1AbleQQZmGUSRr44rjJsSG3u6mUbg';
+
+		$tumblr = new Tumblr\API\Client( $swp_key, $swp_secret );
+		$tumblr->setToken( $access_token, $access_secret );
+
+		$this->response = $tumblr->getUserInfo();
 	}
 
 
 	/**
-	 * Pinterest-specific response handling.
+	 * Tumblr-specific response handling.
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
@@ -70,17 +80,27 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 	 *
 	 */
 	public function parse_api_response() {
+		// $response is already formatted as object thanks to the Tumblr client.
+
 		if ( empty( $this->response ) ) {
 			return 0;
 		}
 
-		$this->response = json_decode( $this->response );
-
-		if ( $this->response->meta != 'OK' ) {
+		if ( empty( $this->response->user ) || empty( $this->response->user->blogs ) ) {
 			return 0;
 		}
 
-		return count( $this->response->data );
-	}
+		/**
+		 * A user may have multiple blogs. Let's iterate over each of them
+		 * and sum the total followers for all blogs.
+		 *
+		 */
+		foreach( $this->response->user->blogs as $blog ) {
+			if ( is_numeric ( $blog->followers ) ) {
+				$this->follow_count += (int) $blog->followers;
+			}
+		}
 
+		return $this->follow_count;
+	}
 }
