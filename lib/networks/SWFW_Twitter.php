@@ -34,65 +34,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			'needs_authorization' => true
 		);
 
-		/**
-		 * Debug code.
-		 * Uncomment to delete the twitter tokens.
-		 */
-		// SWP_Credential_Helper::delete_token('twitter');
-		// SWP_Credential_Helper::delete_token('twitter', 'access_secret');
-		// die('Deleted!');
-
 		parent::__construct( $network );
-
-		/**
-		 * Debug code.
-		 * Uncomment to run the API request.
-		 */
-		// $this->test();
-		// die;
-
-	}
-
-
-	/**
-	 * Testing out the Twitter SDK.
-	 * @see /lib/SDKs/Twitter/TwitterAPIExchange.php
-	 * or https://github.com/J7mbo/twitter-api-php
-	 */
-	public function test() {
-		ini_set('display_errors', 1);
-		require_once __DIR__ . '/../SDKs/Twitter/TwitterAPIExchange.php';
-
-		/**
-		 * These keys are about to get committed to github.
-		 * We can regenerate new ones when it works.
-		 *
-		 */
-		$swp_token = 'e9s2lOAMBpOmxegN3PNoSSUmm';
-		$swp_secret = 'Zj8nksxoC2lITOim7XWMZDI6wWviQHmhldB5ZlcfUmAIfd9Yc5';
-		$access_token = SWP_Credential_Helper::get_token('twitter');
-		$access_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
-
-
-		$settings = array(
-			'oauth_access_token' => $swp_token,
-			'oauth_access_token_secret' => $swp_secret,
-			'consumer_key' => $access_token,
-			'consumer_secret' => $access_secret
-		);
-
-		$twitter = new TwitterAPIExchange($settings);
-
-
-		/** Perform a GET request and echo the response **/
-		/** Note: Set the GET field BEFORE calling buildOauth(); **/
-		$url = 'https://api.twitter.com/1.1/followers/ids';
-		$requestMethod = 'GET';
-		$twitter = new TwitterAPIExchange($settings);
-		echo $twitter->setGetfield($getfield)
-					 ->buildOauth($url, $requestMethod)
-					 ->performRequest();
-
 	}
 
 
@@ -111,31 +53,37 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	public function get_api_link() {
 		require_once __DIR__ . '/../SDKs/Twitter/autoload.php';
 
-// OLD KEYS
-	   $swp_token = 'QcnQ0AFCuhsPPUHrrs3dOYRcP';
-	   $swp_secret = 'FLX7TbylCISQAgQac4N0rRuIKtcNr157loUT9OVVWYa6SQ6fCz';
-	   $access_token = SWP_Credential_Helper::get_token('twitter');
-	   $access_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
+		$swp_api_key = '';
+		$swp_api_secret = '';
 
-		// echo '<br/>$swp_token: '.$swp_token.PHP_EOL;
-		// echo '<br/>$swp_secret: '.$swp_secret.PHP_EOL;
-		// echo '<br/>$access_token: '.$access_token.PHP_EOL;
-		// echo '<br/>$access_secret: '.$access_secret.PHP_EOL;
+		$consumer_access_token = SWP_Credential_Helper::get_token('twitter');
+		$consumer_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
 
+		$connection = new Abraham\TwitterOAuth\TwitterOAuth($swp_api_key, $swp_api_secret, $consumer_access_token, $consumer_secret);
+		$params = array( 'screen_name' => $this->username, 'cursor' => $cursor );
+		$this->response = $connection->get('followers/ids', $params);
 
-		$connection = new \Abraham\TwitterOAuth\TwitterOAuth( $swp_token, $swp_secret, $access_token, $access_secret );
-		// $followers = $connection->get('followers/ids');
-		$credentials = $connection->get('account/verify_credentials');
-		die(var_dump($credentials));
+		if ( !empty( $this->respose) && is_array( $this->response->ids ) ) {
+			$this->follow_count += count( $this->response->ids);
+		}
 
-		die('<br/>Creds'.var_dump($credentials));
+		/**
+		 * Max pagination is 5000. If a 'next_cursor' field exists, use that to
+		 * continue reading followers. Providing $cursor = -1 tells Twitter that
+		 * we are prepared to use a cursor for pagination.
+		 *
+		 * When there are no more pages, 'next_cursor' == 0.
+		 *
+		 */
+		while ( !empty( $this->response->next_cursor ) && $this->response->next_cursor != 0 ) {
+			$params['cursor'] = $this->response->next_cursor;
 
+			$this->response = $connection->get('followers/ids', $params);
 
-		$url = "https://api.twitter.com/1.1/followers/ids";
-		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
-		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
-
-		return (bool) $this->response;
+			if ( is_array( $this->response->ids) ) {
+				$this->follow_count += count( $this->response->ids);
+			}
+		}
 	}
 
 
@@ -148,12 +96,10 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 *
 	 */
 	public function parse_api_response() {
-		if ( empty( $this->response ) ) {
+		if ( empty( $follow_count ) ) {
 			return 0;
 		}
 
-		$this->response = json_decode( $this->$response );
-
-		die(var_dump(' response: ', $this->response));
+		return $this->follow_count;
 	}
 }
