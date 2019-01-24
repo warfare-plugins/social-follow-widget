@@ -88,7 +88,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 			// 'Facebook',
 			// 'Pinterest',
 			// 'Reddit',
-			'Twitter',
+			// 'Twitter',
 			'Tumblr',
 			// 'Instagram',
 			// 'Vimeo'
