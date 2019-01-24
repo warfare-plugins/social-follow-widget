@@ -197,8 +197,8 @@ abstract class SWFW_Follow_Network {
 	 * A temporary helper until we get the real count.
 	 */
 	protected function establish_count() {
-		if (!isset($this->count)) {
-			$this->count = number_format(rand(100, 300000)) . '*';
+		if (!isset($this->follow_count)) {
+			$this->follow_count = number_format(rand(100, 300000)) . '*';
 		}
 	}
 
@@ -349,7 +349,7 @@ abstract class SWFW_Follow_Network {
 		</div>
 
 		<div class="swfw-text">
-			<span class='swfw-count'>$this->count</span>
+			<span class='swfw-count'>$this->follow_count</span>
 			<span class='swfw-cta'>$this->cta</span>
 		</div>
 	</div>
@@ -381,7 +381,7 @@ BUTTON;
 	</div>
 
 	<div class="swfw-text">
-		<p class='swfw-count' style='margin: 0'>$this->count $this->follow_description</p>
+		<p class='swfw-count' style='margin: 0'>$this->follow_count $this->follow_description</p>
 	</div>
 
 	<div class='swfw-cta-button'>
@@ -416,7 +416,7 @@ BUTTON;
 
 		<div class="swfw-text">
 			<span class='swfw-cta'>$this->cta</span>
-			<span class='swfw-count'>$this->count</span>
+			<span class='swfw-count'>$this->follow_count</span>
 		</div>
 	</div>
 </a>
