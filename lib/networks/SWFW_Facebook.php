@@ -35,7 +35,6 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
-		$this->get_count_request_url();
 	}
 
 
@@ -47,7 +46,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 * @return mixed The request URL if credenetials exist, else bool `false`.
 	 *
 	 */
-	public function get_count_request_url() {
+	public function get_api_link() {
 		if ( !$this->auth_helper->has_credentials ) {
 			return false;
 		}
@@ -55,7 +54,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
 
 		/**
-		 * Work in progress below. Not complete. 
+		 * Work in progress below. Not complete.
 		 *
 		 */
 
@@ -93,5 +92,9 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		/* handle the result */
 
 		return '';
+	}
+
+	public function parse_api_response() {
+
 	}
 }

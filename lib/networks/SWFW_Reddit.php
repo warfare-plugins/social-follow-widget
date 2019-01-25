@@ -34,5 +34,15 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
+
+
+	}
+
+	public function get_api_link() {
+		return false;
+	}
+
+	public function parse_api_response() {
+		return false;
 	}
 }
