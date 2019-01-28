@@ -38,7 +38,7 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 
 	}
 
-	public function get_api_link() {
+	public function do_api_request() {
 		return false;
 	}
 

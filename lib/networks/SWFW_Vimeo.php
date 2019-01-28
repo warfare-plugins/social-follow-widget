@@ -50,7 +50,7 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 	 * @return void;
 	 *
 	 */
-	public function get_api_link() {
+	public function do_api_request() {
 		$access_token = $this->auth_helper->get_access_token();
 
 		if ( empty ( $this->username ) ) {

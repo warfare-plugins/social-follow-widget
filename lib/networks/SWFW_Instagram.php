@@ -45,7 +45,7 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 	 * @return mixed The request URL if credenetials exist, else bool `false`.
 	 *
 	 */
-	public function get_api_link() {
+	public function do_api_request() {
 		$access_token = $this->auth_helper->get_access_token();
 
 		if ( false == $access_token ) {

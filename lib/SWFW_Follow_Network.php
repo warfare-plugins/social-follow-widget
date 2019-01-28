@@ -188,7 +188,7 @@ abstract class SWFW_Follow_Network {
 	 *               else bool `false`.
 	 *
 	 */
-	abstract function get_api_link();
+	abstract function do_api_request();
 
 
 	/**
@@ -213,7 +213,7 @@ abstract class SWFW_Follow_Network {
 	public function fetch_follow_count() {
 
 		if ( false == SWFW_Cache::is_cache_fresh() ) {
-			$this->get_api_link();
+			$this->do_api_request();
 			$this->parse_api_response();
 			$this->save_follow_count();
 
@@ -374,7 +374,7 @@ abstract class SWFW_Follow_Network {
 	private function generate_square_HTML() {
 		$background = "background-color: $this->color_primary";
 		$border = "border: 1px solid $this->color_accent";
-		$href= $this->generate_follow_link();
+		$href = $this->generate_follow_link();
 
 
 		return

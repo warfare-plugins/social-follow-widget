@@ -46,7 +46,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 * @return mixed The request URL if credentials exist, else bool `false`.
 	 *
 	 */
-	public function get_api_link() {
+	public function do_api_request() {
 		if ( !$this->auth_helper->has_credentials ) {
 			return false;
 		}

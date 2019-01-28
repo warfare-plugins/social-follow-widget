@@ -50,7 +50,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 * @return mixed True if a response was received, else false.
 	 *
 	 */
-	public function get_api_link() {
+	public function do_api_request() {
 		require_once __DIR__ . '/../SDKs/Twitter/autoload.php';
 
 		$swp_api_key = '';
