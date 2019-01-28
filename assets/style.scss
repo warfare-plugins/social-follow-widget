@@ -2,6 +2,10 @@ $white: #fefefe;;
 $black: #030303;
 
 /**
+/// Frontend Style
+**/
+
+/**
  * Button Container
  *
  * These styles are common to all button containers, regardless of shape or style.
@@ -260,4 +264,48 @@ $black: #030303;
 		  cursor: pointer;
 	  }
   }
+}
+
+/**
+/// Backend Style
+**/
+
+.swfw-input-field,
+.swfw-follow-field {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 380px;
+	height: 50px;
+	margin: 15px auto;
+}
+
+.swfw-follow-field-icon {
+	font-size: 30px;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+.swfw-widget label {
+	font-size: 14px;
+	width: 100px;
+}
+
+.swfw-follow-field label {
+	text-align: right;
+}
+
+
+.swfw-input-field input,
+.swfw-input-field select,
+.swfw-follow-field input {
+	padding: 15px;
+	width: 50%;
+	height: 100%;
+	border-radius: 4px;
+}
+
+.swfw-follow-field-icon {
+	width: 40px;
 }
