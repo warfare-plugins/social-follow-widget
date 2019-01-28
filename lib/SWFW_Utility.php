@@ -39,7 +39,7 @@ class SWFW_Utility {
 
 
 	public static function save_follow_counts() {
-		$updated = self::update_option( 'swfw_options', self::$options );
+		$updated = update_option( 'swfw_options', self::$options, true );
 		SWFW_Cache::update_cache_timestamp();
 
 		return $updated;
