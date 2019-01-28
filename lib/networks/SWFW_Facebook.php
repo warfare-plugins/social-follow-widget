@@ -43,7 +43,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
-	 * @return mixed The request URL if credenetials exist, else bool `false`.
+	 * @return mixed The request URL if credentials exist, else bool `false`.
 	 *
 	 */
 	public function get_api_link() {
@@ -97,4 +97,5 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	public function parse_api_response() {
 
 	}
+
 }
