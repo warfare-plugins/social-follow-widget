@@ -85,13 +85,13 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 */
 	public function init_networks() {
 		$networks = array(
-			// 'Facebook',
-			// 'Pinterest',
-			// 'Reddit',
-			// 'Twitter',
+			'Facebook',
+			'Pinterest',
+			'Reddit',
+			'Twitter',
 			'Tumblr',
-			// 'Instagram',
-			// 'Vimeo'
+			'Instagram',
+			'Vimeo'
 		);
 
 		$this->load_files( '/lib/networks/', $networks, true );
