@@ -6,10 +6,10 @@
  * buttons which can be selected on the options page and rendered in the
  * panel of buttons.
  *
- * @package   SocialWarfare\Functions\Social-Networks
- * @copyright Copyright (c) 2018, Warfare Plugins, LLC
- * @license   GPL-3.0+
- * @since 1.0.0 | 05 APR 2018 | Created
+ * @package   	SocialWarfareFollowWidget
+ * @copyright 	Copyright (c) 2019, Warfare Plugins, LLC
+ * @license  	GPL-3.0+
+ * @since 		1.0.0 | 15 DEC 2018 | Created. 
  *
  */
 abstract class SWFW_Follow_Network {

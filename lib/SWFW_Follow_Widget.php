@@ -1,13 +1,18 @@
 <?php
-/**
- * Requres parent class provided by Social Warfare Core.
- *
- */
+//Requires the parent class provided by Social Warfare (core).
 if (!class_exists( 'SWP_Widget' ) ) {
 	return;
 }
 
-
+/**
+ * Creates the HTML for frontend and backend display,
+ * and handles widget settings updates.
+ *
+ * @package   	SocialWarfareFollowWidget
+ * @copyright 	Copyright (c) 2019, Warfare Plugins, LLC
+ * @license   	GPL-3.0+
+ * @since 		1.0.0 | 15 DEC 2018 | Created. 
+ */
 class SWFW_Follow_Widget extends SWP_Widget {
 
 
