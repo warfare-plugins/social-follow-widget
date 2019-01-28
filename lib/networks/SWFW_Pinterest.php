@@ -53,8 +53,9 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			return false;
 		}
 
-		// Only pass in `id` for the fields parameter to reduce their SQL query.
-		return 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id';
+		// Only pass in `id` for `fields` parameter to reduce the Pinterest query.
+		$url = 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id';
+		$this->response = SWP_CURL::file_get_contents_curl( $url );
 	}
 
 
