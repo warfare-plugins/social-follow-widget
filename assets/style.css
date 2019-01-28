@@ -23,6 +23,9 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.swfw-follow-container .swfw-network-icon {
+  max-with: 100px;
+}
 
 /**
  * Individual Buttons
