@@ -5,6 +5,9 @@ class SWFW_Cache {
 
 	/**
 	 * True iff the follow counts are less than 24 hours old.
+	 *
+	 * Since all follow networks use the same cache timesamp, we can have one
+	 * universal $is_fresh field to direct all follow networks.
 	 * @var boolean $is_fresh
 	 *
 	 */
@@ -23,7 +26,7 @@ class SWFW_Cache {
 			return self::$is_fresh;
 		}
 
-		$last_updated = (int) self::get_option( 'last_updated' );
+		$last_updated = (int) SWFW_Utility::get_option( 'last_updated' );
 		$current_time =  floor( time() / DAY_IN_SECONDS );
 
 		self::$is_fresh = $current_time - $last_updated < 24;
