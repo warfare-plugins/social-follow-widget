@@ -13,7 +13,6 @@ class SWFW_Cache {
 	 */
 	static $is_fresh;
 
-
 	/**
 	 * For this addon we will consider the age limit to be 24 hours.
 	 *
@@ -41,10 +40,9 @@ class SWFW_Cache {
 	 * @return bool  True iff the counts were updated, else false.
 	 *
 	 */
-	public static function update_follow_counts( $counts ) {
+	public static function update_cache_timestamp( ) {
 		$now = time() / DAY_IN_SECONDS;
 
-		SWFW_Utility::update_option( 'last_updated', $now );
-		return SWFW_Utility::update_option( 'counts', $counts );
+		return SWFW_Utility::update_option( 'last_updated', $now );
 	}
 }
