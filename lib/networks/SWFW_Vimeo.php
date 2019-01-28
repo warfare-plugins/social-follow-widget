@@ -47,7 +47,7 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
-	 * @return bool True if a response was received from Vimeo, else false.
+	 * @return void;
 	 *
 	 */
 	public function get_api_link() {
@@ -64,8 +64,6 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 		$url = "https://api.vimeo.com/users/{$this->username}/followers";
 		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
 		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
-
-		return (bool) $this->response;
 	}
 
 
