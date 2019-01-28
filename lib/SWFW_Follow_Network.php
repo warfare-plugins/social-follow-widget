@@ -238,8 +238,7 @@ abstract class SWFW_Follow_Network {
 			$this->follow_count = 0;
 		}
 
-		$key = "{$this->key}_follow_count";
-		SWFW_Utility::update_network_count( $key, $this->follow_count );
+		SWFW_Utility::update_network_count( $this->key, $this->follow_count );
 	}
 
 
@@ -377,12 +376,13 @@ abstract class SWFW_Follow_Network {
 		$border = "border: 1px solid $this->color_accent";
 		$href= $this->generate_follow_link();
 
+
 		return
 <<<BUTTON
 <a target="_blank" href="{$href}">
 	<div class="swfw-follow-button square $this->key" style="$border; $background">
 		<div class='swfw-network-icon'>
-			{$network->icon_svg}
+			{$this->icon_svg}
 		</div>
 
 		<div class="swfw-text">
@@ -414,7 +414,7 @@ BUTTON;
 <<<BUTTON
 <div class="swfw-follow-button block $this->key" style="$background; $border">
 	<div class='swfw-network-icon'>
-		{$network->icon_svg}
+		{$this->icon_svg}
 	</div>
 
 	<div class="swfw-text">
@@ -448,7 +448,7 @@ BUTTON;
 <a target="_blank" href="{$href}">
 	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
 		<div class='swfw-network-icon'>
-			{$network->icon_svg}
+			{$this->icon_svg}
 		</div>
 
 		<div class="swfw-text">
