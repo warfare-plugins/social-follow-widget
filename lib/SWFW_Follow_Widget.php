@@ -29,6 +29,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 		);
 
 		parent::__construct( $key, $name, $widget );
+		$this->debug();
 	}
 
 
@@ -239,5 +240,20 @@ FIELD;
 		}
 
 		return $new_settings;
+	}
+
+	public function debug() {
+		if ( !isset( $_GET['swfw_debug'] ) ) {
+			return;
+		}
+
+		$key = $_GET['swfw_debug'];
+
+		switch( $key ) {
+			case 'get_options' :
+				$options = SWFW_Utility::get_options();
+				echo "<pre>".var_export($options, 1)."</pre>";
+				wp_die();
+		}
 	}
 }
