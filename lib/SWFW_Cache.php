@@ -26,7 +26,7 @@ class SWFW_Cache {
 		}
 
 		$last_updated = (int) SWFW_Utility::get_option( 'last_updated' );
-		$current_time =  floor( time() / DAY_IN_SECONDS );
+		$current_time =  (int) floor( time() / DAY_IN_SECONDS );
 
 		self::$is_fresh = $current_time - $last_updated < 24;
 		return self::$is_fresh;
@@ -41,7 +41,9 @@ class SWFW_Cache {
 	 *
 	 */
 	public static function update_cache_timestamp( ) {
-		$now = time() / DAY_IN_SECONDS;
+		// @TODO
+		return;
+		$now = floor( time() / DAY_IN_SECONDS );
 
 		return SWFW_Utility::update_option( 'last_updated', $now );
 	}
