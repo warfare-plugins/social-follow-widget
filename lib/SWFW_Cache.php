@@ -4,16 +4,30 @@ class SWFW_Cache {
 
 
 	/**
+	 * True iff the follow counts are less than 24 hours old.
+	 * @var boolean $is_fresh
+	 *
+	 */
+	static $is_fresh;
+
+
+	/**
 	 * For this addon we will consider the age limit to be 24 hours.
 	 *
 	 * @return boolean True iff `last_updated` is less than 24 hours old.
 	 *
 	 */
 	public static function is_cache_fresh() {
+
+		if ( isset( self::$is_fresh ) ) {
+			return self::$is_fresh;
+		}
+
 		$last_updated = (int) self::get_option( 'last_updated' );
 		$current_time =  floor( time() / DAY_IN_SECONDS );
 
-		return $current_time - $last_updated < 24;
+		self::$is_fresh = $current_time - $last_updated < 24;
+		return self::$is_fresh;
 	}
 
 
