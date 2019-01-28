@@ -42,7 +42,16 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 		return false;
 	}
 
+
+	/**
+	 * Reddit-specific response handling.
+	 *
+	 * @since 1.0.0 | 15 JAN 2019 | Created.
+	 * @param void
+	 * @return int 0 This network does not offer count data.
+	 *
+	 */
 	public function parse_api_response() {
-		return false;
+		return 0;
 	}
 }
