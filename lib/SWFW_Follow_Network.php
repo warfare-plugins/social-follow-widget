@@ -106,7 +106,7 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * Whether or not this network should request an oAuth access_token.
 	 * @var bool $needs_authorization
-	 * 
+	 *
 	 */
 	public $needs_authorization = false;
 
@@ -159,7 +159,6 @@ abstract class SWFW_Follow_Network {
 
 		$this->network = $this->key;
 
-		$this->establish_count();
 		$this->establish_icon();
 		$this->establish_username();
 		$this->establish_auth_helper();
@@ -203,14 +202,44 @@ abstract class SWFW_Follow_Network {
 	abstract function parse_api_response();
 
 
+	/**
+	 * Decode the network-specific response to a useable format.
+	 *
+	 * @since  1.0.0 | 28 JAN 2019 | Created.
+	 * @param void
+	 * @return mixed Often an object.
+	 *
+	 */
+	public function fetch_follow_count() {
+
+		if ( false == SWFW_Cache::is_cache_fresh() ) {
+			$this->get_api_link();
+			$this->parse_api_response();
+			$this->save_follow_count();
+
+		}
+
+		$key = "{$this->key}_follow_count";
+		return $this->follow_count = SWFW_Utility::get_option( $key );
+	}
+
 
 	/**
-	 * A temporary helper until we get the real count.
+	 * Save the freshly fetched count for future use.
+	 *
+	 * @since  1.0.0 | 25 JAN 2019 | Created.
+	 * @param void
+	 * @return void
+	 *
 	 */
-	protected function establish_count() {
-		if (!isset($this->follow_count)) {
-			$this->follow_count = number_format(rand(100, 300000)) . '*';
+	public function save_follow_count() {
+		// Networks that do not have count data need an integer.
+		if ( empty( $this->follow_count) ) {
+			$this->follow_count = 0;
 		}
+
+		$key = "{$this->key}_follow_count";
+		SWFW_Utility::update_option( $key, $this->follow_count );
 	}
 
 
@@ -242,9 +271,6 @@ abstract class SWFW_Follow_Network {
 		$icon_svg = SWP_SVG::get( $this->key );
 		if ( !empty( $icon_svg ) ) {
 			$this->icon_svg = $icon_svg;
-		}
-		else {
-			echo '<pre>No icon for ' . $this->key . '</pre><br/>';
 		}
 	}
 
