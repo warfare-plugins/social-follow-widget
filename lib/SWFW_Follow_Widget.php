@@ -254,6 +254,18 @@ FIELD;
 				$options = SWFW_Utility::get_options();
 				echo "<pre>".var_export($options, 1)."</pre>";
 				wp_die();
+
+			case 'reset_count_data' :
+				if ( !is_admin() ) {
+					break;
+				}
+
+				$options = array( 'last_updated' => 0  );
+				$updated = update_option( 'swfw_options', $options );
+				$message = $updated
+						   ? 'Success! Follow Widget options have been reset.'
+						   : 'No changes were made to your SWFW options.';
+				wp_die($message);
 		}
 	}
 }
