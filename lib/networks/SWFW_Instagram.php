@@ -51,9 +51,10 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 		if ( false == $access_token ) {
 			return false;
 		}
-		return 'https://api.instagram.com/v1/users/self?access_token='.$access_token;
+		
+		$url = 'https://api.instagram.com/v1/users/self?access_token='.$access_token;
+		$this->response = SWP_CURL::file_get_contents_curl( $url );
 	}
-
 
 
 	/**
