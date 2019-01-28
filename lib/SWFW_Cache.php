@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Controls the frequency of API requests. Requests are made up to once/24 hours.
+ *
+ */
 class SWFW_Cache {
 
 
@@ -26,7 +29,7 @@ class SWFW_Cache {
 		}
 
 		$last_updated = (int) SWFW_Utility::get_option( 'last_updated' );
-		$current_time =  (int) floor( time() / DAY_IN_SECONDS );
+		$current_time =  (int) time() / DAY_IN_SECONDS;
 
 		self::$is_fresh = $current_time - $last_updated < 24;
 		return self::$is_fresh;
@@ -40,10 +43,8 @@ class SWFW_Cache {
 	 * @return bool  True iff the counts were updated, else false.
 	 *
 	 */
-	public static function update_cache_timestamp( ) {
-		// @TODO
-		return;
-		$now = floor( time() / DAY_IN_SECONDS );
+	public static function update_cache_timestamp() {
+		$now = (int) time() / DAY_IN_SECONDS;
 
 		return SWFW_Utility::update_option( 'last_updated', $now );
 	}
