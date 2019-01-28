@@ -239,7 +239,7 @@ abstract class SWFW_Follow_Network {
 		}
 
 		$key = "{$this->key}_follow_count";
-		SWFW_Utility::update_option( $key, $this->follow_count );
+		SWFW_Utility::update_network_count( $key, $this->follow_count );
 	}
 
 
