@@ -52,10 +52,11 @@ class SWFW_Follow_Widget extends SWP_Widget {
 				continue;
 			}
 
-			// This is an instance of a SWFW_Widget.
 			if ( is_numeric( $key ) ) {
-				// Intentionally left blank.
-			} else {
+				// This is an instance of a SWFW_Widget. Keep it in $widgets.
+			}
+			else {
+				// Remove the non-widget from $widgets.
 				unset($widgets[$key]);
 			}
 		}
