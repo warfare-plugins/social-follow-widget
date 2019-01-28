@@ -32,6 +32,8 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 		if ($this->is_registered) {
 			$this->init();
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'load_assets' ) );
 		}
 	}
 
@@ -59,7 +61,6 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 		$this->load_files( '/lib/', $files );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		$this->init_networks();
 		new SWFW_Follow_Widget();
 	}
