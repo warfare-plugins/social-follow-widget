@@ -206,6 +206,12 @@ FIELD;
 			}
 
 			$key = $network->key.'_username';
+			$network->fetch_follow_count();
+
+			if ( false == SWFW_Cache::is_cache_fresh() ) {
+				SWFW_Utility::save_follow_counts();
+			}
+
 			$buttons .= $network->generate_frontend_HTML( $shape );
 		}
 
