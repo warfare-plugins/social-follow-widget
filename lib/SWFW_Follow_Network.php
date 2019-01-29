@@ -363,8 +363,26 @@ abstract class SWFW_Follow_Network {
 			return '';
 		}
 
+		$this->establish_display_settings();
+
 		$generate_HTML = "generate_" . $shape . "_HTML";
 		return $this->$generate_HTML();
+	}
+
+	/**
+	 * Prepares attributes and styles for frontend display.
+	 *
+	 * @since  1.0.0 | 29 JAN 2019 | Created.
+	 * @access private The HTML methods are only called by this class.
+	 * @param  void
+	 * @return void
+	 *
+	 */
+	private function establish_display_settings() {
+		$this->background = "background-color: $this->color_primary";
+		$this->border = "border: 1px solid $this->color_accent";
+		$this->href = $this->generate_follow_link();
+		
 	}
 
 
@@ -375,19 +393,13 @@ abstract class SWFW_Follow_Network {
 	 * @access private | This is the only class that should ever render follow button HTML.
 	 * @param void
 	 * @return string Fully qualified HTML for a Square follow button.
-	 * @TODO This needs an <a> tag!!!!
 	 *
 	 */
 	private function generate_square_HTML() {
-		$background = "background-color: $this->color_primary";
-		$border = "border: 1px solid $this->color_accent";
-		$href = $this->generate_follow_link();
-
-
 		return
 <<<BUTTON
-<a target="_blank" href="{$href}">
-	<div class="swfw-follow-button square $this->key" style="$border; $background">
+<a target="_blank" href="{$this->href}">
+	<div class="swfw-follow-button square $this->key" style="$this->border; $this->background">
 		<div class='swfw-network-icon'>
 			{$this->icon_svg}
 		</div>
@@ -412,14 +424,9 @@ BUTTON;
 	 *
 	 */
 	private function generate_block_HTML() {
-		// what we want instead:  $style = SWFW_Utility::get_option('button_style');
-		$background = "background-color: $this->color_primary";
-		$border = "border: 1px solid $this->color_accent";
-		$href = $this->generate_follow_link();
-
 		return
 <<<BUTTON
-<div class="swfw-follow-button block $this->key" style="$background; $border">
+<div class="swfw-follow-button block $this->key" style="$this->background; $this->border">
 	<div class='swfw-network-icon'>
 		{$this->icon_svg}
 	</div>
@@ -429,7 +436,7 @@ BUTTON;
 	</div>
 
 	<div class='swfw-cta-button'>
-		<a target="_blank" href="{$href}">$this->cta</a>
+		<a target="_blank" href="{$this->href}">$this->cta</a>
 	</div>
 </div>
 BUTTON;
@@ -440,20 +447,15 @@ BUTTON;
 	 * Renders Buttons button HTML.
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created
-	 * @access private | This is the only class that should ever render follow button HTML.
 	 * @param void
 	 * @return string Fully qualified HTML for an Buttons follow button.
 	 *
 	 */
 	public function generate_buttons_HTML( ) {
-		$background = "background-color: $this->color_primary";
-		$border = "border: 1px solid $this->color_accent";
-		$href = $this->generate_follow_link();
-
 		return
 <<<BUTTON
-<a target="_blank" href="{$href}">
-	<div class="swfw-follow-button buttons $this->key" style="$background; $border">
+<a target="_blank" href="{$this->href}">
+	<div class="swfw-follow-button buttons $this->key" style="$this->background; $this->border">
 		<div class='swfw-network-icon'>
 			{$this->icon_svg}
 		</div>
