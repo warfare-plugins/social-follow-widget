@@ -1,17 +1,21 @@
 <?php
 /**
  * Helper methods for getting, updating, and storing data.
- * 
+ *
  */
 class SWFW_Utility {
 
 	/**
 	 * The plugins data stored in wp_options.
 	 *
-	 * The contents are network counts and a timestamp.
-	 * $options = array( 'last_updated' => 3481834, 'pinterest' => 1231, 'facebook' => 3851 );
+	 * Contains network counts and a last_updated timestamp.
+	 * An example:
+	 * array(
+	 *     'last_updated' => 3481834,
+	 *     'pinterest_follow_count' => 1231,
+	 *     'facebook_follow_count' => 3851 );
 	 *
-	 * Settings are otherwise already managed by the WP_Widget for each instance
+	 * Settings are otherwise automatically managed by WP_Widget for each instance
 	 * of Social_Warfare_Follow_Widget.
 	 *
 	 * @var array $options
@@ -23,6 +27,7 @@ class SWFW_Utility {
 	/**
 	 * Fetches an option if it exists.
 	 *
+	 * @since  1.0.0 | 03 JAN 2018 | Created.
 	 * @param  string $key The target data.
 	 * @return mixed The value if it exists, else bool `false`.
 	 *
@@ -40,7 +45,14 @@ class SWFW_Utility {
 	}
 
 
-
+	/**
+	 * Saves the new follow count.
+	 *
+	 * @since  1.0.0 | 03 JAN 2018 | Created.
+	 * @param  void
+	 * @return bool True iff the value in the database is changed; else false.
+	 *
+	 */
 	public static function save_follow_counts() {
 		$updated = update_option( 'swfw_options', self::$options, true );
 		SWFW_Cache::update_cache_timestamp();
@@ -93,7 +105,7 @@ class SWFW_Utility {
 
 
 	/**
-	 * Updates a optionsd item.
+	 * Stores data to the swfw_options column in the database. 
 	 *
 	 * @param  string $key The target data.
 	 * @return mixed The value if it exists, else bool `false`.
