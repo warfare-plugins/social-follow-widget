@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Helper methods for getting, updating, and storing data.
+ * 
+ */
 class SWFW_Utility {
 
 	/**
