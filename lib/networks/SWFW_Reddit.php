@@ -34,12 +34,11 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
-
-
 	}
 
+
 	public function do_api_request() {
-		return false;
+		$this->response = false;
 	}
 
 
@@ -52,6 +51,6 @@ class SWFW_Reddit extends SWFW_Follow_Network {
 	 *
 	 */
 	public function parse_api_response() {
-		return 0;
+		$this->follow_count = 0;
 	}
 }
