@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SWFW_Facebook
  *
@@ -8,7 +7,7 @@
  * @package   social-follow-widget
  * @copyright Copyright (c) 2019, Warfare Plugins, LLC
  * @license   GPL-3.0+
- * @since     1.0.0 | Created
+ * @since     1.0.0 | 15 DEC 2018 | Created.
  *
  */
 class SWFW_Facebook extends SWFW_Follow_Network {
@@ -48,50 +47,36 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 */
 	public function do_api_request() {
 		if ( !$this->auth_helper->has_credentials ) {
+			die('No facebook credentials to make request.');
 			return false;
 		}
 
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
 
-		/**
-		 * Work in progress below. Not complete.
-		 *
-		 */
-
-		// $endpoint = "/{$this->username}/fan_count";
-		$app_id = '2194481457470892';
-		$app_secret = base64_decode('OGQzZmZkYTUzYzBmY2EzNDNhNGQwOTMyZWIwMDYwMzc=');
-		$endpoint = "/{$this->username}/locations";
-
-		$access_token1 = $this->auth_helper->get_access_token();
-		$access_token2 = $app_id.'|'.$this->auth_helper->get_access_token();
-		$access_token3 = $app_id.'|'.$app_secret;
+			// WorkInProgress
+		session_start();
 
 		$fb = new Facebook\Facebook(array(
-			'app_id' => $app_id,
-			'app_secret' => $app_secret,
-			'default_graph_version' => 'v3.20',
+			'app_id' => '2194481457470892',
+			'app_secret' => '8d3ffda53c0fca343a4d0932eb006037',
 		));
 
 		try {
+		  // $response = $fb->get('/me', $accessToken); // works for $user_access_token
+		  $pageID = $this->username;
+		  $endpoint = "/$pageID/?fields=fan_count";
+		  $pageAccessToken = 'EAAfL3oe9HawBAFmQ0jZAPMJ93qswJaZCiLb97yZCLqQhtvhNZCgmNSKkxiEKTFP0obVBnlDkhfNCJE8hNWswZC2SmLS64BMVc4GZBfWgkHfvWSk5YdEQhBzYFBMhzgfIM67Qa44JV45AczhAt5ZArbLyMzFRHOpmZBKhyyaf7J8Nvk0gjssyx13s1CYhFauXKrjCjcolH1RyJgZDZD';
 
-		  // Returns a `Facebook\FacebookResponse` object
-		  $response = $fb->get('/'. $app_id.'/permissions', $access_token3 );
-		  // $response = $fb->get('/', $access_token3);
-		  echo 'Response from facebook: <pre>';
-		  die(var_dump($response));
+		  $response = $fb->get($endpoint, $pageAccessToken);
+		  $this->response = $response->getGraphNode();
 
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		  echo 'Graph returned an error: ' . $e->getMessage();
-		  exit;
+			$message = 'Graph returned an error: ' . $e->getMessage();
+			error_log($message);
 		} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		  exit;
+			$message = 'Facebook SDK returned an error: ' . $e->getMessage();
+			error_log($message);
 		}
-		$graphNode = $response->getGraphNode();
-		/* handle the result */
-
-		return '';
 	}
 
 	public function parse_api_response() {
