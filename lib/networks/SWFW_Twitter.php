@@ -68,8 +68,6 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			return false;
 		}
 
-		die(Var_dumP($response));
-
 		if ( is_array( $response->ids ) ) {
 			$this->follow_count += count( $response->ids);
 		}
