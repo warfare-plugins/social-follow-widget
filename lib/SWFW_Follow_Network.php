@@ -365,6 +365,7 @@ abstract class SWFW_Follow_Network {
 
 		$this->establish_display_settings();
 
+		// Create the callback function as a string, then call it. 
 		$generate_HTML = "generate_" . $shape . "_HTML";
 		return $this->$generate_HTML();
 	}
@@ -382,7 +383,7 @@ abstract class SWFW_Follow_Network {
 		$this->background = "background-color: $this->color_primary";
 		$this->border = "border: 1px solid $this->color_accent";
 		$this->href = $this->generate_follow_link();
-		
+
 	}
 
 
