@@ -25,6 +25,7 @@ class SWFW_Follow_Container {
 	 *
 	 */
 	public function __construct() {
+		//TODO Why is this hooked into the_content? 
 		add_filter('the_content', array( $this, 'render_html') );
 	}
 
