@@ -1,5 +1,5 @@
 <?php
-//Requires the parent class provided by Social Warfare (core).
+//Requires the parent class provided by Social Warfare.
 if (!class_exists( 'SWP_Widget' ) ) {
 	return;
 }
@@ -11,7 +11,7 @@ if (!class_exists( 'SWP_Widget' ) ) {
  * @package   	SocialWarfareFollowWidget
  * @copyright 	Copyright (c) 2019, Warfare Plugins, LLC
  * @license   	GPL-3.0+
- * @since 		1.0.0 | 15 DEC 2018 | Created. 
+ * @since 		1.0.0 | 15 DEC 2018 | Created.
  */
 class SWFW_Follow_Widget extends SWP_Widget {
 
@@ -189,7 +189,7 @@ FIELD;
 	/**
 	* Builds the front end display, including data passed in from `register_sidebar`
 	*
-	* `register_sidebar` could be called by the theme and pass in more data.
+	* `register_sidebar` could be called by the theme, which passes in more data.
 	*  This extra data is applied in parent::widget().
 	*
 	* @since  1.0.0 | 03 DEC 2018 | Created.
@@ -206,6 +206,7 @@ FIELD;
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$buttons = '';
 
+		// Build the network follow button.
 		foreach($networks as $network) {
 			if ( false == $network->is_active() ) {
 				continue;
@@ -227,10 +228,9 @@ FIELD;
 
 
 	/**
-	* Inhereted from WP_Widget. Handler for saving new settings.
+	* Inhereted from WP_Widget. By default it will always save changed settings.
 	*
-	* By default will always save changed settings.
-	* Please override in child class to filter and sanitize data.
+	*
 	*
 	* @since  1.0.0
 	* @access public
