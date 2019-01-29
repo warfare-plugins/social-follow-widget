@@ -9,7 +9,7 @@
  * @package   	SocialWarfareFollowWidget
  * @copyright 	Copyright (c) 2019, Warfare Plugins, LLC
  * @license  	GPL-3.0+
- * @since 		1.0.0 | 15 DEC 2018 | Created. 
+ * @since 		1.0.0 | 15 DEC 2018 | Created.
  *
  */
 abstract class SWFW_Follow_Network {
@@ -49,12 +49,7 @@ abstract class SWFW_Follow_Network {
 
 
 	/**
-	 * The snake_case name of the social network
-	 *
-	 * This is 'ugly name' of the network. This a snake_case key used for
-	 * the purpose of eliminating spaces so that we can save things in the
-	 * database and other such cool things.
-	 *
+	 * The snake_case name of the social network for unique identification.
 	 * @var string
 	 *
 	 */
@@ -62,10 +57,9 @@ abstract class SWFW_Follow_Network {
 
 
 	/**
-	 * The active status of this network
+	 * The active status of this network.
 	 *
-	 * If the user has this network activated on the options page, then this
-	 * property will be set to true. If not, it will be set to false.
+	 * True iff the user has this network activated in the widget, else false.
 	 *
 	 * @var bool
 	 *
@@ -76,23 +70,14 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * The URL for following a user on this network.
 	 *
-	 * This will allow us to generate the follow link for networks that only use just
-	 * one URL parameter, the URL to the post. This way we can use a boilerplate method
-	 * for generating the follow links here in the parent class and will only have to
-	 * overwrite that method in child classes that absolutely need it.
+	 * The URL should take you to the user's profile where a 'follow' button
+	 * exists nativley from the host network. No paramters are involved, but
+	 * there is often a varible ``$username` in the URL.
 	 *
 	 * @var string
 	 *
 	 */
 	public $url = '';
-
-
-	/**
-	 * Whether or not to show the share count for this network.
-	 * @var boolean $show_shares;
-	 *
-	 */
-	public $show_shares = false;
 
 
 	/**
@@ -131,7 +116,7 @@ abstract class SWFW_Follow_Network {
 	 * Apply network arguments to create $this.
 	 *
 	 * @since 1.0.0 | 26 NOV 2018 | Created.
-	 * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | applied in
+	 * @hook filter `swfw_follow_networks` | Array of SWFW_Follow_Network objects | @see SWFW_Follow_Widget.php
 	 * @return void
 	 *
 	 */
@@ -143,7 +128,7 @@ abstract class SWFW_Follow_Network {
 		 * To verify that all of the $required keys are provided,
 		 * we we remove it from the array once it is found.
 		 *
-		 * If any items remain in the array, this Network does not meet our
+		 * If any items remain in the array, the object does not meet the
 		 * requirements to be built.
 		 *
 		 */
@@ -164,10 +149,7 @@ abstract class SWFW_Follow_Network {
 		$this->establish_auth_helper();
 
 		if ( count( $required ) > 0 ) {
-			/**
-			 *  If all the required fields were not provided, we'll send a message and bail.
-			 *
-			 */
+			// If all the required fields were not provided, we'll send a message and bail.
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
 			foreach ( $required as $required_key ) {
 				error_log( $required_key );
@@ -180,7 +162,14 @@ abstract class SWFW_Follow_Network {
 
 
 	/**
-	 * Provides the link to make follow count requests.
+	 * Handles the network-specific request and performs the request.
+	 *
+	 * The response needs to be stored as a local member for
+	 * `$this->parse_api_response()`.
+	 *
+	 * Some networks, like Twitter, do all of the processing in this method
+	 * and only use parse_api_response because it is required. It is highly
+	 * dependent on how each network operates.
 	 *
 	 * @since  1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
@@ -194,6 +183,9 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * Decode the network-specific response to a useable format.
 	 *
+	 * After this has been called, the class member $follow_count is
+	 * ready for use.
+	 *
 	 * @since  1.0.0 | 16 JAN 2019 | Created.
 	 * @param void
 	 * @return mixed Often an object.
@@ -203,7 +195,9 @@ abstract class SWFW_Follow_Network {
 
 
 	/**
-	 * Decode the network-specific response to a useable format.
+	 * If the follow count has recently been updated, fetch the stored value.
+	 *
+	 * Else, run a new request and save those values.
 	 *
 	 * @since  1.0.0 | 28 JAN 2019 | Created.
 	 * @param void
@@ -233,7 +227,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	public function save_follow_count() {
-		// Networks that do not have count data need an integer.
+		// Networks that do not have count data still need an integer.
 		if ( empty( $this->follow_count) ) {
 			$this->follow_count = 0;
 		}
@@ -245,7 +239,7 @@ abstract class SWFW_Follow_Network {
 	/**
 	 * Fetches the stored username from the database, if it exists.
 	 *
-	 * Since there can be any number of copies of the same widget,
+	 * Since there can be multiple copies of the same widget,
 	 * we'll have to check each instance for the networks it uses.
 	 *
 	 * @since 3.5.0 | 03 JAN 2018 | Created.
@@ -266,6 +260,14 @@ abstract class SWFW_Follow_Network {
 	}
 
 
+	/**
+	 * Fetches the ready-to-render SVG for this network's icon.
+	 *
+	 * @since 3.5.0 | 15 JAN 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
 	protected function establish_icon() {
 		$icon_svg = SWP_SVG::get( $this->key );
 		if ( !empty( $icon_svg ) ) {
@@ -274,17 +276,23 @@ abstract class SWFW_Follow_Network {
 	}
 
 
+	/**
+	 * Insantiates the SWP_Auth_Helper for this network.
+	 *
+	 * The auth helper provides methods for getting a user's tokens and secrets.
+	 *
+	 * @since 3.5.0 | 15 JAN 2018 | Created.
+	 * @param void
+	 * @return void
+	 *
+	 */
 	protected function establish_auth_helper() {
+		// This should not be reached, but is a safety mechanism.
 		if ( !class_exists( 'SWP_Auth_Helper' ) ) {
-			/**
-			 * This should not be reached, but is a safety mechanism.
-			 */
 			return;
 		}
 
-		/**
-		 * There are no features for this network that require authorization.
-		 */
+		// There are no features for this network that require authorization.
 		if ( false == $this->needs_authorization ) {
 			return;
 		}
@@ -339,16 +347,15 @@ abstract class SWFW_Follow_Network {
 
 
 	/**
-	 * A controller for generating button html.
+	 * A controller for generating button HTML.
 	 *
 	 * This will read the user's options, and the apply the appropriate
 	 * callback method to generate a button of a particular shape.
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created.
 	 * @access public
-	 * @param  array $network_counts Associative array of 'network_key' => 'count_value'
-	 * @return array $array The modified array which will now contain the html for this button
-	 * @todo   Eliminate the array
+	 * @param  string $shape The button style to generate. Used to create a callback.
+	 * @return function The callback for the requested style.
 	 *
 	 */
 	function generate_frontend_HTML( $shape ) {
@@ -356,8 +363,8 @@ abstract class SWFW_Follow_Network {
 			return '';
 		}
 
-		$generate = "generate_" . $shape . "_HTML";
-		return $this->$generate();
+		$generate_HTML = "generate_" . $shape . "_HTML";
+		return $this->$generate_HTML();
 	}
 
 
