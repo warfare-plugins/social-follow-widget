@@ -24,13 +24,13 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 	 */
 	public function __construct() {
 		$network = array(
-			'key' => 'instagram',
-			'name' => 'Instagram',
-			'cta' => 'Follow',
-			'follow_description' => 'Followers',
-			'color_primary' => '#5851db',
-			'color_accent' => '#c13584',
-			'url'	=> 'https://instagram.com/swfw_username',
+			'key'                 => 'instagram',
+			'name'                => 'Instagram',
+			'cta'                 => 'Follow',
+			'follow_description'  => 'Followers',
+			'color_primary'       => '#5851db',
+			'color_accent'        => '#c13584',
+			'url'                 => 'https://instagram.com/swfw_username',
 			'needs_authorization' => true
 		);
 		parent::__construct( $network );
@@ -49,9 +49,9 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 		$access_token = $this->auth_helper->get_access_token();
 
 		if ( false == $access_token ) {
-			return false;
+			return $this->response = false;
 		}
-		
+
 		$url = 'https://api.instagram.com/v1/users/self?access_token='.$access_token;
 		$this->response = SWP_CURL::file_get_contents_curl( $url );
 	}
@@ -64,10 +64,14 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 	 * @param void
 	 * @return int The follow count provided by Pinterest, or 0.
 	 *
+	 *
+	 * 57
+	 *
+	 *
 	 */
 	public function parse_api_response() {
 		if ( empty( $this->response ) ) {
-			return 0;
+			return $this->follow_count = 0;
 		}
 
 		$this->response = json_decode( $this->response );
@@ -80,25 +84,7 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 			return false;
 		}
 
-		return $this->response->data->counts->followed_by;
+		return $this->follow_count = $this->response->data->counts->followed_by;
 	}
 
-
-	/**
-	 * Creates the sha256 signature required for the Instagram request.
-	 *
-	 * @param  string $endpoint [description]
-	 * @param  array $params   [description]
-	 * @param  string $secret   [description]
-	 * @return string           The encoded signature.
-	 *
-	 */
-	private function generate_sig($endpoint, $params, $secret) {
-		  $sig = $endpoint;
-		  ksort($params);
-		  foreach ($params as $key => $val) {
-			$sig .= "|$key=$val";
-		  }
-		  return hash_hmac('sha256', $sig, $secret, false);
-	}
 }
