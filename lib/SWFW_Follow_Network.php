@@ -142,12 +142,6 @@ abstract class SWFW_Follow_Network {
 			$this->$key = $value;
 		}
 
-		$this->network = $this->key;
-
-		$this->establish_icon();
-		$this->establish_username();
-		$this->establish_auth_helper();
-
 		if ( count( $required ) > 0 ) {
 			// If all the required fields were not provided, we'll send a message and bail.
 			error_log("SWFW_Follow_Network requires these keys when constructing, which you are missing: ");
@@ -156,6 +150,13 @@ abstract class SWFW_Follow_Network {
 			}
 			return;
 		}
+
+		$this->network = $this->key;
+
+		$this->establish_icon();
+		$this->establish_username();
+		$this->establish_auth_helper();
+
 
 		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
 	}
@@ -365,7 +366,7 @@ abstract class SWFW_Follow_Network {
 
 		$this->establish_display_settings();
 
-		// Create the callback function as a string, then call it. 
+		// Create the callback function as a string, then call it.
 		$generate_HTML = "generate_" . $shape . "_HTML";
 		return $this->$generate_HTML();
 	}
