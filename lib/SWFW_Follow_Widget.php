@@ -182,6 +182,7 @@ FIELD;
 	 *
 	 */
 	function generate_widget_title( $title ) {
+		// @todo Ensure the WP best practice for what tag to use on widget titles.
 		return "<h4>$title</h4>";
 	}
 
@@ -213,13 +214,22 @@ FIELD;
 			}
 
 			$key = $network->key.'_username';
+
+			/**
+			 * Each network is responsible for its own fetching and processing.
+			 * If the value is fresh we already have it.
+			 * Else, the network makes a new request.
+			 *
+			 * In the case of new requests, do them all THEN save the results.
+			 *
+			 */
 			$network->fetch_follow_count();
 
-			if ( false == SWFW_Cache::is_cache_fresh() ) {
-				SWFW_Utility::save_follow_counts();
-			}
-
 			$buttons .= $network->generate_frontend_HTML( $shape );
+		}
+
+		if ( false == SWFW_Cache::is_cache_fresh() ) {
+			SWFW_Utility::save_follow_counts();
 		}
 
 		$html .= $buttons;
@@ -229,8 +239,6 @@ FIELD;
 
 	/**
 	* Inhereted from WP_Widget. By default it will always save changed settings.
-	*
-	*
 	*
 	* @since  1.0.0
 	* @access public
