@@ -39,7 +39,7 @@ class SWFW_Cache {
 	/**
 	 * Updates the follow counts in the database and the last_updated timestamp.
 	 *
-	 * @param  array $counts The ['network_key' => (int) follow_count] data.
+	 * @param  array $counts Looks like: array('network_key' => (int) follow_count)
 	 * @return bool  True iff the counts were updated, else false.
 	 *
 	 */
