@@ -55,11 +55,15 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		$page_access_token = SWP_Credential_Helper::get_token( 'page_access_token' );
 
 		if ( false == $page_access_token ) {
-			$this->do_page_token_request();
+			$page_access_token = $this->do_page_token_request();
+
+			if ( false == $page_access_token ) {
+				error_log( 'SWFW_Facebook::do_page_token_request() could not successfully request a token from Facebook for username ' . $this->username .'.');
+				return $this->response = false;
+			}
 		}
 
 		try {
-		  // $response = $fb->get('/me', $accessToken); // works for $user_access_token
 		  $pageID = $this->username;
 		  $endpoint = "/$pageID/?fields=fan_count";
 		  $pageAccessToken = 'EAAfL3oe9HawBAFmQ0jZAPMJ93qswJaZCiLb97yZCLqQhtvhNZCgmNSKkxiEKTFP0obVBnlDkhfNCJE8hNWswZC2SmLS64BMVc4GZBfWgkHfvWSk5YdEQhBzYFBMhzgfIM67Qa44JV45AczhAt5ZArbLyMzFRHOpmZBKhyyaf7J8Nvk0gjssyx13s1CYhFauXKrjCjcolH1RyJgZDZD';
