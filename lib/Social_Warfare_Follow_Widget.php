@@ -88,7 +88,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 */
 	public function init_networks() {
 		$networks = array(
-			// 'Facebook',
+			'Facebook',
 			'Pinterest',
 			'Reddit',
 			'Twitter',
