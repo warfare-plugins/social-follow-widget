@@ -82,10 +82,14 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	}
 
 	public function parse_api_response() {
-		$this->follow_count = 0;
+		if ( empty ( $this->response ) ) {
+			return $this->follow_count = 0;
+		}
 
-		if ( !empty( $this->response->fan_count ) ) {
-			$this->follow_count = $this->response->fan_count;
+		$fan_count = $this->response->getField('fan_count');
+
+		if ( !empty( $fan_count ) ) {
+			$this->follow_count = $fan_count;
 		}
 
 		return $this->follow_count;
@@ -94,6 +98,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	protected function establish_client() {
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
 		session_start();
+
 		$this->client = new Facebook\Facebook(array(
 			'app_id'     => '2194481457470892',
 			'app_secret' => '8d3ffda53c0fca343a4d0932eb006037',
