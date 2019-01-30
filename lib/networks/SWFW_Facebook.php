@@ -34,6 +34,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
+
 	}
 
 
@@ -49,6 +50,12 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		if ( !$this->auth_helper->has_credentials ) {
 			die('No facebook credentials to make request.');
 			return false;
+		}
+
+		$page_access_token = SWP_Credential_Helper::get_token( 'page_access_token' );
+
+		if ( false == $page_access_token ) {
+			$this->do_page_token_request();
 		}
 
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
@@ -83,4 +90,30 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 
 	}
 
+
+	// Uses the $user_access_token to get the page_access_token.
+	// return false or $page_access_token
+	protected function do_page_token_request() {
+		$endpoint = "{$this->username}?fields=access_token";
+
+		try {
+		   $response = $this->client->get($endpoint);
+		   $node = $response->getGraphNode();
+
+		   if ( !empty( $node->access_token ) ) {
+			   $page_access_token = $node->access_token;
+			   SWP_Credential_Helper::store_data( 'facebook', 'page_access_token', $page_access_token );
+			   return $page_access_token;
+		   }
+
+		} catch(Facebook\Exceptions\FacebookResponseException $e) {
+			$message = 'Graph returned an error: ' . $e->getMessage();
+			error_log($message);
+		} catch(Facebook\Exceptions\FacebookSDKException $e) {
+			$message = 'Facebook SDK returned an error: ' . $e->getMessage();
+			error_log($message);
+		}
+
+		return false;
+	}
 }
