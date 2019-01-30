@@ -23,13 +23,13 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 */
 	public function __construct() {
 		$network = array(
-			'key' =>  'facebook',
-			'name' =>  'Facebook',
-			'cta' =>  'Like',
-			'follow_description' =>  'Fans',
-			'color_primary' =>  '#3A589E',
-			'color_accent' =>  '#314E84',
-			'url'	=> 'https://facebook.com/swfw_username',
+			'key'                 => 'facebook',
+			'name'                => 'Facebook',
+			'cta'                 => 'Like',
+			'follow_description'  => 'Fans',
+			'color_primary'       => '#3A589E',
+			'color_accent'        => '#314E84',
+			'url'                 => 'https://facebook.com/swfw_username',
 			'needs_authorization' => true
 		);
 
@@ -67,7 +67,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		}
 
 		try {
-		  $pageID = $this->username;
+		  $pageID   = $this->username;
 		  $endpoint = "/$pageID/?fields=fan_count";
 		  $response = $this->client->get($endpoint, $page_access_token);
 		  $this->response = $response->getGraphNode();
@@ -95,7 +95,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
 		session_start();
 		$this->client = new Facebook\Facebook(array(
-			'app_id' => '2194481457470892',
+			'app_id'     => '2194481457470892',
 			'app_secret' => '8d3ffda53c0fca343a4d0932eb006037',
 		));
 
