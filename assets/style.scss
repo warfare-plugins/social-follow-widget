@@ -270,6 +270,13 @@ $black: #030303;
 /// Backend Style
 **/
 
+.swp-revoke-button,
+.swp-authorization-button {
+	width: 70%;
+	text-align: center;
+	max-width: 200px;
+}
+
 .swfw-input-field,
 .swfw-follow-field {
 	display: flex;
