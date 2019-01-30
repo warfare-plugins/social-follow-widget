@@ -55,7 +55,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 			return false;
 		}
 
-		$page_access_token = SWP_Credential_Helper::get_token( 'page_access_token' );
+		$page_access_token = SWP_Credential_Helper::get_token( 'facebook', 'page_access_token' );
 
 		if ( false == $page_access_token ) {
 			$page_access_token = $this->do_page_token_request();
