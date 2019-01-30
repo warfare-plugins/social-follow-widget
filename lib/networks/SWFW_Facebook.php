@@ -79,7 +79,13 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	}
 
 	public function parse_api_response() {
+		$this->follow_count = 0;
 
+		if ( !empty( $this->response->fan_count) ) {
+			$this->follow_count = $this->response->fan_count;
+		}
+
+		return $this->follow_count;
 	}
 
 	protected function establish_client() {
