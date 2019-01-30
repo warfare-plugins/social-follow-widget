@@ -72,10 +72,10 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		  $response = $this->client->get($endpoint, $page_access_token);
 		  $this->response = $response->getGraphNode();
 
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
+		} catch( Facebook\Exceptions\FacebookResponseException $e ) {
 			$message = 'Graph returned an error: ' . $e->getMessage();
 			error_log($message);
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
+		} catch( Facebook\Exceptions\FacebookSDKException $e ) {
 			$message = 'Facebook SDK returned an error: ' . $e->getMessage();
 			error_log($message);
 		}
@@ -84,7 +84,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	public function parse_api_response() {
 		$this->follow_count = 0;
 
-		if ( !empty( $this->response->fan_count) ) {
+		if ( !empty( $this->response->fan_count ) ) {
 			$this->follow_count = $this->response->fan_count;
 		}
 
@@ -106,15 +106,14 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	// Uses the $user_access_token to get the page_access_token.
 	// return false or $page_access_token
 	protected function do_page_token_request() {
-		$endpoint = "{$this->username}?fields=access_token";
+		$endpoint = "/{$this->username}?fields=access_token";
 
 		try {
 			$access_token = $this->auth_helper->get_access_token();
-			$response = $this->client->get($endpoint, $access_token);
+			$response = $this->client->get( $endpoint, $access_token );
 			$node = $response->getGraphNode();
-
-			if ( !empty( $node->access_token ) ) {
-				$page_access_token = $node->access_token;
+			$page_access_token = $node->getField('access_token');
+			if ( !empty( $page_access_token ) ) {
 				SWP_Credential_Helper::store_data( 'facebook', 'page_access_token', $page_access_token );
 				return $page_access_token;
 			}
@@ -122,11 +121,11 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		   $message = 'SWFW_Facebook::do_page_token_request() could not successfully request a token from Facebook for username ' . $this->username . '.';
 		}
 
-		catch(Facebook\Exceptions\FacebookResponseException $e) {
+		catch( Facebook\Exceptions\FacebookResponseException $e ) {
 			$message = 'Graph returned an error: ' . $e->getMessage();
 		}
 
-		catch(Facebook\Exceptions\FacebookSDKException $e) {
+		catch( Facebook\Exceptions\FacebookSDKException $e ) {
 			$message = 'Facebook SDK returned an error: ' . $e->getMessage();
 		}
 
