@@ -37,8 +37,8 @@ class SWFW_Utility {
 			self::get_options();
 		}
 
-		if ( isset( $options[$key] ) ) {
-			return $options[$key];
+		if ( isset( self::$options[$key] ) ) {
+			return self::$options[$key];
 		}
 
 		return false;
@@ -105,7 +105,7 @@ class SWFW_Utility {
 
 
 	/**
-	 * Stores data to the swfw_options column in the database. 
+	 * Stores data to the swfw_options column in the database.
 	 *
 	 * @param  string $key The target data.
 	 * @return mixed The value if it exists, else bool `false`.
