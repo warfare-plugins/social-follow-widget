@@ -53,14 +53,39 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			return false;
 		}
 
-		// Only pass in `id` for `fields` parameter to reduce the Pinterest query.
-		$url = 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id';
-		$this->response = SWP_CURL::file_get_contents_curl( $url );
+		$follow_count = 0;
+
+
+		/**
+		 *  Only pass in `id` for `fields` parameter to reduce the Pinterest
+		 *  query, and bump the default `limit` from 25 to 100.
+		 *
+		 */
+		$url = 'https://api.pinterest.com/v1/me/followers/?access_token='.$access_token.'&fields=id&limit=100';
+
+		// If there are more than 100 followers, keep requesting until we get them all.
+		do {
+			$encoded_response = SWP_CURL::file_get_contents_curl( $url );
+			$response = json_decode( $encoded_response );
+			if ( !empty( $this->response->data ) && is_array( $this->response->data) ) {
+				$follow_count += count( $this->response->data );
+			}
+
+			// Get the next URL for the next 100 followers.
+			if ( !empty ($response->page ) && !empty( $response->page->next ) ) {
+				$url = $response->page->next;
+			}
+		} while ( !empty( $response->page ) && !empty( $response->page->next ) );
+
+		$this->follow_count = $follow_count;
 	}
 
 
 	/**
 	 * Pinterest-specific response handling.
+	 *
+	 * Since the API requests may be run in multiple calls, they are all handled
+	 * in teh do_api_request method and the sum of counts already processed.
 	 *
 	 * @since 1.0.0 | 15 JAN 2019 | Created.
 	 * @param void
@@ -68,16 +93,6 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 	 *
 	 */
 	public function parse_api_response() {
-		if ( empty( $this->response ) ) {
-			return 0;
-		}
-
-		$this->response = json_decode( $this->response );
-
-		if ( empty( $this->response->data || !is_array( $this->response->data) ) ) {
-			return 0;
-		}
-
-		return count( $this->response->data );
+		return $this->follow_count;
 	}
 }
