@@ -75,6 +75,9 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 */
 	public function load_assets() {
 		wp_enqueue_style( 'swfw-style', SWFW_PLUGIN_URL . '/assets/style.css' );
+		if (is_admin() ){
+			wp_enqueue_script( 'swfw-script', SWFW_PLUGIN_URL . '/assets/widget.js' );
+		}
 	}
 
 
