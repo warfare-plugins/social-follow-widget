@@ -158,11 +158,12 @@ SELECT;
 			$wp_id = $this->get_field_id( $key );
 			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
+			$class = $network->is_active() ? 'swfw-active ' : '';
 			$placeholder = isset( $this->placeholder ) ? $this->placeholder : 'Username';
 			$field =
 <<<FIELD
-<div class="swfw-follow-field">
-	<div class="swfw-follow-field-icon">{$network->icon_svg}</div>
+<div class="swfw-follow-field $class" data-color-primary="{$network->color_primary}" data-color-accent="{$network->color_accent}" data-url="{$network->get_generic_link()}">
+	<a href="#" class="swfw-follow-field-icon" target="_blank">{$network->icon_svg}</a>
 	<label for="$wp_id">$network->name</label>
 	<input id="$wp_id" name="$wp_name" type="text" placeholder="$placeholder" value="$value"/>
 </div>
