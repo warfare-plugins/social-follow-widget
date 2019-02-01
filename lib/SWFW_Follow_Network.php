@@ -205,8 +205,7 @@ abstract class SWFW_Follow_Network {
 	 * @return mixed Often an object.
 	 *
 	 */
-	public function fetch_follow_count() {
-
+	public function establish_follow_count() {
 		if ( false == SWFW_Cache::is_cache_fresh() ) {
 			$this->do_api_request();
 			$this->parse_api_response();
@@ -215,7 +214,7 @@ abstract class SWFW_Follow_Network {
 		}
 
 		$key = "{$this->key}_follow_count";
-		return $this->follow_count = SWFW_Utility::get_option( $key );
+		$this->follow_count = SWFW_Utility::get_option( $key );
 	}
 
 
@@ -364,6 +363,15 @@ abstract class SWFW_Follow_Network {
 			return '';
 		}
 
+		/**
+		 * Each network is responsible for its own fetching and processing.
+		 * If the value is fresh we already have it.
+		 * Else, the network makes a new request.
+		 *
+		 * In the case of new requests, do them all THEN save the results.
+		 *
+		 */
+		$this->establish_follow_count();
 		$this->establish_display_settings();
 
 		// Create the callback function as a string, then call it.
