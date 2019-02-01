@@ -323,13 +323,25 @@ abstract class SWFW_Follow_Network {
 	 * Replaces the placeholder text 'swfw_username' with the actual username.
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created.
-	 * @hook   filter| swp_follow_networks | Applied in SWFW_Follow_Widget
 	 * @param void
 	 * @return string A URL which goes to the 'Follow' page for this network.
 	 *
 	 */
 	function generate_follow_link() {
 		return str_replace( 'swfw_username', $this->username, $this->url);
+	}
+
+
+	/**
+	 * Gets the follow link with `swfw_username` instead of a real username.
+	 *
+	 * @since  1.0.0 | 31 Jan 2019 | Created.
+	 * @param void
+	 * @return string A URL which goes to the 'Follow' page for this network.
+	 *
+	 */
+	function get_generic_link() {
+		return $this->url;
 	}
 
 
