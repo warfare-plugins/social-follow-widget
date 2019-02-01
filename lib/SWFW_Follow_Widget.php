@@ -214,17 +214,6 @@ FIELD;
 			}
 
 			$key = $network->key.'_username';
-
-			/**
-			 * Each network is responsible for its own fetching and processing.
-			 * If the value is fresh we already have it.
-			 * Else, the network makes a new request.
-			 *
-			 * In the case of new requests, do them all THEN save the results.
-			 *
-			 */
-			$network->fetch_follow_count();
-
 			$buttons .= $network->generate_frontend_HTML( $shape );
 		}
 
