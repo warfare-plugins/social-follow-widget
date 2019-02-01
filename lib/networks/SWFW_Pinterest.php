@@ -36,6 +36,7 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 		);
 
 		parent::__construct( $network );
+
 	}
 
 
@@ -65,10 +66,12 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 
 		// If there are more than 100 followers, keep requesting until we get them all.
 		do {
+			echo 'looking at pin';
 			$encoded_response = SWP_CURL::file_get_contents_curl( $url );
 			$response = json_decode( $encoded_response );
-			if ( !empty( $this->response->data ) && is_array( $this->response->data) ) {
-				$follow_count += count( $this->response->data );
+
+			if ( !empty( $response->data ) && is_array( $response->data) ) {
+				$follow_count += count( $response->data );
 			}
 
 			// Get the next URL for the next 100 followers.
