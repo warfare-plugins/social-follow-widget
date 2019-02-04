@@ -26,11 +26,11 @@
 		setTimeout(function() {
 			var css = {}
 			if (followField.hasClass("swfw-active")) {
-				css.color = "white";
 				css.backgroundColor = followField.data("color-primary")
+				css.stroke = "white";
 			}
 			else {
-				css.color = "black";
+				css.stroke = "black";
 				css.backgroundColor = "white";
 			}
 			icon.css(css);
@@ -61,6 +61,12 @@
 			updateURL(followField);
 			updateColor(followField);
 		});
+
+		followField.children("a").on("click", function(event) {
+			if (currentValue.length == 0) {
+				return event.preventDefault();
+			}
+		})
 	}
 
 	function updateURL(followField) {
@@ -83,7 +89,7 @@
 
 	$(document).ready(function() {
 
-
+		// The widget area re-loads by ajax, which resets JS data.
 		$(".widget-control-save").on("click", function() {
 			setTimeout(function() {
 				triggerUpdates();
