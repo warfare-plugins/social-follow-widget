@@ -28,8 +28,8 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 			'name'                => 'Instagram',
 			'cta'                 => 'Follow',
 			'follow_description'  => 'Followers',
-			'color_primary'       => '#405de6',
-			'color_accent'        => '#5851db',
+			'color_primary'       => '#e4405f',
+			'color_accent'        => '#da3075',
 			'url'                 => 'https://instagram.com/swfw_username',
 			'needs_authorization' => true
 		);
