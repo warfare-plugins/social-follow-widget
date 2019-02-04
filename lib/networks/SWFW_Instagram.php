@@ -54,6 +54,7 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 
 		$url = 'https://api.instagram.com/v1/users/self?access_token='.$access_token;
 		$this->response = SWP_CURL::file_get_contents_curl( $url );
+		error_log('Response for Instagram with username ' . $this->username . ': ' . var_export( $this->response, 1));
 	}
 
 

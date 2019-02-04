@@ -68,6 +68,7 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		$tumblr->setToken( $access_token, $access_secret );
 
 		$this->response = $tumblr->getUserInfo();
+		error_log('Response for Tumblr with username ' . $this->username . ': ' . var_export( $this->response, 1));
 	}
 
 

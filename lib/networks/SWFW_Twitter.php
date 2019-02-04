@@ -86,6 +86,8 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			}
 
 		} while ( !empty( $next_cursor ) && $response->next_cursor != 0 );
+		error_log('Response for Twiter with username ' . $this->username . ': ' . var_export( $response, 1));
+
 	}
 
 

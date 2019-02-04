@@ -64,6 +64,7 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 		$url = "https://api.vimeo.com/users/{$this->username}/followers";
 		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
 		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
+		error_log('Response for Vimeo with username ' . $this->username . ': ' . var_export( $this->response, 1));
 	}
 
 
