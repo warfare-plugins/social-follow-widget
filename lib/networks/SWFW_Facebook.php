@@ -36,8 +36,6 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		parent::__construct( $network );
 		$this->establish_client();
 
-		// $this->do_api_request();
-		// die(Var_dump($this->parse_api_response()));
 	}
 
 
@@ -51,7 +49,6 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 */
 	public function do_api_request() {
 		if ( !$this->auth_helper->has_credentials ) {
-			die('No facebook credentials to make request.');
 			return false;
 		}
 

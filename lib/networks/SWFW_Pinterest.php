@@ -56,7 +56,6 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 
 		$follow_count = 0;
 
-
 		/**
 		 *  Only pass in `id` for `fields` parameter to reduce the Pinterest
 		 *  query, and bump the default `limit` from 25 to 100.
@@ -66,7 +65,6 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 
 		// If there are more than 100 followers, keep requesting until we get them all.
 		do {
-			echo 'looking at pin';
 			$encoded_response = SWP_CURL::file_get_contents_curl( $url );
 			$response = json_decode( $encoded_response );
 
