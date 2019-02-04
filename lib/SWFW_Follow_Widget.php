@@ -158,7 +158,7 @@ SELECT;
 			$wp_id = $this->get_field_id( $key );
 			$wp_name = $this->get_field_name( $key );
 			$value = isset( $settings[$key]) ? $settings[$key] : '';
-			$class = $network->is_active() ? 'swfw-active ' : '';
+			$class = $network->is_active() ? 'swfw-active ' : 'swfw-inactive';
 			$placeholder = isset( $this->placeholder ) ? $this->placeholder : 'Username';
 			$field =
 <<<FIELD
