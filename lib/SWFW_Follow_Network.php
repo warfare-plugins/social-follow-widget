@@ -214,7 +214,8 @@ abstract class SWFW_Follow_Network {
 		}
 
 		$key = "{$this->key}_follow_count";
-		$this->follow_count = SWFW_Utility::get_option( $key );
+		$follow_count = SWFW_Utility::get_option( $key );
+		$this->follow_count = SWP_Utility::kilomega( $follow_count );
 	}
 
 
