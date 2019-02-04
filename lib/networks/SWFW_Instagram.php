@@ -71,7 +71,7 @@ class SWFW_Instagram extends SWFW_Follow_Network {
 	 */
 	public function parse_api_response() {
 		if ( empty( $this->response ) ) {
-			return $this->follow_count = 0;
+			return $this->follow_count = "000";
 		}
 
 		$this->response = json_decode( $this->response );

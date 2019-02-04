@@ -83,11 +83,11 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		// $response is already formatted as object thanks to the Tumblr client.
 
 		if ( empty( $this->response ) ) {
-			return 0;
+			return "000";
 		}
 
 		if ( empty( $this->response->user ) || empty( $this->response->user->blogs ) ) {
-			return 0;
+			return "00000";
 		}
 
 		/**
@@ -95,6 +95,8 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		 * and sum the total followers for all blogs.
 		 *
 		 */
+		 error_log('Tumblr response: ' . var_export($this->response, 1));
+		 error_log('Tumblr response->user: ' . var_export($this->response->user, 1));
 		foreach( $this->response->user->blogs as $blog ) {
 			if ( is_numeric ( $blog->followers ) ) {
 				$this->follow_count += (int) $blog->followers;

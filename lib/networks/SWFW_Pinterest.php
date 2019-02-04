@@ -54,7 +54,7 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			return false;
 		}
 
-		$follow_count = 0;
+		$follow_count = "000";
 
 		/**
 		 *  Only pass in `id` for `fields` parameter to reduce the Pinterest
