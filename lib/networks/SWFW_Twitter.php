@@ -60,17 +60,6 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 		$consumer_secret = SWP_Credential_Helper::get_token('twitter', 'access_secret');
 
 		$connection = new Abraham\TwitterOAuth\TwitterOAuth($swp_api_key, $swp_api_secret, $consumer_access_token, $consumer_secret);
-		$cursor = -1; // See note below
-		$params = array( 'screen_name' => $this->username, 'cursor' => $cursor );
-		$response = $connection->get('followers/ids', $params);
-
-		if ( isset( $response->errors ) ) {
-			return false;
-		}
-
-		if ( is_array( $response->ids ) ) {
-			$this->follow_count += count( $response->ids);
-		}
 
 
 		/**
@@ -81,16 +70,22 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 		 * When there are no more pages, 'next_cursor' == 0.
 		 *
 		 */
-		while ( !empty( $next_cursor ) && $response->next_cursor != 0 ) {
-
-			$params['cursor'] = $response->next_cursor;
-
+		do {
+			$next_cursor = !empty( $response ) ? $response->next_cursor : -1;
+			$params = array( 'screen_name' => $this->username, 'cursor' => $next_cursor );
 			$response = $connection->get('followers/ids', $params);
 
-			if ( is_array( $response->ids) ) {
+			if ( isset( $response->errors ) ) {
+				error_log('SWFW error making Twitter request: ' . var_export($repsonse->errors));
+				return false;
+			}
+
+			if ( is_array( $response->ids ) ) {
+				// Followers are listed as an array of user ids. Count them.
 				$this->follow_count += count( $response->ids);
 			}
-		}
+
+		} while ( !empty( $next_cursor ) && $response->next_cursor != 0 );
 	}
 
 
@@ -104,7 +99,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 */
 	public function parse_api_response() {
 		if ( empty( $this->follow_count ) ) {
-			return 0;
+			return "000";
 		}
 
 		return $this->follow_count;
