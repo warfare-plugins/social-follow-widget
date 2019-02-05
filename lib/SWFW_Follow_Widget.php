@@ -166,7 +166,7 @@ SELECT;
 			$field       =
 <<<FIELD
 <div class="swfw-follow-field $class" data-color-primary="{$network->color_primary}" data-color-accent="{$network->color_accent}" data-url="{$network->get_generic_link()}">
-	<a href="#" class="swfw-follow-field-icon" target="_blank">{$network->icon_svg}</a>
+	<a href="#" class="swfw-follow-field-icon" target="_blank"><i class="sw swp_{$network->key}_icon"></i></a>
 	<label for="$wp_id">$network->name</label>
 	<input id="$wp_id" name="$wp_name" type="text" placeholder="$placeholder" value="$value"/>
 </div>

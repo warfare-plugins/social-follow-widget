@@ -98,10 +98,10 @@ abstract class SWFW_Follow_Network {
 
 	/**
 	 * The ready to print <svg/> for the network icon.
-	 * @var string $icon_svg
+	 * @var string $icon
 	 *
 	 */
-	public $icon_svg = '';
+	public $icon = '<i/>';
 
 
 	/**
@@ -270,10 +270,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	protected function establish_icon() {
-		$icon_svg = SWP_SVG::get( $this->key );
-		if ( !empty( $icon_svg ) ) {
-			$this->icon_svg = $icon_svg;
-		}
+		$this->icon = "<i class='sw swp_{$this->key}_icon'>";
 	}
 
 
@@ -432,7 +429,7 @@ abstract class SWFW_Follow_Network {
 <a target="_blank" href="{$this->href}">
 	<div class="swfw-follow-button swfw_square $this->key" style="$this->border; $this->background">
 		<div class='swfw-network-icon'>
-			{$this->icon_svg}
+			{$this->icon}
 		</div>
 
 		<div class="swfw-text">
@@ -459,7 +456,7 @@ BUTTON;
 <<<BUTTON
 <div class="swfw-follow-button $shape $this->key" style="$this->background; $this->border">
 	<div class='swfw-network-icon'>
-		{$this->icon_svg}
+		{$this->icon}
 	</div>
 
 	<div class="swfw-text">
@@ -488,7 +485,7 @@ BUTTON;
 <a target="_blank" href="{$this->href}">
 	<div class="swfw-follow-button swfw_buttons $this->key" style="$this->background; $this->border">
 		<div class='swfw-network-icon'>
-			{$this->icon_svg}
+			{$this->icon}
 		</div>
 
 		<div class="swfw-text">
