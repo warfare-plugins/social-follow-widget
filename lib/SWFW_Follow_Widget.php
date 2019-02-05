@@ -103,18 +103,21 @@ TITLE;
 	 *
 	 */
 	function generate_shape_select($selection) {
-		$wp_id = $this->get_field_id( 'shape' );
+		$wp_id   = $this->get_field_id( 'shape' );
 		$wp_name = $this->get_field_name( 'shape' );
 
 		$opts = array(
-			'square'	=> 'Square',
-			'block'	=> 'Block',
-			'buttons'	=> 'Buttons'
+			'square'  => 'Square',
+			'block'   => 'Block',
+			'buttons' => 'Buttons',
+			'leaf'    => 'Leaf in the wind',
+			'shift'   => 'Shift',
+			'pill'   => 'Pills'
 		);
 
 		$options_html = '';
 		foreach($opts as $key => $name) {
-			$selected = selected($selection, $key, false);
+			$selected      = selected($selection, $key, false);
 			$options_html .= "<option value='$key' $selected>$name</option>";
 		}
 
@@ -154,13 +157,13 @@ SELECT;
 		$html .= $this->generate_shape_select($settings['shape']);
 
 		foreach( $networks as $network ) {
-			$key = $network->key . '_username';
-			$wp_id = $this->get_field_id( $key );
-			$wp_name = $this->get_field_name( $key );
-			$value = isset( $settings[$key]) ? $settings[$key] : '';
-			$class = $network->is_active() ? 'swfw-active ' : 'swfw-inactive';
+			$key         = $network->key . '_username';
+			$wp_id       = $this->get_field_id( $key );
+			$wp_name     = $this->get_field_name( $key );
+			$value       = isset( $settings[$key]) ? $settings[$key] : '';
+			$class       = $network->is_active() ? 'swfw-active ' : 'swfw-inactive';
 			$placeholder = isset( $this->placeholder ) ? $this->placeholder : 'Username';
-			$field =
+			$field       =
 <<<FIELD
 <div class="swfw-follow-field $class" data-color-primary="{$network->color_primary}" data-color-accent="{$network->color_accent}" data-url="{$network->get_generic_link()}">
 	<a href="#" class="swfw-follow-field-icon" target="_blank">{$network->icon_svg}</a>
@@ -183,7 +186,6 @@ FIELD;
 	 *
 	 */
 	function generate_widget_title( $title ) {
-		// @todo Ensure the WP best practice for what tag to use on widget titles.
 		return "<h4>$title</h4>";
 	}
 
@@ -202,8 +204,13 @@ FIELD;
 	*
 	*/
 	function generate_widget_HTML( $settings ) {
-		$shape = $settings['shape'];
-		$html = "<div class='swfw-follow-container $shape'>";
+		$container_shape = $settings['shape'];
+		$style_variations_block = array('block', 'pill', 'shift', 'leaf' );
+		if ( in_array( $container_shape, $style_variations_block ) ) {
+			$container_shape = 'block';
+		}
+
+		$html = "<div class='swfw-follow-container $container_shape'>";
 
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$buttons = '';
@@ -215,7 +222,7 @@ FIELD;
 			}
 
 			$key = $network->key.'_username';
-			$buttons .= $network->generate_frontend_HTML( $shape );
+			$buttons .= $network->generate_frontend_HTML( $settings['shape'] );
 		}
 
 		if ( false == SWFW_Cache::is_cache_fresh() ) {
