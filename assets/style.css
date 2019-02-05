@@ -281,13 +281,14 @@
 .swfw-follow-field-icon {
   color: black;
   width: 40px;
-  font-size: 44px;
-  line-height: 40px;
+  font-size: 40px;
+  line-height: 42px;
   font-weight: bold;
   transition: all 300ms;
   border-radius: 3px;
   height: 40px;
   text-align: center;
+  padding: 2px;
 }
 .swfw-follow-field-icon:hover {
   color: black;
