@@ -21,7 +21,7 @@
   justify-content: flex-start;
   align-items: space-between;
 }
-.swfw-follow-container.block {
+.swfw-follow-container.block, .swfw-follow-container.swfw-follow-button.shift, .swfw-follow-container.shift.square, .swfw-follow-container.shift.buttons, .swfw-follow-container.swfw-follow-button.pill, .swfw-follow-container.pill.square, .swfw-follow-container.pill.buttons, .swfw-follow-container.swfw-follow-button.leaf, .swfw-follow-container.leaf.square, .swfw-follow-container.leaf.buttons {
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
@@ -36,21 +36,21 @@
  *
  * These styles are common to all Follow buttons, regardless of shape or style.
  */
-.swfw-follow-button {
+.swfw-follow-button, .block, .swfw-follow-button.shift, .shift.square, .shift.buttons, .shift.block, .swfw-follow-button.pill, .pill.square, .pill.buttons, .pill.block, .swfw-follow-button.leaf, .leaf.square, .leaf.buttons, .leaf.block, .buttons, .square {
   cursor: pointer;
   border-radius: 4px;
   font-family: "Helvetica", sans-serif;
 }
-.swfw-follow-button .swfw-text {
+.swfw-follow-button .swfw-text, .block .swfw-text, .buttons .swfw-text, .square .swfw-text {
   color: #030303;
 }
-.swfw-follow-button .swfw-count {
+.swfw-follow-button .swfw-count, .block .swfw-count, .buttons .swfw-count, .square .swfw-count {
   font-weight: normal;
 }
-.swfw-follow-button .swfw-cta {
+.swfw-follow-button .swfw-cta, .block .swfw-cta, .buttons .swfw-cta, .square .swfw-cta {
   font-weight: bold;
 }
-.swfw-follow-button .swfw-cta a {
+.swfw-follow-button .swfw-cta a, .block .swfw-cta a, .buttons .swfw-cta a, .square .swfw-cta a {
   color: white;
   text-decoration: none;
 }
@@ -59,7 +59,7 @@
  * Square Buttons
  *
  */
-.swfw-follow-button.square {
+.square {
   width: 55px;
   height: 58px;
   position: relative;
@@ -71,33 +71,33 @@
   color: #fefefe;
   position: realtive;
 }
-.swfw-follow-button.square .swfw-network-icon {
+.square .swfw-network-icon {
   font-size: 20px;
 }
-.swfw-follow-button.square .swfw-text {
+.square .swfw-text {
   width: 100%;
   color: #fefefe;
 }
-.swfw-follow-button.square .swfw-cta,
-.swfw-follow-button.square .swfw-count {
+.square .swfw-cta,
+.square .swfw-count {
   display: block;
   width: 100%;
   position: absolute;
 }
-.swfw-follow-button.square .swfw-count {
+.square .swfw-count {
   opacity: 1;
   transition: opacity 300ms 0;
   font-size: 12px;
 }
-.swfw-follow-button.square .swfw-cta {
+.square .swfw-cta {
   opacity: 0;
   transition: opacity 300ms 0;
 }
-.swfw-follow-button.square:hover .swfw-count {
+.square:hover .swfw-count {
   opacity: 0;
   transition: opacity 300ms 300ms;
 }
-.swfw-follow-button.square:hover .swfw-cta {
+.square:hover .swfw-cta {
   opacity: 1;
   transition: opacity 300ms 300ms;
 }
@@ -106,7 +106,7 @@
  * Buttons buttons
  *
  */
-.swfw-follow-button.buttons {
+.buttons {
   display: flex;
   flex-flow: row nowrap;
   width: -moz-min-content;
@@ -115,14 +115,14 @@
   padding: 5px 10px 5px 5px;
   color: #fefefe;
 }
-.swfw-follow-button.buttons .swfw-network-icon {
+.buttons .swfw-network-icon {
   width: 32px;
   height: 32px;
   line-height: 32px;
   font-size: 32px;
   text-align: center;
 }
-.swfw-follow-button.buttons .swfw-text {
+.buttons .swfw-text {
   width: -moz-min-content;
   width: min-content;
   margin: 0 10px;
@@ -132,13 +132,13 @@
   line-height: 32px;
   color: white;
 }
-.swfw-follow-button.buttons .swfw-text .swfw-cta,
-.swfw-follow-button.buttons .swfw-text .swfw-count {
+.buttons .swfw-text .swfw-cta,
+.buttons .swfw-text .swfw-count {
   display: inline;
   position: relative;
   transition: all 300ms;
 }
-.swfw-follow-button.buttons .swfw-text .swfw-cta {
+.buttons .swfw-text .swfw-cta {
   width: 0;
   overflow-x: hidden;
   position: absolute;
@@ -146,14 +146,14 @@
   margin-right: 0;
   font-weight: normal;
 }
-.swfw-follow-button.buttons .swfw-text:hover .swfw-cta {
+.buttons .swfw-text:hover .swfw-cta {
   color: #fefefe;
 }
-.swfw-follow-button.buttons:hover .swfw-text {
+.buttons:hover .swfw-text {
   width: -moz-max-content;
   width: max-content;
 }
-.swfw-follow-button.buttons:hover .swfw-text .swfw-cta {
+.buttons:hover .swfw-text .swfw-cta {
   width: -moz-min-content;
   width: min-content;
   overflow-x: visible;
@@ -165,7 +165,7 @@
  * Block Buttons
  *
  */
-.swfw-follow-button.block {
+.block, .swfw-follow-button.shift, .shift.square, .shift.buttons, .shift.block, .swfw-follow-button.pill, .pill.square, .pill.buttons, .pill.block, .swfw-follow-button.leaf, .leaf.square, .leaf.buttons, .leaf.block {
   width: 330px;
   height: 72px;
   display: flex;
@@ -177,11 +177,11 @@
   position: relative;
   /* Make the CTA look like a button. */
 }
-.swfw-follow-button.block > * {
+.block > *, .swfw-follow-button.shift > *, .shift.square > *, .shift.buttons > *, .shift.block > *, .swfw-follow-button.pill > *, .pill.square > *, .pill.buttons > *, .pill.block > *, .swfw-follow-button.leaf > *, .leaf.square > *, .leaf.buttons > *, .leaf.block > * {
   width: -moz-min-content;
   width: min-content;
 }
-.swfw-follow-button.block .swfw-network-icon {
+.block .swfw-network-icon, .swfw-follow-button.shift .swfw-network-icon, .shift.square .swfw-network-icon, .shift.buttons .swfw-network-icon, .swfw-follow-button.pill .swfw-network-icon, .pill.square .swfw-network-icon, .pill.buttons .swfw-network-icon, .swfw-follow-button.leaf .swfw-network-icon, .leaf.square .swfw-network-icon, .leaf.buttons .swfw-network-icon {
   width: 36px;
   height: 36px;
   line-height: 36px;
@@ -190,23 +190,23 @@
   left: 0;
   margin-left: 10px;
 }
-.swfw-follow-button.block .swfw-text {
+.block .swfw-text, .swfw-follow-button.shift .swfw-text, .shift.square .swfw-text, .shift.buttons .swfw-text, .swfw-follow-button.pill .swfw-text, .pill.square .swfw-text, .pill.buttons .swfw-text, .swfw-follow-button.leaf .swfw-text, .leaf.square .swfw-text, .leaf.buttons .swfw-text {
   font-size: 12px;
   line-height: 24px;
   left: calc(10px + 60px);
   color: #fefefe;
   text-align: center;
 }
-.swfw-follow-button.block .swfw-text .swfw-count {
+.block .swfw-text .swfw-count, .swfw-follow-button.shift .swfw-text .swfw-count, .shift.square .swfw-text .swfw-count, .shift.buttons .swfw-text .swfw-count, .swfw-follow-button.pill .swfw-text .swfw-count, .pill.square .swfw-text .swfw-count, .pill.buttons .swfw-text .swfw-count, .swfw-follow-button.leaf .swfw-text .swfw-count, .leaf.square .swfw-text .swfw-count, .leaf.buttons .swfw-text .swfw-count {
   width: -moz-max-content;
   width: max-content;
   font-size: 15px;
 }
-.swfw-follow-button.block .swfw-cta {
+.block .swfw-cta, .swfw-follow-button.shift .swfw-cta, .shift.square .swfw-cta, .shift.buttons .swfw-cta, .swfw-follow-button.pill .swfw-cta, .pill.square .swfw-cta, .pill.buttons .swfw-cta, .swfw-follow-button.leaf .swfw-cta, .leaf.square .swfw-cta, .leaf.buttons .swfw-cta {
   /* padding: 20px 10px; */
   border-radius: 3px;
 }
-.swfw-follow-button.block .swfw-cta-button {
+.block .swfw-cta-button, .swfw-follow-button.shift .swfw-cta-button, .shift.square .swfw-cta-button, .shift.buttons .swfw-cta-button, .swfw-follow-button.pill .swfw-cta-button, .pill.square .swfw-cta-button, .pill.buttons .swfw-cta-button, .swfw-follow-button.leaf .swfw-cta-button, .leaf.square .swfw-cta-button, .leaf.buttons .swfw-cta-button {
   height: 24px;
   width: 116px;
   line-height: 24px;
@@ -216,14 +216,40 @@
   margin-right: 10px;
   right: 0;
 }
-.swfw-follow-button.block .swfw-cta-button:hover {
+.block .swfw-cta-button:hover, .swfw-follow-button.shift .swfw-cta-button:hover, .shift.square .swfw-cta-button:hover, .shift.buttons .swfw-cta-button:hover, .swfw-follow-button.pill .swfw-cta-button:hover, .pill.square .swfw-cta-button:hover, .pill.buttons .swfw-cta-button:hover, .swfw-follow-button.leaf .swfw-cta-button:hover, .leaf.square .swfw-cta-button:hover, .leaf.buttons .swfw-cta-button:hover {
   transition: all 300ms;
   background: rgba(30, 30, 30, 0.3);
   padding: 1px 0;
   cursor: pointer;
 }
-.swfw-follow-button.block .swfw-cta-button:hover a {
+.block .swfw-cta-button:hover a, .swfw-follow-button.shift .swfw-cta-button:hover a, .shift.square .swfw-cta-button:hover a, .shift.buttons .swfw-cta-button:hover a, .swfw-follow-button.pill .swfw-cta-button:hover a, .pill.square .swfw-cta-button:hover a, .pill.buttons .swfw-cta-button:hover a, .swfw-follow-button.leaf .swfw-cta-button:hover a, .leaf.square .swfw-cta-button:hover a, .leaf.buttons .swfw-cta-button:hover a {
   color: #fefefe;
+}
+
+/**
+ * Leaf style
+ */
+.swfw-follow-button.leaf, .leaf.square, .leaf.buttons, .leaf.block {
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/**
+ * Pill style
+ */
+.swfw-follow-button.pill, .pill.square, .pill.buttons, .pill.block {
+  border-radius: 50px;
+  border-width: 1px;
+}
+
+/**
+ * Shift style
+ */
+.swfw-follow-button.shift, .shift.square, .shift.buttons, .shift.block {
+  transform: skew(-10deg);
+  -moz-transform: skew(-10deg);
+  -o-transform: skew(-10deg);
+  -webkit-transform: skew(-10deg);
 }
 
 /**

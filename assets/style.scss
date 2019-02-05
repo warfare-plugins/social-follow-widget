@@ -74,7 +74,8 @@ $black: #030303;
  * Square Buttons
  *
  */
-.swfw-follow-button.square {
+.square {
+	@extend .swfw-follow-button;
 	width: 55px;
 	height: 58px;
 	position: relative;
@@ -132,7 +133,8 @@ $black: #030303;
  * Buttons buttons
  *
  */
-.swfw-follow-button.buttons {
+.buttons {
+	@extend .swfw-follow-button;
 	display: flex;
 	flex-flow: row nowrap;
 	width: -moz-min-content;
@@ -203,7 +205,8 @@ $black: #030303;
  * Block Buttons
  *
  */
-.swfw-follow-button.block {
+.block {
+	@extend .swfw-follow-button;
 	width: 330px;
 	height: 72px;
 	display: flex;
@@ -270,6 +273,35 @@ $black: #030303;
 		  }
 	  }
   }
+}
+
+/**
+ * Leaf style
+ */
+.swfw-follow-button.leaf {
+	@extend .block;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+/**
+ * Pill style
+ */
+.swfw-follow-button.pill {
+	@extend .block;
+	border-radius: 50px;
+	border-width: 1px;
+}
+
+/**
+ * Shift style
+ */
+.swfw-follow-button.shift {
+	@extend .block;
+	transform: skew(-10deg);
+	-moz-transform: skew(-10deg);
+	-o-transform: skew(-10deg);
+	-webkit-transform: skew(-10deg);
 }
 
 /**
