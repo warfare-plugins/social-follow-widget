@@ -51,7 +51,6 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		$swfw_networks = array();
 		$files = array(
 			'Follow_Network',
-			'Follow_Container',
 			'Follow_Widget',
 			'Cache',
 			'Utility',
