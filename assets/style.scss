@@ -18,17 +18,17 @@ $black: #030303;
 		font-weight: bold;
 	}
 
-	&.swfw_square {
+	&.swfw_square_container {
 	  flex-flow: row wrap;
 	}
 
-	&.swfw_buttons {
+	&.swfw_buttons_container {
 		flex-flow: column nowrap;
 		justify-content: flex-start;
 		align-items: space-between;
 	}
 
-	&.swfw_block {
+	&.swfw_block_container {
 		flex-flow: column nowrap;
 		justify-content: flex-start;
 		align-items: flex-start;
@@ -65,7 +65,7 @@ $black: #030303;
 
 	.swfw-cta a {
 		color: white;
-		text-decoration: none;
+		text-decoration: none !important;
 	}
 }
 
@@ -74,7 +74,7 @@ $black: #030303;
  * Square Buttons
  *
  */
-.swfw_square {
+.swfw_square_button {
 	@extend .swfw-follow-button;
 	width: 55px;
 	height: 58px;
@@ -133,7 +133,7 @@ $black: #030303;
  * Buttons buttons
  *
  */
-.swfw_buttons {
+.swfw_buttons_button {
 	@extend .swfw-follow-button;
 	display: flex;
 	flex-flow: row nowrap;
@@ -205,7 +205,7 @@ $black: #030303;
  * Block Buttons
  *
  */
-.swfw_block {
+.swfw_block_button {
 	@extend .swfw-follow-button;
 	width: 330px;
 	display: flex;
@@ -215,6 +215,7 @@ $black: #030303;
 	margin: 10px 0;
 	cursor: initial;
 	position: relative;
+	padding: 12px 0;
 
 	> * {
 		width: -moz-min-content;
@@ -222,10 +223,10 @@ $black: #030303;
 	}
 
   .swfw-network-icon {
-	  width: 36px;
-	  height: 36px;
-	  line-height: 36px;
-	  font-size: 36px;
+	  width: 24px;
+	  height: 24px;
+	  line-height: 24px;
+	  font-size: 24px;
 	  color: $white;
 	  left: 0;
 	  margin-left: 10px;
@@ -277,30 +278,39 @@ $black: #030303;
 /**
  * Leaf style
  */
-.swfw-follow-button.swfw_leaf {
-	@extend .swfw_block;
+.swfw-follow-button.swfw_leaf_button {
+	@extend .swfw_block_button;
 	border-top-left-radius: 15px;
 	border-bottom-right-radius: 15px;
+	padding: 5px 10px;
 }
 
 /**
  * Pill style
  */
-.swfw-follow-button.swfw_pill {
-	@extend .swfw_block;
+.swfw-follow-button.swfw_pill_button {
+	@extend .swfw_block_button;
 	border-radius: 50px;
 	border-width: 1px;
+	padding: 5px 0;
 }
 
 /**
  * Shift style
  */
-.swfw-follow-button.swfw_shift {
-	@extend .swfw_block;
-	transform: skew(-10deg);
-	-moz-transform: skew(-10deg);
-	-o-transform: skew(-10deg);
-	-webkit-transform: skew(-10deg);
+.swfw-follow-button.swfw_shift_button {
+	@extend .swfw_block_button;
+	transform: skew(-30deg);
+	-moz-transform: skew(-30deg);
+	-o-transform: skew(-30deg);
+	-webkit-transform: skew(-30deg);
+	padding: 10px;
+	border-radius: 0;
+
+	/* Unskew the contents */
+	> div {
+		transform: skew(30deg);
+	}
 }
 
 /**
