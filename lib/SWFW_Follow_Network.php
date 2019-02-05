@@ -270,7 +270,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	protected function establish_icon() {
-		$this->icon = "<i class='sw swp_{$this->key}_icon'>";
+		$this->icon = "<i class='sw swp_{$this->key}_icon'></i>";
 	}
 
 
