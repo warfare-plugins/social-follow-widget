@@ -424,7 +424,8 @@ class Client
 		if ($response->status < 400) {
 			return $response->json->response;
 		} else {
-			error_log("SWFW Error making \TumblrTumblr\Client request. This is the response from Tumblr: " . var_export($repsonse, 1));
+			error_log("SWFW Error making \TumblrTumblr\Client request. This is the response from Tumblr: " . var_export($response, 1));
+			return false;
 			throw new RequestException($response);
 		}
 	}
