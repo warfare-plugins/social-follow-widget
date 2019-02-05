@@ -29,7 +29,7 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#1ab7ea',
-			'color_accent' => '#162221',
+			'color_accent' => '#069bd1',
 			'url'	=> 'https://vimeo.com/swfw_username',
 			'needs_authorization' => true
 		);
