@@ -89,7 +89,6 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 			$this->follow_count = $fan_count;
 		}
 
-		error_log('Response for Facebook with username ' . $this->username . ': ' . var_export( $this->response, 1));
 		return $this->follow_count;
 	}
 
