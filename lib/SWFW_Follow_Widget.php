@@ -260,10 +260,17 @@ FIELD;
 		$key = $_GET['swfw_debug'];
 
 		switch( $key ) {
-			case 'get_options' :
+			case 'get_count_data' :
 				$options = SWFW_Utility::get_options();
 				echo "<pre>".var_export($options, 1)."</pre>";
 				wp_die();
+
+			case 'get_all_data' :
+				$options = SWFW_Utility::get_options();
+				$options['usernames'] = $this->get_all_usernames();
+				echo "<pre>".var_export($options, 1)."</pre>";
+				wp_die();
+
 
 			case 'reset_count_data' :
 				if ( !is_admin() ) {
@@ -277,5 +284,25 @@ FIELD;
 						   : 'No changes were made to your SWFW options.';
 				wp_die($message);
 		}
+	}
+
+	protected function get_all_usernames() {
+		$widgets = SWFW_Follow_Widget::get_widgets();
+		$networks = apply_filters( 'swfw_follow_networks', array() );
+		$usernames = array();
+
+		foreach ( $networks as $network ) {
+			if ( false == $network->is_active() ) {
+				continue;
+			}
+
+			foreach( $widgets as $key => $settings ) {
+				if ( !empty( $settings[$network->key . '_username'] ) ) {
+					$usernames[$network->key] = $settings[$network->key . '_username' ];
+				}
+			}
+		}
+
+		return $usernames;
 	}
 }
