@@ -387,9 +387,16 @@ abstract class SWFW_Follow_Network {
 		$this->establish_follow_count();
 		$this->establish_display_settings();
 
+		$style_variations_block = array('block', 'pill', 'shift', 'leaf' );
+
+		if ( in_array( $shape, $style_variations_block ) ) {
+			return $this->generate_block_HTML( $shape );
+		}
+
 		// Create the callback function as a string, then call it.
-		$generate_HTML = "generate_" . $shape . "_HTML";
-		return $this->$generate_HTML();
+		$generate_x_HTML = "generate_" . $shape . "_HTML";
+
+		return $this->$generate_x_HTML();
 	}
 
 	/**
@@ -446,10 +453,10 @@ BUTTON;
 	 * @return string Fully qualified HTML for a Square follow button.
 	 *
 	 */
-	private function generate_block_HTML() {
+	private function generate_block_HTML( $shape ) {
 		return
 <<<BUTTON
-<div class="swfw-follow-button block $this->key" style="$this->background; $this->border">
+<div class="swfw-follow-button $shape $this->key" style="$this->background; $this->border">
 	<div class='swfw-network-icon'>
 		{$this->icon_svg}
 	</div>
