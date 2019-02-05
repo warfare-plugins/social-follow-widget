@@ -68,7 +68,13 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			$encoded_response = SWP_CURL::file_get_contents_curl( $url );
 			$response = json_decode( $encoded_response );
 
-			if ( !empty( $response->data ) && is_array( $response->data) ) {
+			if ( empty( $response->data ) || null == $response->data || 'NULL' == $response->data ) {
+				$this->follow_count = 0;
+				error_log('SWFW Error making Pinterest follow request for username ' . $this->username );
+				return;
+			}
+
+			if ( is_array( $response->data) ) {
 				$follow_count += count( $response->data );
 			}
 
