@@ -388,7 +388,7 @@ abstract class SWFW_Follow_Network {
 
 		if ( in_array( $shape, $style_variations_block ) ) {
 			// Add the vendor prefix to prevent selector collision.
-			return $this->generate_block_HTML( 'swfw_'.$shape );
+			return $this->generate_block_HTML( 'swfw_'.$shape.'_button' );
 		}
 
 		// Create the callback function as a string, then call it.
@@ -427,7 +427,7 @@ abstract class SWFW_Follow_Network {
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
-	<div class="swfw-follow-button swfw_square $this->key" style="$this->border; $this->background">
+	<div class="swfw-follow-button swfw_square_button $this->key" style="$this->border; $this->background">
 		<div class='swfw-network-icon'>
 			{$this->icon}
 		</div>
@@ -483,7 +483,7 @@ BUTTON;
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
-	<div class="swfw-follow-button swfw_buttons $this->key" style="$this->background; $this->border">
+	<div class="swfw-follow-button swfw_buttons_button $this->key" style="$this->background; $this->border">
 		<div class='swfw-network-icon'>
 			{$this->icon}
 		</div>
