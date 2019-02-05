@@ -206,8 +206,12 @@ FIELD;
 	function generate_widget_HTML( $settings ) {
 		$container_shape = $settings['shape'];
 		$style_variations_block = array('block', 'pill', 'shift', 'leaf' );
+
 		if ( in_array( $container_shape, $style_variations_block ) ) {
-			$container_shape = 'block';
+			$container_shape = 'swfw_block';
+		}
+		else {
+			$container_shape = 'swfw_' . $container_shape;
 		}
 
 		$html = "<div class='swfw-follow-container $container_shape'>";
