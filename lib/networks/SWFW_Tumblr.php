@@ -53,6 +53,10 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		$access_token = $this->auth_helper->get_access_token();
 		$access_secret = $this->auth_helper->get_access_secret();
 
+		error_log('Tumblr access token: ' . $access_token);
+		error_log('Tumblr access secret: ' . $access_secret);
+		error_log('Tumblr username: ' . $this->username);
+
 		if ( empty( $access_token )  ) {
 			return false;
 		}
@@ -65,10 +69,11 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		$swp_secret = 'v00cOcheNGOrOoHzU6WnU1AbleQQZmGUSRr44rjJsSG3u6mUbg';
 
 		$tumblr = new Tumblr\API\Client( $swp_key, $swp_secret );
+		error_log('Tumblr $tumblr object, uses params $swp_key and $swp_secret.' . var_export($tumblr, 1));
 		$tumblr->setToken( $access_token, $access_secret );
+		error_log('Tumblr $tumblr object, after setToken with params $access_token and $access_secret.' . var_export($tumblr, 1));
 
 		$this->response = $tumblr->getUserInfo();
-		error_log('Response for Tumblr with username ' . $this->username . ': ' . var_export( $this->response, 1));
 	}
 
 
