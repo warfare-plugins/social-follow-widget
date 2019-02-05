@@ -216,6 +216,9 @@
   margin-right: 10px;
   right: 0;
 }
+.swfw_block_button .swfw-cta-button a, .swfw-follow-button.swfw_shift_button .swfw-cta-button a, .swfw_shift_button.swfw_square_button .swfw-cta-button a, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a, .swfw-follow-button.swfw_pill_button .swfw-cta-button a, .swfw_pill_button.swfw_square_button .swfw-cta-button a, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a, .swfw-follow-button.swfw_leaf_button .swfw-cta-button a, .swfw_leaf_button.swfw_square_button .swfw-cta-button a, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button a {
+  text-decoration: none !important;
+}
 .swfw_block_button .swfw-cta-button:hover, .swfw-follow-button.swfw_shift_button .swfw-cta-button:hover, .swfw_shift_button.swfw_square_button .swfw-cta-button:hover, .swfw_shift_button.swfw_buttons_button .swfw-cta-button:hover, .swfw-follow-button.swfw_pill_button .swfw-cta-button:hover, .swfw_pill_button.swfw_square_button .swfw-cta-button:hover, .swfw_pill_button.swfw_buttons_button .swfw-cta-button:hover, .swfw-follow-button.swfw_leaf_button .swfw-cta-button:hover, .swfw_leaf_button.swfw_square_button .swfw-cta-button:hover, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button:hover {
   transition: all 300ms;
   background: rgba(30, 30, 30, 0.3);
