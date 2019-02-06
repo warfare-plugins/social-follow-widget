@@ -76,7 +76,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 			$response = $connection->get('followers/ids', $params);
 
 			if ( isset( $response->errors ) ) {
-				error_log('SWFW error making Twitter request: ' . var_export($repsonse->errors, 1));
+				error_log('SWFW error making Twitter request: ' . var_export($response->errors, 1));
 				return false;
 			}
 
