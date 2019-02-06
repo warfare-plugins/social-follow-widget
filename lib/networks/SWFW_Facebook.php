@@ -93,7 +93,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	}
 
 	protected function establish_client() {
-		require_once __DIR__ . '/../SDKs/Facebook/autoload.php';
+		require_once __DIR__ . '/../vendor/Facebook/autoload.php';
 		session_start();
 
 		$this->client = new Facebook\Facebook(array(

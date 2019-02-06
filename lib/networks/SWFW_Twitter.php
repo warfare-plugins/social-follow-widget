@@ -51,7 +51,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 *
 	 */
 	public function do_api_request() {
-		require_once __DIR__ . '/../SDKs/Twitter/autoload.php';
+		require_once __DIR__ . '/../vendor/Twitter/autoload.php';
 
 		$swp_api_key = 'MQGiE1PFoRKEjhR0xVGC0bT0R';
 		$swp_api_secret = '2MN9AHNFIA6lYNG0lWicArt6jr8xv19iFWGRNOTRvRhKE4wYyX';
