@@ -89,16 +89,22 @@
 
 	$(document).ready(function() {
 
-		// The widget area re-loads by ajax, which resets JS data.
-		$(".widget-control-save").on("click", function() {
-			setTimeout(function() {
-				triggerUpdates();
-			}, 600);
-		});
+		/*
+		  This script is supposed to be a UX enhancement for admin widget area.
+		  But WordPress reloads the widget content on save, and we don't have
+		  a time budget to work out the kinks in this right now. 
+		 */
 
-		// jQuery objects were weird, just use JS selectors.
-		triggerUpdates();
-		document.querySelectorAll(".swfw-follow-field").forEach(setUpdateListeners);
+		// The widget area re-loads by ajax, which resets JS data.
+		// $(".widget-control-save").on("click", function() {
+		// 	setTimeout(function() {
+		// 		triggerUpdates();
+		// 	}, 600);
+		// });
+
+		// // jQuery objects were weird, just use JS selectors.
+		// triggerUpdates();
+		// document.querySelectorAll(".swfw-follow-field").forEach(setUpdateListeners);
 	});
 
 })(window, jQuery)
