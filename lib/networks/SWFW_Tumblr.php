@@ -48,7 +48,7 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 	 *
 	 */
 	public function do_api_request() {
-		require_once __DIR__ . './../vendor/Tumblr/vendor/autoload.php';
+		require_once __DIR__ . '/../vendor/Tumblr/vendor/autoload.php';
 
 		$access_token = $this->auth_helper->get_access_token();
 		$access_secret = $this->auth_helper->get_access_secret();
