@@ -256,7 +256,7 @@
   -o-transform: skew(-30deg);
   -webkit-transform: skew(-30deg);
   padding: 10px;
-  border-radius: 0;
+  border-radius: 4px;
   /* Unskew the contents */
 }
 .swfw-follow-button.swfw_shift_button > div, .swfw_shift_button.swfw_square_button > div, .swfw_shift_button.swfw_buttons_button > div, .swfw_shift_button.swfw_block_button > div {
@@ -304,10 +304,6 @@
 }
 .swfw-follow-field-icon:hover {
   color: black;
-}
-
-.swfw-active .swfw-follow-field-icon {
-  color: white;
 }
 
 .swfw-widget label {

@@ -309,7 +309,7 @@ $black: #030303;
 	-o-transform: skew(-30deg);
 	-webkit-transform: skew(-30deg);
 	padding: 10px;
-	border-radius: 0;
+	border-radius: 4px;
 
 	/* Unskew the contents */
 	> div {
@@ -366,10 +366,6 @@ $black: #030303;
 		color: black;
 	}
 
-}
-
-.swfw-active .swfw-follow-field-icon {
-	color: white;
 }
 
 .swfw-widget label {
