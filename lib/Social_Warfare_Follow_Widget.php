@@ -57,7 +57,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 
 		);
 
-		$this->load_files( '/lib/utilities', $files );
+		$this->load_files( '/lib/utilities/', $files );
 
 		$this->init_networks();
 		new SWFW_Follow_Widget();
