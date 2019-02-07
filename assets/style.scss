@@ -1,4 +1,4 @@
-$white: #fefefe;;
+$white: #fefefe;
 $black: #030303;
 
 /**
@@ -33,11 +33,6 @@ $black: #030303;
 		justify-content: flex-start;
 		align-items: flex-start;
 	}
-
-	.swfw-network-icon {
-		max-with: 100px;
-		stroke: $white;
-	}
 }
 
 
@@ -46,6 +41,7 @@ $black: #030303;
  *
  * These styles are common to all Follow buttons, regardless of shape or style.
  */
+/*
 .swfw-follow-button {
 	cursor: pointer;
 	border-radius: 4px;
@@ -68,7 +64,65 @@ $black: #030303;
 		text-decoration: none !important;
 	}
 }
+*/
+.swfw-follow-button {
+	align-items: center;
+	border-radius: 8px;
+	display: flex;
+	color: $white;
+	font-family: 'Helvetica', sans-serif;
+	font-size: initial;
+	justify-content: space-between;
+	line-height: 1;
+	margin-bottom: 10px;
+	padding: 25px 15px;
+	width: 100%;
 
+	a {
+		background: #fff;
+		border-radius: 4px;
+		color: #000;
+		padding: 10px 30px;
+		text-decoration: none;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition:    all 0.3s ease-in-out;
+		-ms-transition:     all 0.3s ease-in-out;
+		-o-transition:      all 0.3s ease-in-out;
+		transition:         all 0.3s ease-in-out;
+
+		&:hover {
+			background: #2A2D34;
+			color: #fff;
+		}
+	}
+
+	.swfw-network-icon i {
+		width: 32px;
+		height: 32px;
+		border-radius: 100px;
+		font-size: 24px;
+		line-height: 32px;
+	}
+}
+
+.swfw_shift_button {
+	  transform: skew(-30deg);
+	  -moz-transform: skew(-30deg);
+	  -o-transform: skew(-30deg);
+	  -webkit-transform: skew(-30deg);
+
+	> div {
+		transform: skew(30deg);
+		-moz-transform: skew(30deg);
+		-o-transform: skew(30deg);
+		-webkit-transform: skew(30deg);
+	  align-items: center;
+	  display: flex;
+	  justify-content: space-around;
+	  width: 100%;
+	}
+
+}
 
 /**
  * Square Buttons
@@ -86,10 +140,6 @@ $black: #030303;
 	margin: 5px;
 	color: $white;
 	position: realtive;
-
-	.swfw-network-icon {
-		font-size: 20px;
-	}
 
 	.swfw-text {
 		width: 100%;
@@ -137,18 +187,15 @@ $black: #030303;
 	@extend .swfw-follow-button;
 	display: flex;
 	flex-flow: row nowrap;
-	width: -moz-min-content;
-	width: min-content;
+	width: -moz-max-content;
+	width: max-content;
 	margin: 10px 5px;
 	padding: 5px 10px 5px 5px;
 	color: $white;
 
 	.swfw-network-icon {
-		width: 32px;
-		height: 32px;
-		line-height: 32px;
+		padding: 0;
 		font-size: 32px;
-		text-align: center;
 	}
 
 	.swfw-text {
@@ -246,15 +293,13 @@ $black: #030303;
 	  }
   }
 
-  /* Make the CTA look like a button. */
   .swfw-cta {
-	/* padding: 20px 10px; */
 	border-radius: 3px;
   }
 
   .swfw-cta-button {
 	  height: 24px;
-	  width: 116px;
+	  width: initial;
 	  line-height: 24px;
 	  background: $white;
 	  border-radius: 4px;
@@ -283,37 +328,46 @@ $black: #030303;
  * Leaf style
  */
 .swfw-follow-button.swfw_leaf_button {
-	@extend .swfw_block_button;
-	border-top-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	padding: 5px 10px;
+	@extend .swfw-follow-button;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 35px;
 }
 
 /**
  * Pill style
  */
 .swfw-follow-button.swfw_pill_button {
-	@extend .swfw_block_button;
+	@extend .swfw-follow-button;
 	border-radius: 50px;
-	border-width: 1px;
-	padding: 5px 0;
+
+	.swfw-cta-button a {
+		border-radius: 50px;
+	}
 }
 
 /**
  * Shift style
  */
+
 .swfw-follow-button.swfw_shift_button {
-	@extend .swfw_block_button;
+	@extend .swfw-follow-button;
 	transform: skew(-30deg);
 	-moz-transform: skew(-30deg);
 	-o-transform: skew(-30deg);
 	-webkit-transform: skew(-30deg);
-	padding: 10px;
-	border-radius: 4px;
 
 	/* Unskew the contents */
 	> div {
+		align-items: center;
+		display: flex;
+		justify-content: space-around;
+		width: 100%;
 		transform: skew(30deg);
+		-moz-transform: skew(30deg);
+		-o-transform: skew(30deg);
+		-webkit-transform: skew(30deg);
 	}
 }
 

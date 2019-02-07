@@ -26,33 +26,88 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-.swfw-follow-container .swfw-network-icon {
-  max-with: 100px;
-  stroke: #fefefe;
-}
 
 /**
  * Individual Buttons
  *
  * These styles are common to all Follow buttons, regardless of shape or style.
  */
-.swfw-follow-button, .swfw_block_button, .swfw-follow-button.swfw_shift_button, .swfw_shift_button.swfw_square_button, .swfw_shift_button.swfw_buttons_button, .swfw_shift_button.swfw_block_button, .swfw-follow-button.swfw_pill_button, .swfw_pill_button.swfw_square_button, .swfw_pill_button.swfw_buttons_button, .swfw_pill_button.swfw_block_button, .swfw-follow-button.swfw_leaf_button, .swfw_leaf_button.swfw_square_button, .swfw_leaf_button.swfw_buttons_button, .swfw_leaf_button.swfw_block_button, .swfw_buttons_button, .swfw_square_button {
-  cursor: pointer;
-  border-radius: 4px;
+/*
+.swfw-follow-button {
+	cursor: pointer;
+	border-radius: 4px;
+	font-family: 'Helvetica', sans-serif;
+
+	.swfw-text {
+	  color: $black;
+	}
+
+	.swfw-count {
+	  font-weight: normal;
+	}
+
+	.swfw-cta {
+	  font-weight: bold;
+	}
+
+	.swfw-cta a {
+		color: white;
+		text-decoration: none !important;
+	}
+}
+*/
+.swfw-follow-button, .swfw-follow-button.swfw_shift_button, .swfw_shift_button.swfw_square_button, .swfw_shift_button.swfw_buttons_button, .swfw_shift_button.swfw_block_button, .swfw-follow-button.swfw_pill_button, .swfw_pill_button.swfw_square_button, .swfw_pill_button.swfw_buttons_button, .swfw_pill_button.swfw_block_button, .swfw-follow-button.swfw_leaf_button, .swfw_leaf_button.swfw_square_button, .swfw_leaf_button.swfw_buttons_button, .swfw_leaf_button.swfw_block_button, .swfw_block_button, .swfw_buttons_button, .swfw_square_button {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  color: #fefefe;
   font-family: "Helvetica", sans-serif;
+  font-size: initial;
+  justify-content: space-between;
+  line-height: 1;
+  margin-bottom: 10px;
+  padding: 25px 15px;
+  width: 100%;
 }
-.swfw-follow-button .swfw-text, .swfw_block_button .swfw-text, .swfw_buttons_button .swfw-text, .swfw_square_button .swfw-text {
-  color: #030303;
+.swfw-follow-button a, .swfw-follow-button.swfw_shift_button a, .swfw_shift_button.swfw_square_button a, .swfw_shift_button.swfw_buttons_button a, .swfw_shift_button.swfw_block_button a, .swfw-follow-button.swfw_pill_button a, .swfw_pill_button.swfw_square_button a, .swfw_pill_button.swfw_buttons_button a, .swfw_pill_button.swfw_block_button a, .swfw-follow-button.swfw_leaf_button a, .swfw_leaf_button.swfw_square_button a, .swfw_leaf_button.swfw_buttons_button a, .swfw_leaf_button.swfw_block_button a, .swfw_block_button a, .swfw_buttons_button a, .swfw_square_button a {
+  background: #fff;
+  border-radius: 4px;
+  color: #000;
+  padding: 10px 30px;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.swfw-follow-button .swfw-count, .swfw_block_button .swfw-count, .swfw_buttons_button .swfw-count, .swfw_square_button .swfw-count {
-  font-weight: normal;
+.swfw-follow-button a:hover, .swfw_block_button a:hover, .swfw_buttons_button a:hover, .swfw_square_button a:hover {
+  background: #2A2D34;
+  color: #fff;
 }
-.swfw-follow-button .swfw-cta, .swfw_block_button .swfw-cta, .swfw_buttons_button .swfw-cta, .swfw_square_button .swfw-cta {
-  font-weight: bold;
+.swfw-follow-button .swfw-network-icon i, .swfw_block_button .swfw-network-icon i, .swfw_buttons_button .swfw-network-icon i, .swfw_square_button .swfw-network-icon i {
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  font-size: 24px;
+  line-height: 32px;
 }
-.swfw-follow-button .swfw-cta a, .swfw_block_button .swfw-cta a, .swfw_buttons_button .swfw-cta a, .swfw_square_button .swfw-cta a {
-  color: white;
-  text-decoration: none !important;
+
+.swfw_shift_button {
+  transform: skew(-30deg);
+  -moz-transform: skew(-30deg);
+  -o-transform: skew(-30deg);
+  -webkit-transform: skew(-30deg);
+}
+.swfw_shift_button > div {
+  transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -o-transform: skew(30deg);
+  -webkit-transform: skew(30deg);
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 /**
@@ -70,9 +125,6 @@
   margin: 5px;
   color: #fefefe;
   position: realtive;
-}
-.swfw_square_button .swfw-network-icon {
-  font-size: 20px;
 }
 .swfw_square_button .swfw-text {
   width: 100%;
@@ -109,18 +161,15 @@
 .swfw_buttons_button {
   display: flex;
   flex-flow: row nowrap;
-  width: -moz-min-content;
-  width: min-content;
+  width: -moz-max-content;
+  width: max-content;
   margin: 10px 5px;
   padding: 5px 10px 5px 5px;
   color: #fefefe;
 }
 .swfw_buttons_button .swfw-network-icon {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
+  padding: 0;
   font-size: 32px;
-  text-align: center;
 }
 .swfw_buttons_button .swfw-text {
   width: -moz-min-content;
@@ -165,7 +214,7 @@
  * Block Buttons
  *
  */
-.swfw_block_button, .swfw-follow-button.swfw_shift_button, .swfw_shift_button.swfw_square_button, .swfw_shift_button.swfw_buttons_button, .swfw_shift_button.swfw_block_button, .swfw-follow-button.swfw_pill_button, .swfw_pill_button.swfw_square_button, .swfw_pill_button.swfw_buttons_button, .swfw_pill_button.swfw_block_button, .swfw-follow-button.swfw_leaf_button, .swfw_leaf_button.swfw_square_button, .swfw_leaf_button.swfw_buttons_button, .swfw_leaf_button.swfw_block_button {
+.swfw_block_button {
   width: 330px;
   display: flex;
   flex-flow: row nowrap;
@@ -175,13 +224,12 @@
   cursor: initial;
   position: relative;
   padding: 12px 0;
-  /* Make the CTA look like a button. */
 }
-.swfw_block_button > *, .swfw-follow-button.swfw_shift_button > *, .swfw_shift_button.swfw_square_button > *, .swfw_shift_button.swfw_buttons_button > *, .swfw_shift_button.swfw_block_button > *, .swfw-follow-button.swfw_pill_button > *, .swfw_pill_button.swfw_square_button > *, .swfw_pill_button.swfw_buttons_button > *, .swfw_pill_button.swfw_block_button > *, .swfw-follow-button.swfw_leaf_button > *, .swfw_leaf_button.swfw_square_button > *, .swfw_leaf_button.swfw_buttons_button > *, .swfw_leaf_button.swfw_block_button > * {
+.swfw_block_button > * {
   width: -moz-min-content;
   width: min-content;
 }
-.swfw_block_button .swfw-network-icon, .swfw-follow-button.swfw_shift_button .swfw-network-icon, .swfw_shift_button.swfw_square_button .swfw-network-icon, .swfw_shift_button.swfw_buttons_button .swfw-network-icon, .swfw-follow-button.swfw_pill_button .swfw-network-icon, .swfw_pill_button.swfw_square_button .swfw-network-icon, .swfw_pill_button.swfw_buttons_button .swfw-network-icon, .swfw-follow-button.swfw_leaf_button .swfw-network-icon, .swfw_leaf_button.swfw_square_button .swfw-network-icon, .swfw_leaf_button.swfw_buttons_button .swfw-network-icon {
+.swfw_block_button .swfw-network-icon {
   width: 24px;
   height: 24px;
   line-height: 24px;
@@ -190,25 +238,24 @@
   left: 0;
   margin-left: 10px;
 }
-.swfw_block_button .swfw-text, .swfw-follow-button.swfw_shift_button .swfw-text, .swfw_shift_button.swfw_square_button .swfw-text, .swfw_shift_button.swfw_buttons_button .swfw-text, .swfw-follow-button.swfw_pill_button .swfw-text, .swfw_pill_button.swfw_square_button .swfw-text, .swfw_pill_button.swfw_buttons_button .swfw-text, .swfw-follow-button.swfw_leaf_button .swfw-text, .swfw_leaf_button.swfw_square_button .swfw-text, .swfw_leaf_button.swfw_buttons_button .swfw-text {
+.swfw_block_button .swfw-text {
   font-size: 12px;
   line-height: 24px;
   left: calc(10px + 60px);
   color: #fefefe;
   text-align: center;
 }
-.swfw_block_button .swfw-text .swfw-count, .swfw-follow-button.swfw_shift_button .swfw-text .swfw-count, .swfw_shift_button.swfw_square_button .swfw-text .swfw-count, .swfw_shift_button.swfw_buttons_button .swfw-text .swfw-count, .swfw-follow-button.swfw_pill_button .swfw-text .swfw-count, .swfw_pill_button.swfw_square_button .swfw-text .swfw-count, .swfw_pill_button.swfw_buttons_button .swfw-text .swfw-count, .swfw-follow-button.swfw_leaf_button .swfw-text .swfw-count, .swfw_leaf_button.swfw_square_button .swfw-text .swfw-count, .swfw_leaf_button.swfw_buttons_button .swfw-text .swfw-count {
+.swfw_block_button .swfw-text .swfw-count {
   width: -moz-max-content;
   width: max-content;
   font-size: 15px;
 }
-.swfw_block_button .swfw-cta, .swfw-follow-button.swfw_shift_button .swfw-cta, .swfw_shift_button.swfw_square_button .swfw-cta, .swfw_shift_button.swfw_buttons_button .swfw-cta, .swfw-follow-button.swfw_pill_button .swfw-cta, .swfw_pill_button.swfw_square_button .swfw-cta, .swfw_pill_button.swfw_buttons_button .swfw-cta, .swfw-follow-button.swfw_leaf_button .swfw-cta, .swfw_leaf_button.swfw_square_button .swfw-cta, .swfw_leaf_button.swfw_buttons_button .swfw-cta {
-  /* padding: 20px 10px; */
+.swfw_block_button .swfw-cta {
   border-radius: 3px;
 }
-.swfw_block_button .swfw-cta-button, .swfw-follow-button.swfw_shift_button .swfw-cta-button, .swfw_shift_button.swfw_square_button .swfw-cta-button, .swfw_shift_button.swfw_buttons_button .swfw-cta-button, .swfw-follow-button.swfw_pill_button .swfw-cta-button, .swfw_pill_button.swfw_square_button .swfw-cta-button, .swfw_pill_button.swfw_buttons_button .swfw-cta-button, .swfw-follow-button.swfw_leaf_button .swfw-cta-button, .swfw_leaf_button.swfw_square_button .swfw-cta-button, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button {
+.swfw_block_button .swfw-cta-button {
   height: 24px;
-  width: 116px;
+  width: initial;
   line-height: 24px;
   background: #fefefe;
   border-radius: 4px;
@@ -216,16 +263,16 @@
   margin-right: 10px;
   right: 0;
 }
-.swfw_block_button .swfw-cta-button a, .swfw-follow-button.swfw_shift_button .swfw-cta-button a, .swfw_shift_button.swfw_square_button .swfw-cta-button a, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a, .swfw-follow-button.swfw_pill_button .swfw-cta-button a, .swfw_pill_button.swfw_square_button .swfw-cta-button a, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a, .swfw-follow-button.swfw_leaf_button .swfw-cta-button a, .swfw_leaf_button.swfw_square_button .swfw-cta-button a, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button a {
+.swfw_block_button .swfw-cta-button a {
   text-decoration: none !important;
 }
-.swfw_block_button .swfw-cta-button:hover, .swfw-follow-button.swfw_shift_button .swfw-cta-button:hover, .swfw_shift_button.swfw_square_button .swfw-cta-button:hover, .swfw_shift_button.swfw_buttons_button .swfw-cta-button:hover, .swfw-follow-button.swfw_pill_button .swfw-cta-button:hover, .swfw_pill_button.swfw_square_button .swfw-cta-button:hover, .swfw_pill_button.swfw_buttons_button .swfw-cta-button:hover, .swfw-follow-button.swfw_leaf_button .swfw-cta-button:hover, .swfw_leaf_button.swfw_square_button .swfw-cta-button:hover, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button:hover {
+.swfw_block_button .swfw-cta-button:hover {
   transition: all 300ms;
   background: rgba(30, 30, 30, 0.3);
   padding: 1px 0;
   cursor: pointer;
 }
-.swfw_block_button .swfw-cta-button:hover a, .swfw-follow-button.swfw_shift_button .swfw-cta-button:hover a, .swfw_shift_button.swfw_square_button .swfw-cta-button:hover a, .swfw_shift_button.swfw_buttons_button .swfw-cta-button:hover a, .swfw-follow-button.swfw_pill_button .swfw-cta-button:hover a, .swfw_pill_button.swfw_square_button .swfw-cta-button:hover a, .swfw_pill_button.swfw_buttons_button .swfw-cta-button:hover a, .swfw-follow-button.swfw_leaf_button .swfw-cta-button:hover a, .swfw_leaf_button.swfw_square_button .swfw-cta-button:hover a, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button:hover a {
+.swfw_block_button .swfw-cta-button:hover a {
   color: #fefefe;
 }
 
@@ -233,9 +280,10 @@
  * Leaf style
  */
 .swfw-follow-button.swfw_leaf_button, .swfw_leaf_button.swfw_square_button, .swfw_leaf_button.swfw_buttons_button, .swfw_leaf_button.swfw_block_button {
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  padding: 5px 10px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 35px;
 }
 
 /**
@@ -243,8 +291,9 @@
  */
 .swfw-follow-button.swfw_pill_button, .swfw_pill_button.swfw_square_button, .swfw_pill_button.swfw_buttons_button, .swfw_pill_button.swfw_block_button {
   border-radius: 50px;
-  border-width: 1px;
-  padding: 5px 0;
+}
+.swfw-follow-button.swfw_pill_button .swfw-cta-button a, .swfw_pill_button.swfw_square_button .swfw-cta-button a, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a, .swfw_pill_button.swfw_block_button .swfw-cta-button a {
+  border-radius: 50px;
 }
 
 /**
@@ -255,12 +304,17 @@
   -moz-transform: skew(-30deg);
   -o-transform: skew(-30deg);
   -webkit-transform: skew(-30deg);
-  padding: 10px;
-  border-radius: 4px;
   /* Unskew the contents */
 }
 .swfw-follow-button.swfw_shift_button > div, .swfw_shift_button.swfw_square_button > div, .swfw_shift_button.swfw_buttons_button > div, .swfw_shift_button.swfw_block_button > div {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
   transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -o-transform: skew(30deg);
+  -webkit-transform: skew(30deg);
 }
 
 /**
