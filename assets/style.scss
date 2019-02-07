@@ -88,25 +88,6 @@ $black: #030303;
 	}
 }
 
-.swfw_shift_button {
-	  transform: skew(-30deg);
-	  -moz-transform: skew(-30deg);
-	  -o-transform: skew(-30deg);
-	  -webkit-transform: skew(-30deg);
-
-	> div {
-		transform: skew(30deg);
-		-moz-transform: skew(30deg);
-		-o-transform: skew(30deg);
-		-webkit-transform: skew(30deg);
-	  align-items: center;
-	  display: flex;
-	  justify-content: space-around;
-	  width: 100%;
-	}
-
-}
-
 /**
  * Square Buttons
  *
@@ -324,6 +305,7 @@ $black: #030303;
 .swfw-follow-button.swfw_pill_button {
 	@extend .swfw-follow-button;
 	border-radius: 50px;
+	padding: 20px;
 
 	.swfw-network-icon {
 		margin-left: 10px;
@@ -340,26 +322,43 @@ $black: #030303;
 
 .swfw-follow-button.swfw_shift_button {
 	@extend .swfw-follow-button;
-	transform: skew(-30deg);
-	-moz-transform: skew(-30deg);
-	-o-transform: skew(-30deg);
-	-webkit-transform: skew(-30deg);
+	transform: skew(-20deg);
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	-webkit-transform: skew(-20deg);
 
 	.swfw-network-icon {
 		margin-left: 10px;
 	}
 
-	/* Unskew the contents */
-	> div {
+	div {
+		transform: skew(20deg);
+		-moz-transform: skew(20deg);
+		-o-transform: skew(20deg);
+		-webkit-transform: skew(20deg);
 		align-items: center;
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		width: 100%;
-		transform: skew(30deg);
-		-moz-transform: skew(30deg);
-		-o-transform: skew(30deg);
-		-webkit-transform: skew(30deg);
 	}
+
+	.swfw-cta-button {
+		transform: skew(20deg);
+
+		a {
+			transform: skew(-20deg);
+		}
+	}
+}
+
+.swfw_shift_button {
+	transform: skew(-20deg);
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	-webkit-transform: skew(-20deg);
+
+
+
 }
 
 /**
