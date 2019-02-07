@@ -5,6 +5,8 @@
  */
 class SWFW_Cache {
 
+	use SWP_Debug_Trait;
+
 
 	/**
 	 * True iff the follow counts are less than 24 hours old.
@@ -47,5 +49,19 @@ class SWFW_Cache {
 		$now = (int) time() / DAY_IN_SECONDS;
 
 		return SWFW_Utility::update_option( 'last_updated', $now );
+	}
+
+	public function debug() {
+		$parameter = $_GET['swfw_debug'];
+		if ( empty( $parameter ) ) {
+			return;
+		}
+
+		switch( $parameter ) {
+			case 'force_api_requests' : {
+				SWFW_Utility::update_option( 'last_updated', 0);
+				self::$is_fresh = false;
+			}
+		}
 	}
 }
