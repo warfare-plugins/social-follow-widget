@@ -52,7 +52,7 @@ $black: #030303;
 	justify-content: space-between;
 	line-height: 1;
 	margin-bottom: 10px;
-	padding: 25px 15px;
+	padding: 20px 10px;
 	width: 100%;
 
 	a {
@@ -254,23 +254,27 @@ $black: #030303;
 		width: min-content;
 	}
 
-  .swfw-text {
-	  font-size: 12px;
-	  line-height: 24px;
-	  left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount}
-	  color: $white;
-	  text-align: center;
+	.swfw-network-icon {
+		margin-left: 10px;
+	}
 
-	  .swfw-count {
+	.swfw-text {
+		font-size: 12px;
+		line-height: 24px;
+		left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount}
+		color: $white;
+		text-align: center;
+
+	.swfw-count {
 		width: -moz-max-content;
 		width: max-content;
 		font-size: 15px;
 	  }
-  }
+	}
 
-  .swfw-cta {
-	border-radius: 3px;
-  }
+	.swfw-cta {
+		border-radius: 3px;
+	}
 
   .swfw-cta-button {
 	  height: 24px;
@@ -304,10 +308,14 @@ $black: #030303;
  */
 .swfw-follow-button.swfw_leaf_button {
 	@extend .swfw-follow-button;
-	border-top-left-radius: 35px;
+	border-top-left-radius: 21px;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 35px;
+	border-bottom-right-radius: 21px;
+
+	.swfw-network-icon {
+		margin-left: 10px;
+	}
 }
 
 /**
@@ -316,6 +324,10 @@ $black: #030303;
 .swfw-follow-button.swfw_pill_button {
 	@extend .swfw-follow-button;
 	border-radius: 50px;
+
+	.swfw-network-icon {
+		margin-left: 10px;
+	}
 
 	.swfw-cta-button a {
 		border-radius: 50px;
@@ -333,11 +345,15 @@ $black: #030303;
 	-o-transform: skew(-30deg);
 	-webkit-transform: skew(-30deg);
 
+	.swfw-network-icon {
+		margin-left: 10px;
+	}
+
 	/* Unskew the contents */
 	> div {
 		align-items: center;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		width: 100%;
 		transform: skew(30deg);
 		-moz-transform: skew(30deg);

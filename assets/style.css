@@ -42,7 +42,7 @@
   justify-content: space-between;
   line-height: 1;
   margin-bottom: 10px;
-  padding: 25px 15px;
+  padding: 20px 10px;
   width: 100%;
 }
 .swfw-follow-button a, .swfw-follow-button.swfw_shift_button a, .swfw_shift_button.swfw_square_button a, .swfw_shift_button.swfw_buttons_button a, .swfw_shift_button.swfw_block_button a, .swfw-follow-button.swfw_pill_button a, .swfw_pill_button.swfw_square_button a, .swfw_pill_button.swfw_buttons_button a, .swfw_pill_button.swfw_block_button a, .swfw-follow-button.swfw_leaf_button a, .swfw_leaf_button.swfw_square_button a, .swfw_leaf_button.swfw_buttons_button a, .swfw_leaf_button.swfw_block_button a, .swfw_block_button a, .swfw_buttons_button a, .swfw_square_button a {
@@ -273,6 +273,9 @@
   width: -moz-min-content;
   width: min-content;
 }
+.swfw_block_button .swfw-network-icon {
+  margin-left: 10px;
+}
 .swfw_block_button .swfw-text {
   font-size: 12px;
   line-height: 24px;
@@ -315,10 +318,13 @@
  * Leaf style
  */
 .swfw-follow-button.swfw_leaf_button, .swfw_leaf_button.swfw_square_button, .swfw_leaf_button.swfw_buttons_button, .swfw_leaf_button.swfw_block_button {
-  border-top-left-radius: 35px;
+  border-top-left-radius: 21px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 35px;
+  border-bottom-right-radius: 21px;
+}
+.swfw-follow-button.swfw_leaf_button .swfw-network-icon, .swfw_leaf_button.swfw_square_button .swfw-network-icon, .swfw_leaf_button.swfw_buttons_button .swfw-network-icon, .swfw_leaf_button.swfw_block_button .swfw-network-icon {
+  margin-left: 10px;
 }
 
 /**
@@ -326,6 +332,9 @@
  */
 .swfw-follow-button.swfw_pill_button, .swfw_pill_button.swfw_square_button, .swfw_pill_button.swfw_buttons_button, .swfw_pill_button.swfw_block_button {
   border-radius: 50px;
+}
+.swfw-follow-button.swfw_pill_button .swfw-network-icon, .swfw_pill_button.swfw_square_button .swfw-network-icon, .swfw_pill_button.swfw_buttons_button .swfw-network-icon, .swfw_pill_button.swfw_block_button .swfw-network-icon {
+  margin-left: 10px;
 }
 .swfw-follow-button.swfw_pill_button .swfw-cta-button a, .swfw_pill_button.swfw_square_button .swfw-cta-button a, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a, .swfw_pill_button.swfw_block_button .swfw-cta-button a {
   border-radius: 50px;
@@ -341,10 +350,13 @@
   -webkit-transform: skew(-30deg);
   /* Unskew the contents */
 }
+.swfw-follow-button.swfw_shift_button .swfw-network-icon, .swfw_shift_button.swfw_square_button .swfw-network-icon, .swfw_shift_button.swfw_buttons_button .swfw-network-icon, .swfw_shift_button.swfw_block_button .swfw-network-icon {
+  margin-left: 10px;
+}
 .swfw-follow-button.swfw_shift_button > div, .swfw_shift_button.swfw_square_button > div, .swfw_shift_button.swfw_buttons_button > div, .swfw_shift_button.swfw_block_button > div {
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   transform: skew(30deg);
   -moz-transform: skew(30deg);
