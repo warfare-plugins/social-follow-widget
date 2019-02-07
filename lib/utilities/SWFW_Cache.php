@@ -32,6 +32,7 @@ class SWFW_Cache {
 
 		$last_updated = (int) SWFW_Utility::get_option( 'last_updated' );
 		$current_time =  (int) time() / DAY_IN_SECONDS;
+		self::debug();
 
 		self::$is_fresh = $current_time - $last_updated < 24;
 		return self::$is_fresh;
