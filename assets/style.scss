@@ -349,17 +349,21 @@ $black: #030303;
 			transform: skew(-20deg);
 		}
 	}
+
+	.swfw-network-icon {
+		margin-left: 10px;
+		flex: 1;
+	}
+
+	.swfw-text {
+		flex: 2;
+	}
+
+	.swfw-cta-button {
+		flex: 1;
+	}
 }
 
-.swfw_shift_button {
-	transform: skew(-20deg);
-	-moz-transform: skew(-20deg);
-	-o-transform: skew(-20deg);
-	-webkit-transform: skew(-20deg);
-
-
-
-}
 
 /**
 /// Backend Style
