@@ -3,7 +3,7 @@
  * Plugin Name: Social Warfare - Follow Widget
  * Plugin URI:  https://warfareplugins.com
  * Description: A plugin to maximize social shares and drive more traffic using the fastest and most intelligent share buttons on the market, calls to action via in-post click-to-tweets, popular posts widgets based on share popularity, link-shortening, Google Analytics and much, much more!
- * Version:     0.0.98
+ * Version:     0.0.98b
  * Author:      Warfare Plugins
  * Author URI:  https://warfareplugins.com
  * Text Domain: social-warfare-follow-me
@@ -16,7 +16,7 @@ defined( 'WPINC' ) || die;
  * Define plugin constants for use throughout the plugin (Version and Directories)
  *
  */
-define( 'SWFW_VERSION' , '0.0.98' );
+define( 'SWFW_VERSION' , '0.0.98b' );
 define( 'SWFW_PLUGIN_FILE', __FILE__ );
 define( 'SWFW_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'SWFW_PLUGIN_DIR', dirname( __FILE__ ) );
