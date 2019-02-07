@@ -427,7 +427,7 @@ abstract class SWFW_Follow_Network {
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
-	<div class="swfw-follow-button swfw_square_button $this->key" style="$this->border; $this->background">
+	<div class="swfw-follow-button swfw_square_button swp-$this->key">
 		<div class='swfw-network-icon'>
 			{$this->icon}
 		</div>
@@ -454,7 +454,7 @@ BUTTON;
 	private function generate_block_HTML( $shape ) {
 		return
 <<<BUTTON
-<div class="swfw-follow-button $shape $this->key" style="$this->background; $this->border">
+<div class="swfw-follow-button $shape swp-$this->key">
 	<div class='swfw-network-icon'>
 		{$this->icon}
 	</div>
@@ -483,7 +483,7 @@ BUTTON;
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
-	<div class="swfw-follow-button swfw_buttons_button $this->key" style="$this->background; $this->border">
+	<div class="swfw-follow-button swfw_buttons_button swp-$this->key">
 		<div class='swfw-network-icon'>
 			{$this->icon}
 		</div>
