@@ -273,14 +273,6 @@
   width: -moz-min-content;
   width: min-content;
 }
-.swfw_block_button .swfw-network-icon {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  font-size: 24px;
-  color: #fefefe;
-  left: 0;
-}
 .swfw_block_button .swfw-text {
   font-size: 12px;
   line-height: 24px;
