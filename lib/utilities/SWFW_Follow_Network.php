@@ -464,7 +464,7 @@ BUTTON;
 	</div>
 
 	<div class='swfw-cta-button'>
-		<a target="_blank" href="{$this->href}">$this->cta</a>
+		<a target="_blank" href="{$this->href}"><div>$this->cta</div></a>
 	</div>
 </div>
 BUTTON;
