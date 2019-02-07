@@ -125,6 +125,12 @@
   margin: 5px;
   color: #fefefe;
   position: realtive;
+  padding: 0;
+  justify-content: center;
+  /* Use absolute so they occupy the same space in parent container swfw-text. */
+}
+.swfw_square_button .swfw-network-icon {
+  margin-top: -12px;
 }
 .swfw_square_button .swfw-text {
   width: 100%;
@@ -138,20 +144,20 @@
 }
 .swfw_square_button .swfw-count {
   opacity: 1;
-  transition: opacity 300ms 0;
+  transition: opacity 120ms 0;
   font-size: 12px;
 }
 .swfw_square_button .swfw-cta {
   opacity: 0;
-  transition: opacity 300ms 0;
+  transition: opacity 120ms 0;
 }
 .swfw_square_button:hover .swfw-count {
   opacity: 0;
-  transition: opacity 300ms 300ms;
+  transition: opacity 120ms 120ms;
 }
 .swfw_square_button:hover .swfw-cta {
   opacity: 1;
-  transition: opacity 300ms 300ms;
+  transition: opacity 120ms 120ms;
 }
 
 /**

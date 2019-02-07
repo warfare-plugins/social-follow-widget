@@ -140,13 +140,19 @@ $black: #030303;
 	margin: 5px;
 	color: $white;
 	position: realtive;
+	padding: 0;
+	justify-content: center;
+
+	.swfw-network-icon {
+		margin-top: -12px;
+	}
 
 	.swfw-text {
 		width: 100%;
 		color: $white;
-
 	}
 
+	/* Use absolute so they occupy the same space in parent container swfw-text. */
 	.swfw-cta,
 	.swfw-count {
 	  display: block;
@@ -156,24 +162,24 @@ $black: #030303;
 
 	.swfw-count {
 	  opacity: 1;
-	  transition: opacity 300ms 0;
+	  transition: opacity 120ms 0;
 	  font-size: 12px;
 	}
 
 	.swfw-cta {
 	  opacity: 0;
-	  transition: opacity 300ms 0;
+	  transition: opacity 120ms 0;
 	}
 
 	&:hover {
 		.swfw-count {
 		  opacity: 0;
-		  transition: opacity 300ms 300ms;
+		  transition: opacity 120ms 120ms;
 		}
 
 		.swfw-cta {
 		  opacity: 1;
-		  transition: opacity 300ms 300ms;
+		  transition: opacity 120ms 120ms;
 		}
 	}
 }
