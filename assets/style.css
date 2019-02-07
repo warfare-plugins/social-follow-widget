@@ -245,6 +245,17 @@
  * Block Buttons
  *
  */
+.swfw-follow-button.swfw_shift_button .swfw-network-icon, .swfw_shift_button.swfw_square_button .swfw-network-icon, .swfw_shift_button.swfw_buttons_button .swfw-network-icon, .swfw-follow-button.swfw_pill_button .swfw-network-icon, .swfw_pill_button.swfw_square_button .swfw-network-icon, .swfw_pill_button.swfw_buttons_button .swfw-network-icon, .swfw-follow-button.swfw_leaf_button .swfw-network-icon, .swfw_leaf_button.swfw_square_button .swfw-network-icon, .swfw_leaf_button.swfw_buttons_button .swfw-network-icon, .swfw_block_button .swfw-network-icon {
+  margin-left: 10px;
+  flex: 1;
+}
+.swfw-follow-button.swfw_shift_button .swfw-text, .swfw_shift_button.swfw_square_button .swfw-text, .swfw_shift_button.swfw_buttons_button .swfw-text, .swfw-follow-button.swfw_pill_button .swfw-text, .swfw_pill_button.swfw_square_button .swfw-text, .swfw_pill_button.swfw_buttons_button .swfw-text, .swfw-follow-button.swfw_leaf_button .swfw-text, .swfw_leaf_button.swfw_square_button .swfw-text, .swfw_leaf_button.swfw_buttons_button .swfw-text, .swfw_block_button .swfw-text {
+  flex: 2;
+}
+.swfw-follow-button.swfw_shift_button .swfw-cta-button, .swfw_shift_button.swfw_square_button .swfw-cta-button, .swfw_shift_button.swfw_buttons_button .swfw-cta-button, .swfw-follow-button.swfw_pill_button .swfw-cta-button, .swfw_pill_button.swfw_square_button .swfw-cta-button, .swfw_pill_button.swfw_buttons_button .swfw-cta-button, .swfw-follow-button.swfw_leaf_button .swfw-cta-button, .swfw_leaf_button.swfw_square_button .swfw-cta-button, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button, .swfw_block_button .swfw-cta-button {
+  flex: 1;
+}
+
 .swfw_block_button {
   flex-flow: row nowrap;
   align-items: center;
@@ -333,9 +344,6 @@
   -o-transform: skew(-20deg);
   -webkit-transform: skew(-20deg);
 }
-.swfw-follow-button.swfw_shift_button .swfw-network-icon, .swfw_shift_button.swfw_square_button .swfw-network-icon, .swfw_shift_button.swfw_buttons_button .swfw-network-icon, .swfw_shift_button.swfw_block_button .swfw-network-icon {
-  margin-left: 10px;
-}
 .swfw-follow-button.swfw_shift_button div, .swfw_shift_button.swfw_square_button div, .swfw_shift_button.swfw_buttons_button div, .swfw_shift_button.swfw_block_button div {
   transform: skew(20deg);
   -moz-transform: skew(20deg);
@@ -347,20 +355,10 @@
   width: 100%;
 }
 .swfw-follow-button.swfw_shift_button .swfw-cta-button, .swfw_shift_button.swfw_square_button .swfw-cta-button, .swfw_shift_button.swfw_buttons_button .swfw-cta-button, .swfw_shift_button.swfw_block_button .swfw-cta-button {
+  transform: skew(0deg);
+}
+.swfw-follow-button.swfw_shift_button .swfw-cta-button a div, .swfw_shift_button.swfw_square_button .swfw-cta-button a div, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a div, .swfw_shift_button.swfw_block_button .swfw-cta-button a div {
   transform: skew(20deg);
-}
-.swfw-follow-button.swfw_shift_button .swfw-cta-button a, .swfw_shift_button.swfw_square_button .swfw-cta-button a, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a, .swfw_shift_button.swfw_block_button .swfw-cta-button a {
-  transform: skew(-20deg);
-}
-.swfw-follow-button.swfw_shift_button .swfw-network-icon, .swfw_shift_button.swfw_square_button .swfw-network-icon, .swfw_shift_button.swfw_buttons_button .swfw-network-icon, .swfw_shift_button.swfw_block_button .swfw-network-icon {
-  margin-left: 10px;
-  flex: 1;
-}
-.swfw-follow-button.swfw_shift_button .swfw-text, .swfw_shift_button.swfw_square_button .swfw-text, .swfw_shift_button.swfw_buttons_button .swfw-text, .swfw_shift_button.swfw_block_button .swfw-text {
-  flex: 2;
-}
-.swfw-follow-button.swfw_shift_button .swfw-cta-button, .swfw_shift_button.swfw_square_button .swfw-cta-button, .swfw_shift_button.swfw_buttons_button .swfw-cta-button, .swfw_shift_button.swfw_block_button .swfw-cta-button {
-  flex: 1;
 }
 
 /**

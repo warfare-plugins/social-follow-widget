@@ -222,6 +222,22 @@ $black: #030303;
  * Block Buttons
  *
  */
+
+%swfw-block-inner-styles {
+	.swfw-network-icon {
+		margin-left: 10px;
+		flex: 1;
+	}
+
+	.swfw-text {
+		flex: 2;
+	}
+
+	.swfw-cta-button {
+		flex: 1;
+	}
+}
+
 .swfw_block_button {
 	@extend .swfw-follow-button;
 	flex-flow: row nowrap;
@@ -234,6 +250,8 @@ $black: #030303;
 		width: -moz-min-content;
 		width: min-content;
 	}
+
+	@extend %swfw-block-inner-styles;
 
 	.swfw-network-icon {
 		margin-left: 10px;
@@ -294,6 +312,8 @@ $black: #030303;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 21px;
 
+	@extend %swfw-block-inner-styles;
+
 	.swfw-network-icon {
 		margin-left: 10px;
 	}
@@ -306,6 +326,9 @@ $black: #030303;
 	@extend .swfw-follow-button;
 	border-radius: 50px;
 	padding: 20px;
+
+	@extend %swfw-block-inner-styles;
+
 
 	.swfw-network-icon {
 		margin-left: 10px;
@@ -327,9 +350,9 @@ $black: #030303;
 	-o-transform: skew(-20deg);
 	-webkit-transform: skew(-20deg);
 
-	.swfw-network-icon {
-		margin-left: 10px;
-	}
+
+	@extend %swfw-block-inner-styles;
+
 
 	div {
 		transform: skew(20deg);
@@ -343,24 +366,11 @@ $black: #030303;
 	}
 
 	.swfw-cta-button {
-		transform: skew(20deg);
+		transform: skew(0deg);
 
-		a {
-			transform: skew(-20deg);
+		a div {
+			transform: skew(20deg);
 		}
-	}
-
-	.swfw-network-icon {
-		margin-left: 10px;
-		flex: 1;
-	}
-
-	.swfw-text {
-		flex: 2;
-	}
-
-	.swfw-cta-button {
-		flex: 1;
 	}
 }
 
