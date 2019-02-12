@@ -402,7 +402,7 @@ abstract class SWFW_Follow_Network {
 	 * @since  1.0.0 | 12 FEB 2019 | Created.
 	 * @access public
 	 * @param  int $int The minimum number of followers desired.
-	 * @return int $int, or 15 if $int was not a number. 
+	 * @return int $int, or 15 if $int was not a number.
 	 *
 	 */
 	function set_minimum_count( $int ) {
@@ -411,7 +411,7 @@ abstract class SWFW_Follow_Network {
 			$int = 15;
 		}
 
-		return $this->minimum_count = $int;
+		return $this->minimum_count = (int) $int;
 	}
 
 	/**
@@ -441,7 +441,9 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	private function generate_square_HTML() {
-		$follow_count_HTML = $this->get_count_html( $shape );
+		$follow_count_HTML = $this->get_count_html( 'square' );
+			// Not enough space for a name.
+			$this->name = '';
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
@@ -491,8 +493,12 @@ BUTTON;
 
 
 	private function get_count_html( $shape ) {
+		if ( 'square' == $shape ) {
+			$this->name = '';
+		}
+
 		// They have no followers or follow data for this network.
-		if ( (int) $this->follow_count < 1 ) {
+		if ( (int) $this->follow_count < 1 || $this->follow_count < $this->minimum_count ) {
 			$this->follow_count = $this->name;
 			$this->follow_description = '';
 		}

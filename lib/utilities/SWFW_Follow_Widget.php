@@ -186,7 +186,6 @@ INPUT;
 		$html .= $this->generate_minimum_count_input( $settings['minimum_count'] );
 
 		foreach( $networks as $network ) {
-			$network->set_minimum_count( $settings['minimum_count'] );
 			$key         = $network->key . '_username';
 			$wp_id       = $this->get_field_id( $key );
 			$wp_name     = $this->get_field_name( $key );
@@ -254,6 +253,9 @@ FIELD;
 			if ( false == $network->is_active() ) {
 				continue;
 			}
+
+			$network->set_minimum_count( $settings['minimum_count'] );
+			
 
 			$key = $network->key.'_username';
 			$buttons .= $network->generate_frontend_HTML( $settings['shape'] );
