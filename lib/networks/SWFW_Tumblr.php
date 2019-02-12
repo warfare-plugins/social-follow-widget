@@ -32,7 +32,6 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 			'color_primary' => '#39475D',
 			'color_accent' => '#27313F',
 			'url'	=> 'https://swfw_username.tumblr.com',
-			'placeholder' => 'blogname.(tumblr.)com',
 			'needs_authorization' => true
 		);
 
