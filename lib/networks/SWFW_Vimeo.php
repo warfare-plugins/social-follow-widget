@@ -65,7 +65,8 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 		$headers = array('Content-Type: application/json' , "Authorization: Bearer $access_token" );
 		$this->response = SWP_CURL::file_get_contents_curl( $url, $headers );
 		error_log('Response for Vimeo with username ' . $this->username );
-		error_log(var_export( $this->response, 1));
+		error_log('type of response before parsing' . gettype($this->response ));
+		error_log(var_dump( $this->response, 1));
 	}
 
 
@@ -82,7 +83,11 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 			return "000";
 		}
 
-		$this->response = json_decode( $this->response );
+		if ( is_string($this->response)) {
+			$this->response = json_decode( $this->response );
+			
+		}
+
 
 		if ( empty( $this->response->total ) ) {
 			return "00000";
