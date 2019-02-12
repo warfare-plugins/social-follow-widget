@@ -24,7 +24,7 @@ class SWFW_Ello extends SWFW_Follow_Network {
 	 */
 	public function __construct() {
 		$network = array(
-			'key' => 'snapchat',
+			'key' => 'ello',
 			'name' => 'Ello',
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
