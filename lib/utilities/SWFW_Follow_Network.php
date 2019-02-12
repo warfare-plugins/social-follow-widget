@@ -123,7 +123,6 @@ abstract class SWFW_Follow_Network {
 	public function __construct( $args ) {
 		global $swfw_networks;
 
-
 		/**
 		 * To verify that all of the $required keys are provided,
 		 * we we remove it from the array once it is found.
@@ -156,7 +155,6 @@ abstract class SWFW_Follow_Network {
 		$this->establish_icon();
 		$this->establish_username();
 		$this->establish_auth_helper();
-
 
 		add_filter( 'swfw_follow_networks', array( $this, 'register_self' ) );
 	}

@@ -91,7 +91,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 	 *
 	 */
 	public function init_networks() {
-		$networks = array(
+		$api_networks = array(
 			'Facebook',
 			'Pinterest',
 			'Reddit',
@@ -100,6 +100,18 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 			'Instagram',
 			'Vimeo'
 		);
+
+		$basic_networks = array(
+			'Blogger',
+			'Ello',
+			'Flickr',
+			'Linkedin',
+			'Medium',
+			'Periscope',
+			'Snapchat'
+		);
+
+		$networks = array_merge( $api_networks, $basic_networks );
 
 		$this->load_files( '/lib/networks/', $networks, true );
 	}
