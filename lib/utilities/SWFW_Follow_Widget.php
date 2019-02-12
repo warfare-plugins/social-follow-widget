@@ -27,7 +27,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	 */
 	function __construct() {
 		$key = strtolower( __CLASS__ );
-		$name = 'Social Follow by Warfare Plugins';
+		$name = 'Social Warfare: Follow Widget';
 		$widget = array(
 			'classname' => $key,
 			'description' => 'Increase follower growth for your favorite social networks.',
@@ -51,6 +51,10 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	 */
 	public static function get_widgets() {
 		$widgets = get_option( 'widget_swfw_follow_widget', array());
+
+		if (empty($widgets)) {
+		   return array();
+		}
 
 		foreach( $widgets as $key => $settings ) {
 			// This is a wordress field, not a widget.
