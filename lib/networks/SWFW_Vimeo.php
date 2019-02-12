@@ -77,20 +77,18 @@ class SWFW_Vimeo extends SWFW_Follow_Network {
 	 */
 	public function parse_api_response() {
 		if ( empty( $this->response ) ) {
-			return "000";
+			return "0";
 		}
 
 		if ( is_string( $this->response ) ) {
 			$this->response = json_decode( $this->response );
-			error_log('Parsed response', var_export($this->response, 1));
-			error_log('Just the total: ', var_export($this->response->total));
 		}
 
+		$this->follow_count = isset( $this->response->total )
+						? (int) $this->response->total
+						: 0;
 
-		if ( empty( $this->response->total ) ) {
-			return "00000";
-		}
 
-		return (int) $this->response->total;
+		return $this->follow_count;
 	}
 }
