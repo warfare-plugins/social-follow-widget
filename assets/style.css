@@ -206,8 +206,8 @@
   font-size: 32px;
 }
 .swfw_buttons_button .swfw-text {
-  width: -moz-min-content;
-  width: min-content;
+  width: -moz-max-content;
+  width: max-content;
   margin: 0 10px;
   transition: margin 300ms;
   display: flex;
