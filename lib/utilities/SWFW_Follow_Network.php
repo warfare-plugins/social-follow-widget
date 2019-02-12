@@ -395,6 +395,25 @@ abstract class SWFW_Follow_Network {
 		return $this->$generate_x_HTML();
 	}
 
+
+	/**
+	 * Sets the minimum follower count, used to decide if it is displayed.
+	 *
+	 * @since  1.0.0 | 12 FEB 2019 | Created.
+	 * @access public
+	 * @param  int $int The minimum number of followers desired.
+	 * @return int $int, or 15 if $int was not a number. 
+	 *
+	 */
+	function set_minimum_count( $int ) {
+		if ( !is_numeric( (int) $int) ) {
+			// Use a default value.
+			$int = 15;
+		}
+
+		return $this->minimum_count = $int;
+	}
+
 	/**
 	 * Prepares attributes and styles for frontend display.
 	 *
@@ -422,6 +441,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	private function generate_square_HTML() {
+		$follow_count_HTML = $this->get_count_html( $shape );
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
@@ -431,7 +451,7 @@ abstract class SWFW_Follow_Network {
 		</div>
 
 		<div class="swfw-text">
-			<span class='swfw-count'>$this->follow_count</span>
+			{$follow_count_HTML}
 			<span class='swfw-cta'>$this->cta</span>
 		</div>
 	</div>
@@ -450,6 +470,7 @@ BUTTON;
 	 *
 	 */
 	private function generate_block_HTML( $shape ) {
+		$follow_count_HTML = $this->get_count_html( $shape );
 		return
 <<<BUTTON
 <div class="swfw-follow-button $shape swp-$this->key">
@@ -458,7 +479,7 @@ BUTTON;
 	</div>
 
 	<div class="swfw-text">
-		<p class='swfw-count' style='margin: 0'>$this->follow_count $this->follow_description</p>
+		{$follow_count_HTML}
 	</div>
 
 	<div class='swfw-cta-button'>
@@ -466,6 +487,21 @@ BUTTON;
 	</div>
 </div>
 BUTTON;
+	}
+
+
+	private function get_count_html( $shape ) {
+		// They have no followers or follow data for this network.
+		if ( (int) $this->follow_count < 1 ) {
+			$this->follow_count = $this->name;
+			$this->follow_description = '';
+		}
+
+		if ( 'square' == $shape || 'block' == $shape ) {
+			return "<span class='swfw-count'>$this->follow_count</span>";
+		}
+
+		return "<p class='swfw-count' style='margin: 0'>$this->follow_count $this->follow_description</p>";
 	}
 
 
@@ -478,6 +514,7 @@ BUTTON;
 	 *
 	 */
 	public function generate_buttons_HTML( ) {
+		$follow_count_HTML = $this->get_count_html( $shape );
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
@@ -488,7 +525,7 @@ BUTTON;
 
 		<div class="swfw-text">
 			<span class='swfw-cta'>$this->cta</span>
-			<span class='swfw-count'>$this->follow_count</span>
+			{$follow_count_HTML}
 		</div>
 	</div>
 </a>
