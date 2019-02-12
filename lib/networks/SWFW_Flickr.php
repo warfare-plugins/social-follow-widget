@@ -30,7 +30,7 @@ class SWFW_Flickr extends SWFW_Follow_Network {
 			'follow_description' => 'Followers',
 			'color_primary' => '#0063dc',
 			'color_accent' => '#ff0084',
-			'url'	=> 'https://www.flickr.com/photos/swfw_username/',
+			'url'	=> 'https://www.flickr.com/people/swfw_username/',
 			'needs_authorization' => false
 		);
 
