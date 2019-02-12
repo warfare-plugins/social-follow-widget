@@ -350,7 +350,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	function is_active() {
-		return !empty( $this->username );
+		return isset( $this->username ) && !empty( $this->username );
 	}
 
 
