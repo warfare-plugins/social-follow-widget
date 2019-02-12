@@ -179,21 +179,6 @@ endif;
 	 return $notices;
 }
 
-function test() {
-	// "https://www.facebook.com/v3.2/dialog/oauth?client_id={368445043720990}&redirect_uri={'https://warfareplugins.com/authorizations/facebook'}&state={'param=one'}"
-	$app_id = '529576650555031';
-	$redirect_uri = 'https://warfareplugins.com/authorizations/facebook';
-
-	$url = "https://www.facebook.com/v3.2/dialog/oauth?";
-	$url .= "client_id={" . $app_id . "}";
-	$url .= "&redirect_uri={" . $redirect_uri  ."}";
-	$url .= "&state={" . $state  ."}";
-
-	$access_token = 'EAAFPGUvzQx4BAOB7Byd0mifwtWdtcqZB3aMJi3h8dPkMz1YV0NAPxeGQ5BHwIbNwzT3ZA3HkpoNWdyO4MuaZC3k9boFaKNZAT3My0Xbi6AZAovg6aZBOZAYMsmXN0fyKYsf4wZBzXXEOhZAWI6yb1rSLI38cbkQ7wXzkjAgTdLnZAzLnUPtafgmvTEXWLxtZCAZA8SGAIggiSktjRAZDZD';
-	$user_id = '10217698787042215';
-
-	// graph.facebook.com/v3.2/10217698787042215?fields=id,friends,gender&access_token=EAAFPGUvzQx4BAOB7Byd0mifwtWdtcqZB3aMJi3h8dPkMz1YV0NAPxeGQ5BHwIbNwzT3ZA3HkpoNWdyO4MuaZC3k9boFaKNZAT3My0Xbi6AZAovg6aZBOZAYMsmXN0fyKYsf4wZBzXXEOhZAWI6yb1rSLI38cbkQ7wXzkjAgTdLnZAzLnUPtafgmvTEXWLxtZCAZA8SGAIggiSktjRAZDZD
-}
 
 function add_facebook_script() {
 	?>
