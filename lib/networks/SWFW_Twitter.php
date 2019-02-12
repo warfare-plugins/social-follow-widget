@@ -100,7 +100,7 @@ class SWFW_Twitter extends SWFW_Follow_Network {
 	 */
 	public function parse_api_response() {
 		if ( empty( $this->follow_count ) ) {
-			return "000";
+			return "0";
 		}
 
 		return $this->follow_count;

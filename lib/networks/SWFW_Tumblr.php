@@ -52,10 +52,6 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		$access_token = $this->auth_helper->get_access_token();
 		$access_secret = $this->auth_helper->get_access_secret();
 
-		error_log('Tumblr access token: ' . $access_token);
-		error_log('Tumblr access secret: ' . $access_secret);
-		error_log('Tumblr username: ' . $this->username);
-
 		if ( empty( $access_token )  ) {
 			return false;
 		}
@@ -68,9 +64,7 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		$swp_secret = 'v00cOcheNGOrOoHzU6WnU1AbleQQZmGUSRr44rjJsSG3u6mUbg';
 
 		$tumblr = new Tumblr\API\Client( $swp_key, $swp_secret );
-		error_log('Tumblr $tumblr object, uses params $swp_key and $swp_secret.' . var_export($tumblr, 1));
 		$tumblr->setToken( $access_token, $access_secret );
-		error_log('Tumblr $tumblr object, after setToken with params $access_token and $access_secret.' . var_export($tumblr, 1));
 
 		$response = $tumblr->getUserInfo();
 		if ( !empty( $response ) ) {
@@ -93,11 +87,11 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		// $response is already formatted as object thanks to the Tumblr client.
 
 		if ( empty( $this->response ) ) {
-			return "000";
+			return "0";
 		}
 
 		if ( empty( $this->response->user ) || empty( $this->response->user->blogs ) ) {
-			return "00000";
+			return "0";
 		}
 
 		/**
@@ -105,8 +99,6 @@ class SWFW_Tumblr extends SWFW_Follow_Network {
 		 * and sum the total followers for all blogs.
 		 *
 		 */
-		 error_log('Tumblr response: ' . var_export($this->response, 1));
-		 error_log('Tumblr response->user: ' . var_export($this->response->user, 1));
 		foreach( $this->response->user->blogs as $blog ) {
 			if ( is_numeric ( $blog->followers ) ) {
 				$this->follow_count += (int) $blog->followers;
