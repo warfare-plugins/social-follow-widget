@@ -71,8 +71,6 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 
 			if ( empty( $response->data ) || null == $response->data || 'NULL' == $response->data ) {
 				$this->follow_count = 0;
-				error_log('SWFW Error making Pinterest follow request for username ' . $this->username );
-				error_log(var_exporgt($response, 1));
 				return;
 			}
 
