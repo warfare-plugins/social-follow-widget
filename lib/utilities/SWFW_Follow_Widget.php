@@ -162,7 +162,7 @@ SELECT;
 			$wp_name     = $this->get_field_name( $key );
 			$value       = isset( $settings[$key]) ? $settings[$key] : '';
 			$class       = $network->is_active() ? 'swfw-active ' : 'swfw-inactive';
-			$placeholder = isset( $this->placeholder ) ? $this->placeholder : 'Username';
+			$placeholder = isset( $network->placeholder ) ? $network->placeholder : 'Username';
 			$field       =
 <<<FIELD
 <div class="swfw-follow-field $class" data-color-primary="{$network->color_primary}" data-color-accent="{$network->color_accent}" data-url="{$network->get_generic_link()}">
