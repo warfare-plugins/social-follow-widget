@@ -136,6 +136,28 @@ TITLE;
 SELECT;
 	}
 
+
+	/**
+	 * Creates an input[type=text] which corresponds to count display settings .
+	 *
+	 * @since 1.0.0 | 03 DEC 2018 | Created.
+	 * @param string $title The display title for the widget.
+	 * @return string Fully qualified HTML to render the input.
+	 *
+	 */
+	function generate_minimum_count_input( $minimum_count ) {
+		$wp_id   = $this->get_field_id( 'minimum_count' );
+		$wp_name = $this->get_field_name( 'minimum_count' );
+
+		return
+<<<INPUT
+<div class="swfw-input-field">
+	<label for={$wp_id}>Minimum Count</label>
+	<input type="text" id="$wp_id" name="$wp_name" value="$minimum_count" />
+</div>
+INPUT;
+	}
+
 	/**
 	 * Generates the backend display <form>.
 	 *
@@ -148,8 +170,10 @@ SELECT;
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$defaults = array(
 			'title'	=> 'Follow me on social media',
-			'shape'	=> 'square'
+			'shape'	=> 'square',
+			'minimum_count' => 15
 		);
+
 
 		foreach($defaults as $key => $default) {
 			if ( !isset( $settings[$key] ) ) {
@@ -157,10 +181,12 @@ SELECT;
 			}
 		}
 
-		$html = $this->generate_title_input($settings['title']);
-		$html .= $this->generate_shape_select($settings['shape']);
+		$html = $this->generate_title_input( $settings['title'] );
+		$html .= $this->generate_shape_select( $settings['shape'] );
+		$html .= $this->generate_minimum_count_input( $settings['minimum_count'] );
 
 		foreach( $networks as $network ) {
+			$network->set_minimum_count( $settings['minimum_count'] );
 			$key         = $network->key . '_username';
 			$wp_id       = $this->get_field_id( $key );
 			$wp_name     = $this->get_field_name( $key );
