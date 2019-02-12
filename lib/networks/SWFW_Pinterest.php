@@ -25,13 +25,14 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 	 */
 	public function __construct() {
 		$network = array(
-			'key' => 'pinterest',
-			'name' => 'Pinterest',
-			'cta' => 'Follow',
-			'follow_description' => 'Followers',
-			'color_primary' => '#CC2029',
-			'color_accent' => '#AB1F25',
-			'url'	=> 'https://pinterest.com/swfw_username',
+			'key'                 => 'pinterest',
+			'name'                => 'Pinterest',
+			'cta'                 => 'Follow',
+			'follow_description'  => 'Followers',
+			'color_primary'       => '#CC2029',
+			'color_accent'        => '#AB1F25',
+			'url'                 => 'https://pinterest.com/swfw_username',
+			'placeholder'         => 'username',
 			'needs_authorization' => true
 		);
 

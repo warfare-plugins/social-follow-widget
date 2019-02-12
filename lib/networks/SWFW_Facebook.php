@@ -30,6 +30,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 			'color_primary'       => '#3A589E',
 			'color_accent'        => '#314E84',
 			'url'                 => 'https://facebook.com/swfw_username',
+			'placeholder'		  => 'userOrPageID',
 			'needs_authorization' => true
 		);
 
