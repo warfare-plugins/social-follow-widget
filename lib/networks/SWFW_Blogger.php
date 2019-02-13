@@ -29,7 +29,7 @@ class SWFW_Blogger extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#f57d00',
-			'color_accent' => '#fefefe',
+			'color_accent' => '#fff',
 			'url'	=> 'https://www.periscope.tv/swfw_username/',
 			'placeholder' => 'blogname.com',
 			'needs_authorization' => false

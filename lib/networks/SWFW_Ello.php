@@ -29,7 +29,7 @@ class SWFW_Ello extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#000000',
-			'color_accent' => '#fefefe',
+			'color_accent' => '#fff',
 			'url'	=> 'https://ello.co/swfw_username',
 			'needs_authorization' => false
 		);
