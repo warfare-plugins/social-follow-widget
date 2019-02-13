@@ -189,15 +189,15 @@ INPUT;
 			$key         = $network->key . '_username';
 			$wp_id       = $this->get_field_id( $key );
 			$wp_name     = $this->get_field_name( $key );
-			$value       = isset( $settings[$key]) ? $settings[$key] : '';
-			$class       = $network->is_active() ? 'swfw-active ' : 'swfw-inactive';
+			$username    = isset( $settings[$key]) ? $settings[$key] : '';
+			$class       = !empty($username) ? 'swfw-active ' : 'swfw-inactive';
 			$placeholder = isset( $network->placeholder ) ? $network->placeholder : 'Username';
 			$field       =
 <<<FIELD
-<div class="swfw-follow-field $class" data-color-primary="{$network->color_primary}" data-color-accent="{$network->color_accent}" data-url="{$network->get_generic_link()}">
-	<div class="swfw-follow-field-icon" target="_blank"><i class="sw swp_{$network->key}_icon"></i></div>
+<div class="swfw-follow-field $class">
+	<div class="swfw-follow-field-icon swp-$network->key" target="_blank"><i class="sw swp_{$network->key}_icon"></i></div>
 	<label for="$wp_id">$network->name</label>
-	<input id="$wp_id" name="$wp_name" type="text" placeholder="$placeholder" value="$value"/>
+	<input id="$wp_id" name="$wp_name" type="text" placeholder="$placeholder" value="$username"/>
 </div>
 FIELD;
 			 $html .= $field;
@@ -255,7 +255,7 @@ FIELD;
 			}
 
 			$network->set_minimum_count( $settings['minimum_count'] );
-			
+
 
 			$key = $network->key.'_username';
 			$buttons .= $network->generate_frontend_HTML( $settings['shape'] );
