@@ -84,7 +84,6 @@ class SWFW_Pinterest extends SWFW_Follow_Network {
 			}
 		} while ( !empty( $response->page ) && !empty( $response->page->next ) );
 
-		error_log('Response for Pinterest with username ' . $this->username . ': ' . var_export( $response, 1));
 		$this->follow_count = $follow_count;
 	}
 
