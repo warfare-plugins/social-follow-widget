@@ -29,7 +29,7 @@ class SWFW_Medium extends SWFW_Follow_Network {
 			'cta' => 'Follow',
 			'follow_description' => 'Followers',
 			'color_primary' => '#00ab6c',
-			'color_accent' => '#fefefe',
+			'color_accent' => '#fff',
 			'url'	=> 'https://medium.com/swfw_username',
 			'needs_authorization' => false
 		);

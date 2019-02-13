@@ -26,10 +26,10 @@ class SWFW_Snapchat extends SWFW_Follow_Network {
 		$network = array(
 			'key' => 'snapchat',
 			'name' => 'Snapchat',
-			'cta' => 'Follow me',
+			'cta' => 'Follow',
 			'follow_description' => 'Followers',
-			'color_primary' => '#fffc00',
-			'color_accent' => '#fefefe',
+			'color_primary' => '#000',
+			'color_accent' => '#fffc00',
 			'url'	=> 'https://www.snapchat.com/add/swfw_username',
 			'needs_authorization' => false
 		);

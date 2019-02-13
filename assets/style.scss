@@ -1,5 +1,3 @@
-$white: #fefefe;
-$black: #030303;
 
 /**
 /// Frontend Style
@@ -51,14 +49,18 @@ $black: #030303;
 	align-items: center;
 	border-radius: 8px;
 	display: flex;
-	color: $white;
+	color: white;
 	font-family: 'Helvetica', sans-serif;
 	font-size: initial;
 	justify-content: space-between;
 	line-height: 1;
 	margin-bottom: 10px;
-	padding: 20px 10px;
+	padding: 20px;
 	width: 100%;
+
+	&.swp-snapchat {
+		color: black;
+	}
 
 	a {
 		background: #fff;
@@ -70,10 +72,16 @@ $black: #030303;
 		-o-transition:      all 0.3s ease-in-out;
 		transition:         all 0.3s ease-in-out;
 
+
+
 		:hover {
-			color: $white;
+			color: white;
+			&.swp-snapchat {
+				color: black;
+			}
 		}
 	}
+
 
 	a,
 	.swfw-text,
@@ -106,10 +114,10 @@ $black: #030303;
 	align-items: center;
 	text-align: center;
 	margin: 5px;
-	color: $white;
 	position: realtive;
 	padding: 0;
 	justify-content: center;
+	border-radius: 4px;
 
 	.swfw-network-icon {
 		margin-top: -12px;
@@ -117,7 +125,6 @@ $black: #030303;
 
 	.swfw-text {
 		width: 100%;
-		color: $white;
 	}
 
 	/* Use absolute so they occupy the same space in parent container swfw-text. */
@@ -137,6 +144,7 @@ $black: #030303;
 	.swfw-cta {
 	  opacity: 0;
 	  transition: opacity 120ms 0;
+	  font-size: 12px;
 	}
 
 	&:hover {
@@ -164,8 +172,9 @@ $black: #030303;
 	width: -moz-max-content;
 	width: max-content;
 	margin: 10px 5px;
-	padding: 5px 10px 5px 5px;
-	color: $white;
+	border-radius: 4px;
+	padding: 5px 15px;
+	color: white;
 
 	.swfw-network-icon {
 		padding: 0;
@@ -199,7 +208,15 @@ $black: #030303;
 		}
 
 		&:hover .swfw-cta {
-			color: $white;
+			color: white;
+		}
+	}
+
+	&.swp-snapchat .swfw-text {
+		color: black;
+
+		&:hover .swfw-cta {
+			color: black;
 		}
 	}
 
@@ -213,7 +230,7 @@ $black: #030303;
 			overflow-x: visible;
 			position: relative;
 			margin-right: 10px;
-			color: $white;
+			color: white;
 		}
 
 		&:hover .swfw-count {
@@ -252,7 +269,7 @@ $black: #030303;
 			padding: none;
 			div {
 				padding: 10px 30px;
-				background: $white;
+				background: white;
 				border-radius: 2px;
 			}
 
@@ -284,7 +301,7 @@ $black: #030303;
 		font-size: 12px;
 		line-height: 24px;
 		left: calc(10px + 60px);  //* {parent margin} + {arbitrary amount}
-		color: $white;
+		color: white;
 		text-align: center;
 
 	.swfw-count {
@@ -292,6 +309,11 @@ $black: #030303;
 		width: max-content;
 		font-size: 15px;
 	  }
+	}
+
+
+	&.swp-snapchat .swfw-text {
+		color: black;
 	}
 
 	.swfw-cta {
@@ -303,20 +325,20 @@ $black: #030303;
 	}
 
   .swfw-cta-button {
-	  height: 24px;
-	  width: initial;
+	  font-size: 24px;
+	  padding: 5px;
 	  line-height: 24px;
 	  border-radius: 4px;
 	  text-align: center;
-	  margin-right: 10px;
 	  right: 0;
 
 	  a {
 		  text-decoration: none !important;
 		  div {
+			  font-size: 14px;
 			  min-width: 100px;
 			  border-radius: 3px;
-			  background: $white;
+			  background: white;
 			  padding: 0px 15px;
 		  }
 	  }
@@ -334,7 +356,7 @@ $black: #030303;
  * Leaf style
  */
 .swfw-follow-button.swfw_leaf_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	border-top-left-radius: 21px;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -351,7 +373,7 @@ $black: #030303;
  * Pill style
  */
 .swfw-follow-button.swfw_pill_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	border-radius: 50px;
 	padding: 20px;
 
@@ -376,7 +398,7 @@ $black: #030303;
  */
 
 .swfw-follow-button.swfw_shift_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	transform: skew(-20deg);
 	-moz-transform: skew(-20deg);
 	-o-transform: skew(-20deg);
