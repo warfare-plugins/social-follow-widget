@@ -503,3 +503,12 @@
 	height: 100%;
 	border-radius: 4px;
 }
+
+
+.swfw-follow-field.swfw-inactive div {
+	background: white;
+}
+
+.swfw-follow-field.swfw-active div {
+	color: white;
+}
