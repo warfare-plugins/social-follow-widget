@@ -41,14 +41,17 @@
   align-items: center;
   border-radius: 8px;
   display: flex;
-  color: #fefefe;
+  color: white;
   font-family: "Helvetica", sans-serif;
   font-size: initial;
   justify-content: space-between;
   line-height: 1;
   margin-bottom: 10px;
-  padding: 20px 10px;
+  padding: 20px;
   width: 100%;
+}
+.swfw-follow-button.swp-snapchat, .swp-snapchat.swfw_block_button, .swp-snapchat.swfw_buttons_button, .swp-snapchat.swfw_square_button {
+  color: black;
 }
 .swfw-follow-button a, .swfw-follow-button.swfw_shift_button a, .swfw_shift_button.swfw_square_button a, .swfw_shift_button.swfw_buttons_button a, .swfw_shift_button.swfw_block_button a, .swfw-follow-button.swfw_pill_button a, .swfw_pill_button.swfw_square_button a, .swfw_pill_button.swfw_buttons_button a, .swfw_pill_button.swfw_block_button a, .swfw-follow-button.swfw_leaf_button a, .swfw_leaf_button.swfw_square_button a, .swfw_leaf_button.swfw_buttons_button a, .swfw_leaf_button.swfw_block_button a, .swfw_block_button a, .swfw_buttons_button a, .swfw_square_button a {
   background: #fff;
@@ -61,7 +64,10 @@
   transition: all 0.3s ease-in-out;
 }
 .swfw-follow-button a :hover, .swfw_block_button a :hover, .swfw_buttons_button a :hover, .swfw_square_button a :hover {
-  color: #fefefe;
+  color: white;
+}
+.swfw-follow-button a :hover.swp-snapchat, .swfw_block_button a :hover.swp-snapchat, .swfw_buttons_button a :hover.swp-snapchat, .swfw_square_button a :hover.swp-snapchat {
+  color: black;
 }
 .swfw-follow-button a, .swfw-follow-button.swfw_shift_button a, .swfw_shift_button.swfw_square_button a, .swfw_shift_button.swfw_buttons_button a, .swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_shift_button.swfw_block_button a, .swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_shift_button.swfw-follow-button a, .swfw-follow-button.swfw_pill_button a, .swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_pill_button.swfw_leaf_button.swfw-follow-button.swfw_shift_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_square_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_buttons_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_block_button a, .swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_pill_button.swfw_leaf_button.swfw-follow-button.swfw_shift_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_square_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_buttons_button a, .swfw_pill_button.swfw_leaf_button.swfw_shift_button.swfw_block_button a, .swfw_pill_button.swfw_shift_button.swfw-follow-button a, .swfw_pill_button.swfw_square_button a, .swfw_pill_button.swfw_buttons_button a, .swfw_pill_button.swfw_block_button a, .swfw-follow-button.swfw_leaf_button a, .swfw_leaf_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw_pill_button.swfw-follow-button.swfw_shift_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_square_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_buttons_button a, .swfw_leaf_button.swfw_pill_button.swfw_shift_button.swfw_block_button a, .swfw_leaf_button.swfw_shift_button.swfw-follow-button a, .swfw_leaf_button.swfw_square_button a, .swfw_leaf_button.swfw_buttons_button a, .swfw_leaf_button.swfw_block_button a, .swfw_block_button a, .swfw_buttons_button a, .swfw_square_button a,
 .swfw-follow-button .swfw-text,
@@ -151,10 +157,10 @@
   align-items: center;
   text-align: center;
   margin: 5px;
-  color: #fefefe;
   position: realtive;
   padding: 0;
   justify-content: center;
+  border-radius: 4px;
   /* Use absolute so they occupy the same space in parent container swfw-text. */
 }
 .swfw_square_button .swfw-network-icon {
@@ -162,7 +168,6 @@
 }
 .swfw_square_button .swfw-text {
   width: 100%;
-  color: #fefefe;
 }
 .swfw_square_button .swfw-cta,
 .swfw_square_button .swfw-count {
@@ -178,6 +183,7 @@
 .swfw_square_button .swfw-cta {
   opacity: 0;
   transition: opacity 120ms 0;
+  font-size: 12px;
 }
 .swfw_square_button:hover .swfw-count {
   opacity: 0;
@@ -198,8 +204,9 @@
   width: -moz-max-content;
   width: max-content;
   margin: 10px 5px;
-  padding: 5px 10px 5px 5px;
-  color: #fefefe;
+  border-radius: 4px;
+  padding: 5px 15px;
+  color: white;
 }
 .swfw_buttons_button .swfw-network-icon {
   padding: 0;
@@ -230,7 +237,7 @@
   font-weight: normal;
 }
 .swfw_buttons_button .swfw-text:hover .swfw-cta {
-  color: #fefefe;
+  color: white;
 }
 .swfw_buttons_button:hover .swfw-text {
   width: -moz-max-content;
@@ -242,7 +249,7 @@
   overflow-x: visible;
   position: relative;
   margin-right: 10px;
-  color: #fefefe;
+  color: white;
 }
 /**
  * Block Buttons
@@ -266,7 +273,7 @@
 }
 .swfw-follow-button.swfw_shift_button .swfw-cta-button a div, .swfw_shift_button.swfw_square_button .swfw-cta-button a div, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a div, .swfw_shift_button.swfw_block_button .swfw-cta-button a div, .swfw-follow-button.swfw_pill_button .swfw-cta-button a div, .swfw_pill_button.swfw_square_button .swfw-cta-button a div, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a div, .swfw_pill_button.swfw_block_button .swfw-cta-button a div, .swfw-follow-button.swfw_leaf_button .swfw-cta-button a div, .swfw_leaf_button.swfw_square_button .swfw-cta-button a div, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button a div, .swfw_leaf_button.swfw_block_button .swfw-cta-button a div {
   padding: 10px 30px;
-  background: #fefefe;
+  background: white;
   border-radius: 2px;
 }
 .swfw-follow-button.swfw_shift_button .swfw-cta-button a:hover div, .swfw_shift_button.swfw_square_button .swfw-cta-button a:hover div, .swfw_shift_button.swfw_buttons_button .swfw-cta-button a:hover div, .swfw_shift_button.swfw_block_button .swfw-cta-button a:hover div, .swfw-follow-button.swfw_pill_button .swfw-cta-button a:hover div, .swfw_pill_button.swfw_square_button .swfw-cta-button a:hover div, .swfw_pill_button.swfw_buttons_button .swfw-cta-button a:hover div, .swfw_pill_button.swfw_block_button .swfw-cta-button a:hover div, .swfw-follow-button.swfw_leaf_button .swfw-cta-button a:hover div, .swfw_leaf_button.swfw_square_button .swfw-cta-button a:hover div, .swfw_leaf_button.swfw_buttons_button .swfw-cta-button a:hover div, .swfw_leaf_button.swfw_block_button .swfw-cta-button a:hover div {
@@ -291,7 +298,7 @@
   font-size: 12px;
   line-height: 24px;
   left: calc(10px + 60px);
-  color: #fefefe;
+  color: white;
   text-align: center;
 }
 .swfw_block_button .swfw-text .swfw-count {
@@ -303,21 +310,22 @@
   border-radius: 3px;
 }
 .swfw_block_button .swfw-cta-button {
-  height: 24px;
-  width: initial;
+  font-size: 24px;
+  padding: 5px;
   line-height: 24px;
   border-radius: 4px;
   text-align: center;
-  margin-right: 10px;
   right: 0;
 }
 .swfw_block_button .swfw-cta-button a {
   text-decoration: none !important;
 }
 .swfw_block_button .swfw-cta-button a div {
+  font-size: 14px;
+  font-weight: bold;
   min-width: 100px;
   border-radius: 3px;
-  background: #fefefe;
+  background: white;
   padding: 0px 15px;
 }
 .swfw_block_button .swfw-cta-button a div:hover {
