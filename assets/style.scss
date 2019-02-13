@@ -82,6 +82,7 @@
 		}
 	}
 
+
 	a,
 	.swfw-text,
 	.swfw-cta,
@@ -211,6 +212,14 @@
 		}
 	}
 
+	&.swp-snapchat .swfw-text {
+		color: black;
+
+		&:hover .swfw-cta {
+			color: black;
+		}
+	}
+
 	&:hover .swfw-text {
 		width: -moz-max-content;
 		width: max-content;
@@ -302,6 +311,11 @@
 	  }
 	}
 
+
+	&.swp-snapchat .swfw-text {
+		color: black;
+	}
+
 	.swfw-cta {
 		border-radius: 3px;
 
@@ -322,7 +336,6 @@
 		  text-decoration: none !important;
 		  div {
 			  font-size: 14px;
-			  font-weight: bold;
 			  min-width: 100px;
 			  border-radius: 3px;
 			  background: white;
@@ -343,7 +356,7 @@
  * Leaf style
  */
 .swfw-follow-button.swfw_leaf_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	border-top-left-radius: 21px;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -360,7 +373,7 @@
  * Pill style
  */
 .swfw-follow-button.swfw_pill_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	border-radius: 50px;
 	padding: 20px;
 
@@ -385,7 +398,7 @@
  */
 
 .swfw-follow-button.swfw_shift_button {
-	@extend .swfw-follow-button;
+	@extend .swfw_block_button;
 	transform: skew(-20deg);
 	-moz-transform: skew(-20deg);
 	-o-transform: skew(-20deg);
