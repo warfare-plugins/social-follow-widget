@@ -516,11 +516,11 @@ BUTTON;
 	 *
 	 * @since  1.0.0 | 03 DEC 2018 | Created
 	 * @param void
-	 * @return string Fully qualified HTML for an Buttons follow button.
+	 * @return string Fully qualified HTML for a Buttons follow button.
 	 *
 	 */
-	public function generate_buttons_HTML( ) {
-		$follow_count_HTML = $this->get_count_html( $shape );
+	public function generate_buttons_HTML() {
+		$follow_count_HTML = $this->get_count_html( 'buttons' );
 		return
 <<<BUTTON
 <a target="_blank" href="{$this->href}">
