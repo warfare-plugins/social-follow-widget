@@ -8,6 +8,11 @@ class SWFW_Cache {
 	use SWP_Debug_Trait;
 
 
+	public function __construct() {
+		$this->debug();
+	}
+
+
 	/**
 	 * True iff the follow counts are less than 24 hours old.
 	 *
@@ -32,7 +37,6 @@ class SWFW_Cache {
 
 		$last_updated = (int) SWFW_Utility::get_option( 'last_updated' );
 		$current_time =  (int) time() / DAY_IN_SECONDS;
-		self::debug();
 
 		self::$is_fresh = $current_time - $last_updated < 24;
 		return self::$is_fresh;
