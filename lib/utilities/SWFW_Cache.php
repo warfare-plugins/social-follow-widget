@@ -57,10 +57,11 @@ class SWFW_Cache {
 	}
 
 	public function debug() {
-		$parameter = $_GET['swfw_debug'];
-		if ( empty( $parameter ) ) {
+		if ( empty( $_GET['swfw_debug'] ) ) {
 			return;
 		}
+
+		$parameter = $_GET['swfw_debug'];
 
 		switch( $parameter ) {
 			case 'force_api_requests' : {
