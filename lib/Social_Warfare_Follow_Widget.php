@@ -24,6 +24,7 @@ class Social_Warfare_Follow_Widget extends Social_Warfare_Addon {
 		$this->key           = 'social-follow-widget';
 		$this->core_required = '3.5.0';
 		$this->product_id    = 253345;
+		$this->store_url     = 'https://warfareplugins.com';
 		$this->version       = SWFW_VERSION;
 		$this->filepath      = SWFW_PLUGIN_FILE;
 
