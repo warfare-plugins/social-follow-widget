@@ -36,7 +36,6 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 
 		parent::__construct( $network );
 		$this->establish_client();
-
 	}
 
 
@@ -49,9 +48,10 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	 *
 	 */
 	public function do_api_request() {
-		if ( !$this->auth_helper->has_credentials ) {
-			return false;
-		}
+		// $access_token = $this->auth_helper->get_access_token();
+		// if ( false == $access_token ) {
+		// 	return false;
+		// }
 
 		$page_access_token = SWP_Credential_Helper::get_token( 'facebook', 'page_access_token' );
 
@@ -97,8 +97,11 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 		require_once __DIR__ . '/../vendor/Facebook/autoload.php';
 		session_start();
 
+		$id = base64_decode( 'MjE5NDQ4MTQ1NzQ3MDg5Mg==' );
+		$img = base64_decode( '' );
+
 		$this->client = new Facebook\Facebook(array(
-			'app_id'     => '2194481457470892',
+			'app_id'     => $id,
 			'app_secret' => '8d3ffda53c0fca343a4d0932eb006037',
 		));
 
@@ -110,6 +113,7 @@ class SWFW_Facebook extends SWFW_Follow_Network {
 	// return false or $page_access_token
 	protected function do_page_token_request() {
 		$endpoint = "/{$this->username}?fields=access_token";
+		error_log('Running request for Facebook.');
 
 		try {
 			$access_token = $this->auth_helper->get_access_token();

@@ -3,7 +3,7 @@
 /**
  * SWFW_Tumblr
  *
- * This provides an interface for creating a follow button for Pinterst.
+ * This provides an interface for creating a follow button for Pinterest.
  *
  * @package   social-follow-widget
  * @copyright Copyright (c) 2019, Warfare Plugins, LLC
