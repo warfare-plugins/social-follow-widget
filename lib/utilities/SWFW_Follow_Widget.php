@@ -174,7 +174,6 @@ INPUT;
 			'minimum_count' => 15
 		);
 
-
 		foreach($defaults as $key => $default) {
 			if ( !isset( $settings[$key] ) ) {
 				$settings[$key] = $default;
@@ -244,10 +243,8 @@ FIELD;
 		}
 
 		$html = "<div class='swfw-follow-container $container_shape'>";
-
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$buttons = '';
-
 		// Build the network follow button.
 		foreach($networks as $network) {
 			if ( false == $network->is_active() ) {
@@ -323,8 +320,8 @@ FIELD;
 				$options = array( 'last_updated' => 0  );
 				$updated = update_option( 'swfw_options', $options );
 				$message = $updated
-						   ? 'Success! Follow Widget options have been reset.'
-						   : 'No changes were made to your SWFW options.';
+						? 'Success! Follow Widget options have been reset.'
+						: 'No changes were made to your SWFW options.';
 				wp_die($message);
 		}
 	}

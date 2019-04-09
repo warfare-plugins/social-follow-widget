@@ -7,7 +7,6 @@ class SWFW_Cache {
 
 	use SWP_Debug_Trait;
 
-
 	public function __construct() {
 		$this->debug();
 	}
