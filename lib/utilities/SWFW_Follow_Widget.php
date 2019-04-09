@@ -279,7 +279,17 @@ FIELD;
 	*/
 	public function update( $new_settings, $old_settings ) {
 		foreach ($new_settings as $key => $value) {
-			$new_settings[$key] = esc_html( $value );
+
+			// Save the new username
+			if ( isset( $value ) && !empty( $value ) ) {
+					$new_settings[$key] = esc_html( $value );
+					continue;
+			}
+
+			// Deleted the username, so delete the followers for that username.
+			$network = str_replace( '_username', '', $key );
+			$key = "{$network}_follow_count";
+			SWFW_Utility::update_option( $key, 0 );
 		}
 
 		return $new_settings;
