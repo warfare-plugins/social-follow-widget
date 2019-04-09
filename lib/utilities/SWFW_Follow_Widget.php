@@ -309,7 +309,7 @@ FIELD;
 
 
 			case 'reset_count_data' :
-				if ( !is_admin() ) {
+				if ( !current_user_can( 'administrator' ) ) {
 					break;
 				}
 
