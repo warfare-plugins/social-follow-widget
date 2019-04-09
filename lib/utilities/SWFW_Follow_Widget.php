@@ -255,9 +255,6 @@ FIELD;
 			}
 
 			$network->set_minimum_count( $settings['minimum_count'] );
-
-
-			$key = $network->key.'_username';
 			$buttons .= $network->generate_frontend_HTML( $settings['shape'] );
 		}
 
