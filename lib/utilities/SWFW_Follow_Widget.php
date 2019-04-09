@@ -49,7 +49,7 @@ class SWFW_Follow_Widget extends SWP_Widget {
 	 * @return array List of all the user-created widgets for the site.
 	 *
 	 */
-	public static function get_widgets() {
+	public static function get_all_instances() {
 		$widgets = get_option( 'widget_swfw_follow_widget', array());
 
 		if (empty($widgets)) {
@@ -323,7 +323,7 @@ FIELD;
 	}
 
 	protected function get_all_usernames() {
-		$widgets = SWFW_Follow_Widget::get_widgets();
+		$widgets = SWFW_Follow_Widget::get_all_instances();
 		$networks = apply_filters( 'swfw_follow_networks', array() );
 		$usernames = array();
 

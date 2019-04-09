@@ -247,7 +247,7 @@ abstract class SWFW_Follow_Network {
 	 *
 	 */
 	protected function establish_username() {
-		$widgets = SWFW_Follow_Widget::get_widgets();
+		$widgets = SWFW_Follow_Widget::get_all_instances();
 
 		foreach( $widgets as $key => $settings ) {
 			if ( !empty( $settings[$this->key . '_username'] ) ) {
