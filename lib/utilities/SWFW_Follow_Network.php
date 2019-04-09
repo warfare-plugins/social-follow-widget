@@ -390,9 +390,8 @@ abstract class SWFW_Follow_Network {
 		}
 
 		// Create the callback function as a string, then call it.
-		$generate_x_HTML = "generate_" . $shape . "_HTML";
-
-		return $this->$generate_x_HTML();
+		$html_callback = "generate_" . $shape . "_HTML";
+		return $this->$html_callback();
 	}
 
 
